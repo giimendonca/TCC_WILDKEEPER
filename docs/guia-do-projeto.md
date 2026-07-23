@@ -1,32 +1,78 @@
-# Convenções
+# Guia do Projeto
 
-Variáveis:
-camelCase
+## Convenções
 
-Funções:
-camelCase
+### Linguagem
 
-Classes:
-PascalCase
+Português.
 
-Banco:
-snake_case
+---
 
-Tabelas:
-plural
+### Banco
+- Tabelas em snake_case
+- Chaves primárias: id
+- Chaves estrangeiras: id_nomeTabela
 
-Chaves:
-id
+usuarios
 
-FK:
-id_usuario
-id_animal
-id_habitat
+animais
 
+habitats
 
-// Também colocaria:
+funcionarios
 
-como nomear páginas
-como organizar CSS
-como organizar JS
-padrão dos commits
+---
+
+### PHP
+- Variáveis em camelCase
+- Classes em PascalCase
+
+---
+
+### CSS
+- Classes em kebab-case
+
+.container-login
+
+.card-animal
+
+.btn-primary
+
+---
+
+### JavaScript
+- IDs em camelCase
+
+abrirModal()
+
+listarAnimais()
+
+---
+
+### Estrutura
+
+Cada módulo terá:
+
+listar
+
+cadastrar
+
+editar
+
+excluir
+
+---
+
+### Padrão de Commits
+
+feat:
+
+fix:
+
+docs:
+
+style:
+
+refactor:
+
+chore:
