@@ -1,0 +1,34 @@
+CREATE DATABASE IF NOT EXISTS wildkeeper;
+USE wildkeeper;
+
+CREATE TABLE instituicoes(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL UNIQUE REQUIRED,
+    cnpj VARCHAR(18) NOT NULL UNIQUE REQUIRED,
+    email VARCHAR(100) NOT NULL UNIQUE REQUIRED,
+    telefone VARCHAR(20) NOT NULL UNIQUE REQUIRED,
+    website VARCHAR(255) DEFAULT NULL,
+    
+    rua VARCHAR(150) NOT NULL REQUIRED,
+    numero VARCHAR(20) DEFAULT 'S/N' REQUIRED,
+    cidade VARCHAR(80) NOT NULL REQUIRED,
+    estado VARCHAR(80) NOT NULL REQUIRED,
+    cep VARCHAR(9) NOT NULL REQUIRED,
+
+    logo VARCHAR(255) DEFAULT NULL,
+    descricao TEXT
+);
+
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL REQUIRED,
+    cpf VARCHAR(14) NOT NULL UNIQUE REQUIRED,
+    data_nascimento DATE NOT NULL REQUIRED,
+    genero ENUM('Masculino', 'Feminino', 'Não-binário', 'Outro', 'Prefiro não informar'),
+    telefone VARCHAR(20) NOT NULL UNIQUE REQUIRED,
+    email VARCHAR(100) NOT NULL UNIQUE REQUIRED,
+    senha_hash VARCHAR(255) NOT NULL REQUIRED,
+    cargo_id INT NOT NULL,
+
+    FOREIGN KEY (cargo_id) REFERENCES cargos(id)
+);
