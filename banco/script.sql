@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS instituicoes (
 
 CREATE TABLE IF NOT EXISTS cargos (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(80) NOT NULL,
+    nome VARCHAR(80) NOT NULL ,
+    nivel INT NOT NULL,
         
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -35,12 +36,12 @@ CREATE TABLE IF NOT EXISTS cargos (
     ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO cargos (nome) VALUES
-('Administrador'),
-('Veterinário'),
-('Tratador'),
-('Biólogo'),
-('Recepcionista');
+INSERT INTO cargos (nome, nivel) VALUES
+('Administrador', 100),
+('Veterinário', 60),
+('Tratador', 40),
+('Biólogo', 50),
+('Recepcionista', 20);
 
 CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,7 +53,7 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha_hash VARCHAR(255) NOT NULL,
     cargo_id INT NOT NULL,
-    status ENUM('Ativo', 'Férias', 'Afastado', 'Desligado') NOT NULL,
+    status ENUM('Ativo', 'Férias', 'Afastado', 'Desligado') DEFAULT 'Ativo',
     instituicao_id INT NOT NULL,
 
     FOREIGN KEY (cargo_id) REFERENCES cargos(id),
@@ -66,8 +67,8 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS categorias (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    sigla CHAR(2) NOT NULL,
+    nome VARCHAR(50) NOT NULL UNIQUE,
+    sigla CHAR(2) NOT NULL UNIQUE,
         
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -85,8 +86,8 @@ INSERT INTO categorias (nome, sigla) VALUES
 
 CREATE TABLE IF NOT EXISTS classificacao_alimentar (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    sigla CHAR(2) NOT NULL,
+    nome VARCHAR(50) NOT NULL UNIQUE,
+    sigla CHAR(2) NOT NULL UNIQUE,
         
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -104,8 +105,8 @@ INSERT INTO classificacao_alimentar (nome, sigla) VALUES
 
 CREATE TABLE IF NOT EXISTS risco_extincao (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    sigla CHAR(2) NOT NULL,
+    nome VARCHAR(50) NOT NULL UNIQUE,
+    sigla CHAR(2) NOT NULL UNIQUE,
         
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -153,7 +154,7 @@ CREATE TABLE IF NOT EXISTS habitats (
     temperatura DECIMAL(5,2) NOT NULL,
     umidade DECIMAL(5,2) NOT NULL,
     capacidade INT NOT NULL,
-    status ENUM('Ativo', 'Em manutenção', 'Interditado'),
+    status ENUM('Ativo', 'Em manutenção', 'Interditado') DEFAULT 'Ativo',
     instituicao_id INT NOT NULL,
 
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id),
@@ -164,7 +165,7 @@ CREATE TABLE IF NOT EXISTS habitats (
     ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE IF NOT EXISTS status (
+CREATE TABLE IF NOT EXISTS status_animais (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     sigla CHAR(2) NOT NULL,
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS status (
     ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO status (nome, sigla) VALUES
+INSERT INTO status_animais (nome, sigla) VALUES
 ('Em Exposição', 'EE'),
 ('Em Tratamento', 'ET'),
 ('Em Quarentena', 'EQ'),
@@ -335,7 +336,7 @@ CREATE TABLE IF NOT EXISTS manutencao_habitats (
     funcionario_id INT NOT NULL,
     data_manutencao DATE NOT NULL,
     descricao TEXT NOT NULL,
-    status ENUM('Pendente', 'Em andamento', 'Concluída', 'Cancelada'),
+    status ENUM('Pendente', 'Em andamento', 'Concluída', 'Cancelada') DEFAULT 'Pendente',
 
     FOREIGN KEY (habitat_id) REFERENCES habitats(id),
     FOREIGN KEY (funcionario_id) REFERENCES users(id),
@@ -375,7 +376,7 @@ CREATE TABLE IF NOT EXISTS eventos (
     data_fim DATETIME NOT NULL,
     animal_id INT DEFAULT NULL,
     funcionario_id INT NOT NULL,
-    status ENUM('Agendado', 'Em andamento', 'Concluído', 'Cancelado'),
+    status ENUM('Agendado', 'Em andamento', 'Concluído', 'Cancelado') DEFAULT 'Agendado',
     instituicao_id INT NOT NULL,
 
     FOREIGN KEY (animal_id) REFERENCES animais(id),
