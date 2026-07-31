@@ -8,27 +8,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="../assets/img/icon_wildkeeper.webp" alt="" srcset="../assets/img/icon_wildkeeper.webp">
-            <img src="../assets/img/name_wildkeeper.webp" alt="" srcset="../assets/img/name_wildkeeper.webp"> 
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="">Início</a></li>
-                <li><a href="">Sobre</a></li>
-                <li><a href="">Recursos</a></li>
-                <li><a href="">Contato</a></li>
-            </ul>
-        </nav>
-
-        <div class="actions">
-            <a href="../src/auth/login.php">Entrar</a>
-            <a href="../src/setup/instituicao.php">Cadastrar Instituição</a>
-        </div>
-
-    </header>
+    <?php include "../src/includes/header.php" ?>
     <main>
         <h1>Bem Vindo(a) ao WildKeeper</h1>
 
@@ -93,12 +73,7 @@
             <a href="../src/setup/instituicao.php">Cadastrar Instituição</a>
         </section>
     </main>
-    <footer>
-        <img src="../assets/img/logo_wildkeeper.webp" alt="" srcset="../assets/img/logo_wildkeeper.webp">
-        <p>Contato: wildkeeper@email.com</p>
-        <p>GitHub: <a href="https://github.com/giimendonca/TCC_WILDKEEPER">https://github.com/giimendonca/TCC_WILDKEEPER</a></p>
-        <p>Versão: 1.0.0 2026</p>
-    </footer>
+    <?php include "../src/includes/footer.php" ?>
 </body>
 
 </html>
