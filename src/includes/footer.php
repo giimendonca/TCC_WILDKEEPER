@@ -1,7 +1,7 @@
 <footer>
 
     <section class="footer-logo">
-        <img src="../assets/img/logo_wildkeeper.webp" alt="Logo WildKeeper">
+        <img src="/TCC_WILDKEEPER/assets/img/logo_wildkeeper.webp" alt="Logo WildKeeper">
 
         <p>
             Tecnologia para conservação da vida selvagem.
