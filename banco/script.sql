@@ -219,7 +219,7 @@ CREATE TABLE IF NOT EXISTS animais (
     
     FOREIGN KEY (especie_id) REFERENCES especies(id),
     FOREIGN KEY (habitat_id) REFERENCES habitats(id),
-    FOREIGN KEY (status_id) REFERENCES status(id),
+    FOREIGN KEY (status_id) REFERENCES status_animais(id),
     FOREIGN KEY (saude_status_id) REFERENCES saude_status(id),
     FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id),
     
