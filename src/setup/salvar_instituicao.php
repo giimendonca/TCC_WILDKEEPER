@@ -2,7 +2,9 @@
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
 
+// ====================================
 // Dados da instituição
+// ====================================
 $instituicao = [
     "nome" => trim($_POST['nome_instituicao'] ?? ''),
     "cnpj" => trim($_POST['cnpj'] ?? ''),
@@ -16,7 +18,7 @@ $instituicao = [
     "cidade" => trim($_POST['cidade'] ?? ''),
     "estado" => trim($_POST['estado'] ?? '')
 ];
-
+// Campos obrigatórios
 $camposInstituicao = [
     "nome",
     "cnpj",
@@ -30,7 +32,9 @@ $camposInstituicao = [
     "estado"
 ];
 
+// ====================================
 // Dados do Administrador
+// ====================================
 $usuario = [
     "nome" => trim($_POST['nome_adm'] ?? ''),
     "cpf" => trim($_POST['cpf'] ?? ''),
@@ -41,7 +45,7 @@ $usuario = [
     "senha" => trim($_POST['senha'] ?? ''),
     "confirmar_senha" => trim($_POST['confirmar_senha'] ?? '')
 ];
-
+// Campos obrigatórios
 $camposUsuario = [
     "nome",
     "cpf",
@@ -53,30 +57,48 @@ $camposUsuario = [
     "confirmar_senha"
 ];
 
+// ====================================
 // Verificação se os campos foram todos preenchidos
+// ====================================
 if(!verificarCamposObrigatorios($instituicao, $camposInstituicao) ||
     !verificarCamposObrigatorios($usuario, $camposUsuario)
 ){
     die("Há campos obrigatórios não preenchidos.");
 }
 
+// ====================================
 // Validações dos dados da instituição
+// ====================================
+
+// Formata o CNPJ
+$instituicao['cnpj'] = apenasNumeros($instituicao['cnpj']);
+// Valida o CNPJ
+if(strlen($instituicao['cnpj']) !== 14){
+    die("CNPJ inválido.");
+}
+// Verifica se o CNPJ já foi cadastrado
+if(registroExiste($conexao, "instituicoes", "cnpj", $instituicao['cnpj'])){
+    die("CNPJ já cadastrado.");
+}
+
 // Valida o email
 if(!emailValido($instituicao['email'])){
     die("Email da instituição inválido.");
 }
-
 // Valida se o email já foi cadastrado
-$sql = "SELECT id FROM instituicoes WHERE email = ?";
+if(registroExiste($conexao, "instituicoes", "email", $instituicao['email'])){
+    die("Email já cadastrado.");
+}
 
-$stmt = $conexao->prepare($sql);
-$stmt->bind_param("s", $instituicao['email']);
-$stmt->execute();
-
-$result = $stmt->get_result();
-
-if(!$result){
-    die("Email da intituição já cadastrado.");
+// Formata o telefone
+$instituicao['telefone'] = apenasNumeros($instituicao['telefone']);
+// Valida o telefone
+if(strlen($instituicao['telefone'] !== 11)){
+    die("Telefone inválido.");
+}
+// Valida se o telefone ja foi cadastrado
+if(registroExiste($conexao, "instituicoes", "telefone", $instituicao['telefone'])){
+    die("Telefone já cadastrado.");
 }
 
 // Valida o Estado
@@ -84,48 +106,49 @@ if(strlen($instituicao['estado']) != 2){
     die("Estado inválido.");
 }
 
-// Formata o CNPJ
-$cnpj = apenasNumeros($instituicao['cnpj']);
-
-if(strlen($cnpj) !== 14){
-    die("CNPJ inválido.");
-}
-
 // Formata o CEP 
-$cep = apenasNumeros($instituicao['cep']);
-
-if(strlen($cep) !== 8){
+$instituicao['cep'] = apenasNumeros($instituicao['cep']);
+// Valida o CEP
+if(strlen($instituicao['cep']) !== 8){
     die("CEP inválido.");
 }
 
-
+// ====================================
 // Validações dos dados do usuário ADMIN
+// ====================================
+
 // Valida as senhas
 if($usuario['senha'] !== $usuario['confirmar_senha']){
     die("As senhas devem ser iguais.");
+}
+
+// Formata o CPF
+$usuario['cpf'] = apenasNumeros($usuario['cpf']);
+// Valida o CPF
+if(strlen($usuario['cpf']) !== 11){
+    die("CPF inválido.");
+}
+// Verifica se o CPF já foi cadastrado
+if(registroExiste($conexao, "users", "cpf", $usuario['cpf'])){
+    die("CPF já cadastrado.");
+}
+
+// Formata o telefone
+$usuario['telefone'] = apenasNumeros($usuario['telefone']);
+// Valida o telefone
+if(strlen($usuario['telefone'] !== 11)){
+    die("Telefone inválido.");
+}
+// Valida se o telefone ja foi cadastrado
+if(registroExiste($conexao, "users", "telefone", $usuario['telefone'])){
+    die("Telefone já cadastrado.");
 }
 
 // Valida o email
 if(!emailValido($usuario['email'])){
     die("Email do usuário inválido.");
 }
-
-// Formata o CPF
-$cpf = apenasNumeros($instituicao['cpf']);
-
-if(strlen($cpf) !== 11){
-    die("CPF inválido.");
-}
-
-// Verifica se o email já foi cadastrado
-$sql = "SELECT id FROM users WHERE email = ?";
-
-$stmt = $conexao->prepare($sql);
-$stmt->bind_param("s", $usuario['email']);
-$stmt->execute();
-
-$result = $stmt->get_result();
-
-if(!$result){
+// Verifica se o email já foi cadastrado 
+if(registroExiste($conexao, "users", "email", $usuario['email'])){
     die("Email do usuário já cadastrado.");
 }

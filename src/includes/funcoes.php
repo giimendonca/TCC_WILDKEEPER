@@ -13,6 +13,23 @@ function verificarCamposObrigatorios($dados, $camposObrigatorios)
     return true;
 }
 
+// Verifica se um registro já existe
+function registroExiste($conexao, $tabela, $coluna, $valor){
+    $sql = "SELECT 1 FROM $tabela WHERE $coluna = ?";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("s", $valor);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if(!$result){
+        return false;   // Não existe
+    } else{
+        return true;    // Existe
+    }
+}
+
 // Remove tudo o que não for numeros
 function apenasNumeros($texto)
 {
@@ -23,28 +40,4 @@ function apenasNumeros($texto)
 function emailValido($email)
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
-}
-
-// Valida cpf
-function cpfValido($cpf, $conexao)
-{
-    $cpfFormatado = apenasNumeros($cpf);
-
-    if (strlen($cpfFormatado) !== 11) {
-        return die("CPF inválido.");
-    }
-
-    $sql = "SELECT 1 FROM users WHERE cpf = ?";
-
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("s", $cpfFormatado);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-
-    $result = $result->fetch_assoc();
-
-    if(!$result){
-        return die("CPF já cadastrado.");
-    }
 }
