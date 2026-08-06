@@ -23,11 +23,13 @@ function registroExiste($conexao, $tabela, $coluna, $valor){
 
     $result = $stmt->get_result();
 
-    if(!$result){
-        return false;   // Não existe
+    if($result->num_rows > 0){
+        return true;   // Não existe
     } else{
-        return true;    // Existe
+        return false;    // Existe
     }
+
+    $stmt->close();
 }
 
 // Remove tudo o que não for numeros
