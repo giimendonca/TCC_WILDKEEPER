@@ -71,6 +71,11 @@ if (
 // Validações dos dados da instituição
 // ====================================
 
+// Verifica se o nome da instituição ja foi cadastrado
+if(registroExiste($conexao, "instituicoes", "nome", $instituicao['nome'])){
+    die("Uma instituição com o mesmo nome já foi cadastrada.");
+}
+
 // Formata o CNPJ
 $instituicao['cnpj'] = apenasNumeros($instituicao['cnpj']);
 // Valida o CNPJ

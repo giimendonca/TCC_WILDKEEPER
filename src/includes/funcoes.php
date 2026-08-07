@@ -23,11 +23,7 @@ function registroExiste($conexao, $tabela, $coluna, $valor){
 
     $result = $stmt->get_result();
 
-    if($result->num_rows > 0){
-        return true;   // Não existe
-    } else{
-        return false;    // Existe
-    }
+    return $result->num_rows > 0;
 
     $stmt->close();
 }
