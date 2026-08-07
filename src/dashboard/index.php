@@ -16,20 +16,16 @@ if (!isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard | WildKeeper</title>
 </head>
 
 <body>
-    <header>
-        <a href="index.php">
-            <img src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp" alt="Logo do WildKeeper">
-            <span><?= htmlspecialchars($_SESSION['instituicao_nome']) ?></span>
-        </a>
-
-        <h1>Olá, <?= htmlspecialchars($_SESSION['nome']) ?>!</h1>
-        <h2>Bem-vindo(a) novamente.</h2>
-    </header>
+    <?php include "../includes/dashboard-header.php" ?>
     <main>
+        <section>
+            <h1>Olá, <?= htmlspecialchars($_SESSION['nome']) ?>!</h1>
+            <p>Bem-vindo(a) novamente ao WildKeeper</p>
+        </section>
         <h3>Painel</h3>
 
         <?php if (nivelMinimo(100)): ?>
@@ -60,6 +56,8 @@ if (!isset($_SESSION['id'])) {
             </section>
         <?php endif; ?>
     </main>
+
+    <?php include "../includes/dashboard-footer.php" ?>
 </body>
 
 </html>

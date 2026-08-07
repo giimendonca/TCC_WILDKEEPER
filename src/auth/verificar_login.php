@@ -18,6 +18,7 @@ $sql = "SELECT
     users.email,
     users.senha_hash,
     cargos.id AS cargo_id,
+    cargos.nome AS cargo_nome,
     cargos.nivel,
     instituicoes.id AS instituicao_id,
     instituicoes.nome AS instituicao_nome
@@ -49,6 +50,7 @@ $_SESSION['nome'] = $user['nome'];
 $_SESSION['email'] = $user['email'];
 $_SESSION['nivel'] = $user['nivel'];
 $_SESSION['cargo_id'] = $user['cargo_id'];
+$_SESSION['cargo_nome'] = $user['cargo_nome'];
 $_SESSION['instituicao_id'] = $user['instituicao_id'];
 $_SESSION['instituicao_nome'] = $user['instituicao_nome'];
 
