@@ -17,12 +17,13 @@ $sql = "SELECT
     users.nome,
     users.email,
     users.senha_hash,
-    users.instituicao_id,
     cargos.id AS cargo_id,
-    cargos.nivel
+    cargos.nivel,
+    instituicoes.id AS instituicao_id,
+    instituicoes.nome AS instituicao_nome
 FROM users
-INNER JOIN cargos
-ON cargos.id = users.cargo_id
+INNER JOIN cargos ON cargos.id = users.cargo_id
+INNER JOIN instituicoes ON instituicoes.id = users.instituicao_id
 WHERE users.email = ?";
 
 $stmt = $conexao->prepare($sql);
@@ -49,6 +50,7 @@ $_SESSION['email'] = $user['email'];
 $_SESSION['nivel'] = $user['nivel'];
 $_SESSION['cargo_id'] = $user['cargo_id'];
 $_SESSION['instituicao_id'] = $user['instituicao_id'];
+$_SESSION['instituicao_nome'] = $user['instituicao_nome'];
 
 header("Location: ../dashboard/index.php");
 exit();

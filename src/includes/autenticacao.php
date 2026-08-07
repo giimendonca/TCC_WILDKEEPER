@@ -1,5 +1,10 @@
 <?php
 
+// Inicia a sessão se ela ainda não esteja iniciada
+if(session_status() === PHP_SESSION_NONE){
+    session_start();
+}
+
 // Verifica se o usuário possui uma sessão ativa
 if(!isset($_SESSION['id'])){
     header("Location: ../auth/login.php");
