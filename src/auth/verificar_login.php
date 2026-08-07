@@ -52,3 +52,4 @@ $_SESSION['instituicao_id'] = $user['instituicao_id'];
 
 header("Location: ../dashboard/index.php");
 exit();
+?>
