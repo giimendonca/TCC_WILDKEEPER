@@ -61,7 +61,7 @@ if (!isset($_SESSION['id'])) {
                 <article>
                     <h3>Adminsitração</h3>
 
-                    <a href="../funcionarios/cadastro_funcionario.php">Cadastrar Funcionário</a>
+                    <a href="../funcionarios/index.php">Funcionários</a>
                     <a href="">Configurações</a>
                 </article>
 
