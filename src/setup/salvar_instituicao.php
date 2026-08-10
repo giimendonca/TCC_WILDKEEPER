@@ -127,6 +127,9 @@ if (strlen($instituicao['cep']) !== 8) {
 if ($usuario['senha'] !== $usuario['confirmar_senha']) {
     die("As senhas devem ser iguais.");
 }
+if(strlen($usuario['senha']) < 6){
+    die("A senha deve possuir pelo menos 6 caracteres.");
+}
 
 // Formata o CPF
 $usuario['cpf'] = apenasNumeros($usuario['cpf']);
@@ -176,11 +179,6 @@ try {
         cep
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // echo "<pre>";
-    // var_dump($instituicao);
-    // echo "</pre>";
-    // die();
-
     $stmtInstituicao = $conexao->prepare($sql);
     $stmtInstituicao->bind_param("ssssssissss", ...array_values($instituicao));
     $stmtInstituicao->execute();
@@ -197,7 +195,7 @@ try {
         "genero" => $usuario['genero'],
         "telefone" => $usuario['telefone'],
         "email" => $usuario['email'],
-        "senha_hash" => password_hash($usuario['senha'], PASSWORD_DEFAULT),  // Faz o hash da senha
+        "senha_hash" => password_hash($usuario['senha'], PASSWORD_DEFAULT),     // Faz o hash da senha
         "cargo_id" => 1,    // Cargo de Admin
         "instituicao_id" => $instituicao_id
     ];

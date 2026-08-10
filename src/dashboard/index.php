@@ -26,35 +26,76 @@ if (!isset($_SESSION['id'])) {
             <h1>Olá, <?= htmlspecialchars($_SESSION['nome']) ?>!</h1>
             <p>Bem-vindo(a) novamente ao WildKeeper</p>
         </section>
-        <h3>Painel</h3>
+        <h2>Painel</h2>
 
-        <?php if (nivelMinimo(100)): ?>
-            <section id="">
-                <h4>Área Administrativa</h4>
+        <section>
 
-                <a href="">Cadastrar Funcionário</a>
-                <a href="">Cadastrar Cargo</a>
-                <a href="">Configurações</a>
-            </section>
+            <h3>Resumo</h3>
 
-        <?php endif; ?>
+            <article>
+                <h4>Animais</h4>
+                <p>0</p>
+            </article>
 
-        <?php if (nivelMinimo(60)): ?>
-            <section id="">
-                <h4>Veterinário</h4>
+            <article>
+                <h4>Espécies</h4>
+                <p>0</p>
+            </article>
 
-                <a href="">Prontuários</a>
-                <a href="">Consultas</a>
-            </section>
-        <?php endif; ?>
+            <article>
+                <h4>Habitats</h4>
+                <p>0</p>
+            </article>
 
-        <?php if (nivelMinimo(40)): ?>
-            <section id="">
-                <h4>Tratador</h4>
+            <article>
+                <h4>Eventos</h4>
+                <p>0</p>
+            </article>
 
-                <a href="">Alimentação</a>
-            </section>
-        <?php endif; ?>
+        </section>
+
+        <section>
+            <h2>Acesso Rápido</h2>
+
+            <?php if (nivelMinimo(100)): ?>
+                <article>
+                    <h3>Adminsitração</h3>
+
+                    <a href="../funcionarios/cadastro_funcionario.php">Cadastrar Funcionário</a>
+                    <a href="">Configurações</a>
+                </article>
+
+            <?php endif; ?>
+
+            <?php if (nivelMinimo(60)): ?>
+                <article>
+                    <h3>Veterinária</h3>
+
+                    <a href="">Consultas</a>
+                    <a href="">Vacinas</a>
+                    <a href="">Medicamentos</a>
+                </article>
+            <?php endif; ?>
+
+            <?php if (nivelMinimo(40)): ?>
+                <article>
+                    <h3>Manejo</h3>
+
+                    <a href="">Alimentação</a>
+                    <a href="">Habitats</a>
+                </article>
+            <?php endif; ?>
+
+            <?php if (nivelMinimo(20)): ?>
+                <article>
+                    <h3>Operações</h3>
+
+                    <a href="">Animais</a>
+                    <a href="">Eventos</a>
+                </article>
+            <?php endif; ?>
+        </section>
+
     </main>
 
     <?php include "../includes/dashboard-footer.php" ?>

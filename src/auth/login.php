@@ -34,7 +34,7 @@
             </form>
         </section>
         <section id="">
-            <h2>Ainda nâo possui uma instituição?</h2>
+            <h2>Ainda não possui uma instituição?</h2>
 
             <a href="../setup/instituicao.php">Cadastrar Instituição</a>
 
