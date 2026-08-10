@@ -368,3 +368,134 @@ Sistema bloqueou o cadastro.
 
 ✅ Aprovado
 
+## CT-017 - Cadastro de funcionário com dados válidos
+### Objetivo
+
+Verificar se um novo funcionário é cadastrado corretamente no sistema.
+
+Pré-condições
+Usuário administrador autenticado.
+Instituição cadastrada.
+Cargo disponível para seleção.
+E-mail, CPF e telefone do funcionário ainda não cadastrados.
+Dados utilizados
+Nome: João da Silva
+CPF: 222.222.222-22
+Data de nascimento: 10/05/1995
+Gênero: Masculino
+Telefone: (11) 22222-2222
+E-mail: joao.silva@email.com
+Cargo: Tratador
+Senha: ********
+Confirmação de senha: ********
+
+### Resultado esperado
+Funcionário cadastrado com sucesso.
+Senha armazenada utilizando hash.
+Funcionário associado à instituição do administrador autenticado.
+Funcionário associado ao cargo selecionado.
+Usuário criado com status padrão "Ativo".
+
+### Resultado obtido
+
+Funcionário cadastrado com sucesso.
+
+### Status
+
+✅ Aprovado
+
+## CT-018 - Campos obrigatórios do funcionário
+### Objetivo
+
+Verificar se o sistema impede o cadastro de um funcionário com campos obrigatórios não preenchidos.
+
+### Resultado esperado
+
+Exibir a mensagem:
+
+"Há campos obrigatórios não preenchidos."
+
+### Resultado obtido
+
+Sistema bloqueou o cadastro.
+
+### Status
+
+✅ Aprovado
+
+## CT-019 - CPF do funcionário duplicado
+### Objetivo
+
+Verificar se o sistema impede o cadastro de um funcionário utilizando um CPF já cadastrado.
+
+### Resultado esperado
+
+Exibir a mensagem:
+
+"CPF já cadastrado."
+
+### Resultado obtido
+
+Sistema bloqueou o cadastro.
+
+### Status
+
+✅ Aprovado
+
+## CT-020 - Telefone do funcionário duplicado
+### Objetivo
+
+Verificar se o sistema impede o cadastro de um funcionário utilizando um telefone já cadastrado.
+
+### Resultado esperado
+
+Exibir a mensagem:
+
+"Telefone já cadastrado."
+
+### Resultado obtido
+
+Sistema bloqueou o cadastro.
+
+### Status
+
+✅ Aprovado
+
+## CT-021 - E-mail do funcionário duplicado
+### Objetivo
+
+Verificar se o sistema impede o cadastro de um funcionário utilizando um e-mail já cadastrado.
+
+### Resultado esperado
+
+Exibir a mensagem:
+
+"Email já cadastrado."
+
+### Resultado obtido
+
+Sistema bloqueou o cadastro.
+
+### Status
+
+✅ Aprovado
+
+## CT-022 - E-mails diferentes
+
+Como você comentou que testou isso também, eu registraria:
+
+### Objetivo
+
+Verificar se o sistema valida corretamente o e-mail informado no cadastro do funcionário.
+
+### Resultado esperado
+
+O sistema deve validar o formato do e-mail e impedir o cadastro caso o endereço informado seja inválido.
+
+### Resultado obtido
+
+Sistema bloqueou o cadastro quando o e-mail informado era inválido.
+
+### Status
+
+✅ Aprovado
