@@ -1,5 +1,6 @@
 <?php
 include "../includes/conexao.php";
+include "../includes/funcoes.php";
 session_start();
 
 include "../includes/autenticacao.php";
@@ -14,12 +15,7 @@ if (!isset($_SESSION['id'])) {
 requireNivel(100);
 
 // Faz o select dos cargos existentes
-$sql = "SELECT * FROM cargos";
-
-$stmt = $conexao->prepare($sql);
-$stmt->execute();
-
-$result = $stmt->get_result();
+$result = selectTabela($conexao, "cargos");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

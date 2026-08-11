@@ -14,7 +14,8 @@ function verificarCamposObrigatorios($dados, $camposObrigatorios)
 }
 
 // Verifica se um registro já existe
-function registroExiste($conexao, $tabela, $coluna, $valor){
+function registroExiste($conexao, $tabela, $coluna, $valor)
+{
     $sql = "SELECT 1 FROM $tabela WHERE $coluna = ?";
 
     $stmt = $conexao->prepare($sql);
@@ -23,9 +24,25 @@ function registroExiste($conexao, $tabela, $coluna, $valor){
 
     $result = $stmt->get_result();
 
+    $stmt->close();
+
     return $result->num_rows > 0;
+}
+
+// Verifica se existe um registro igual mas que não seja ele mesmo
+function registroExisteOutro($conexao, $tabela, $coluna, $valor, $id)
+{
+    $sql = "SELECT 1 FROM $tabela WHERE $coluna = ? AND id != ?";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("si", $valor, $id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
 
     $stmt->close();
+
+    return $result->num_rows > 0;
 }
 
 // Remove tudo o que não for numeros
@@ -38,4 +55,17 @@ function apenasNumeros($texto)
 function emailValido($email)
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+// Faz o SELECT inteiro de uma tabela
+function selectTabela($conexao, $tabela)
+{
+    $sql = "SELECT * FROM $tabela";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
+
+    $stmt->close();
+
+    return $stmt->get_result();
 }
