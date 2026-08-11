@@ -2,7 +2,12 @@
 session_start();
 
 include "../includes/conexao.php";
+include "../includes/funcoes.php";
 include "../includes/autenticacao.php";
+
+// ====================================
+// Verificações de sessão
+// ====================================
 
 // Verifica se ja existe uma sessão
 if (!isset($_SESSION['id'])) {
@@ -12,6 +17,18 @@ if (!isset($_SESSION['id'])) {
 
 // Verifica a permissão que o usuário possui
 requireNivel(100);
+
+// ====================================
+// Filtros
+// ====================================
+
+// Pega os filtros enviados pelo metódo GET
+$nomeFiltrado = trim($_GET['nome'] ?? "");
+$cargoFiltrado = trim($_GET['cargo'] ?? "");
+$statusFiltrado = trim($_GET['status'] ?? "Ativo");
+
+// Pega os cargos existentes
+$cargos = selectTabela($conexao, "cargos");
 
 // Faz o SELECT dos funcionários
 $sql = "SELECT 
@@ -24,8 +41,34 @@ FROM users
 INNER JOIN cargos ON cargos.id = users.cargo_id
 WHERE users.instituicao_id = ?";
 
+// Declara os parâmetros e tipos iniciais da pesquisa
+$params = [
+    $_SESSION['instituicao_id']
+];
+$types = "i";
+
+// Verifica quais filtros foram enviados
+// Filtro do nome
+if($nomeFiltrado != ""){
+    $sql .= " AND users.nome LIKE ?";
+    $params[] = "%$nomeFiltrado%";
+    $types .= "s";
+}
+
+// Filtro do cargo
+if($cargoFiltrado != ""){
+    $sql .= " AND users.cargo_id = ?";
+    $params[] = $cargoFiltrado;
+    $types .= "i";
+}
+
+// Filtro do status
+$sql .= " AND status = ?";
+$params[] = $statusFiltrado;
+$types .= "s";
+
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $_SESSION['instituicao_id']);
+$stmt->bind_param($types, ...$params);
 $stmt->execute();
 
 $result = $stmt->get_result();
@@ -44,6 +87,29 @@ $result = $stmt->get_result();
     <main>
         <section>
             <h1>Funcionários <?= htmlspecialchars($_SESSION['instituicao_nome']) ?></h1>
+
+            <form action="index.php" method="get">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome">
+
+                <label for="cargo">Cargo</label>
+                <select name="cargo" id="cargo">
+                    <option value="">Todos</option>
+                    <?php while($cargo = $cargos->fetch_assoc()): ?>
+                        <option value="<?= $cargo['id'] ?>" <?= ($cargoFiltrado == $cargo['id']) ? "selected" : "" ?>><?= htmlspecialchars($cargo['nome']) ?></option>
+                    <?php endwhile; ?>
+                </select>
+
+                <label for="status">Status</label>
+                <select name="status" id="status">
+                    <option value="Ativo" <?= $statusFiltrado === 'Ativo' ? 'selected' : '' ?>>Ativo</option>
+                    <option value="Férias" <?= $statusFiltrado === 'Férias' ? 'selected' : '' ?>>Férias</option>
+                    <option value="Afastado" <?= $statusFiltrado === 'Afastado' ? 'selected' : '' ?>>Afastado</option>
+                    <option value="Desligado" <?= $statusFiltrado === 'Desligado' ? 'selected' : '' ?>>Desligado</option>
+                </select>
+
+                <button type="submit">Pesquisar</button>
+            </form>
 
             <table border="1">
                 <thead>

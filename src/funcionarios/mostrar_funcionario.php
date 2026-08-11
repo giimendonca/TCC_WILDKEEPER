@@ -32,8 +32,7 @@ $sql = "SELECT
     users.email, 
     users.status,
     cargos.id AS cargo_id,
-    cargos.nome AS cargo_nome,
-    users.status
+    cargos.nome AS cargo_nome
 FROM users
 INNER JOIN cargos ON cargos.id = users.cargo_id
 WHERE users.instituicao_id = ? AND users.id = ?";
@@ -45,6 +44,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 $funcionario = $result->fetch_assoc();
+
+// Verifica se o funcionário foi encontrado
+if(!$funcionario){
+    die("Funcionário não encontrado.");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
