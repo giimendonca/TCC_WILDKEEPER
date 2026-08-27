@@ -49,14 +49,14 @@ $types = "i";
 
 // Verifica quais filtros foram enviados
 // Filtro do nome
-if($nomeFiltrado != ""){
+if ($nomeFiltrado != "") {
     $sql .= " AND users.nome LIKE ?";
     $params[] = "%$nomeFiltrado%";
     $types .= "s";
 }
 
 // Filtro do cargo
-if($cargoFiltrado != ""){
+if ($cargoFiltrado != "") {
     $sql .= " AND users.cargo_id = ?";
     $params[] = $cargoFiltrado;
     $types .= "i";
@@ -90,12 +90,12 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome">
+                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="cargo">Cargo</label>
                 <select name="cargo" id="cargo">
                     <option value="">Todos</option>
-                    <?php while($cargo = $cargos->fetch_assoc()): ?>
+                    <?php while ($cargo = $cargos->fetch_assoc()): ?>
                         <option value="<?= $cargo['id'] ?>" <?= ($cargoFiltrado == $cargo['id']) ? "selected" : "" ?>><?= htmlspecialchars($cargo['nome']) ?></option>
                     <?php endwhile; ?>
                 </select>
@@ -114,22 +114,29 @@ $result = $stmt->get_result();
             <table border="1">
                 <thead>
                     <tr>
-                        <td>Nome</td>
-                        <td>Cargo</td>
-                        <td>Status</td>
-                        <td>Ações</td>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <?php while ($funcionario = $result->fetch_assoc()): ?>
+                    <?php if ($result->num_rows > 0): ?>
+                        <?php while ($funcionario = $result->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($funcionario['nome']) ?></td>
+                                <td><?= htmlspecialchars($funcionario['cargo_nome']) ?></td>
+                                <td><?= htmlspecialchars($funcionario['status']) ?></td>
+                                <td><a href="mostrar_funcionario.php?id=<?= $funcionario['id'] ?>">Ver informações</a></td>
+                            </tr>
+                        <?php endwhile; ?>
+
+                    <?php else: ?>
                         <tr>
-                            <td><?= htmlspecialchars($funcionario['nome']) ?></td>
-                            <td><?= htmlspecialchars($funcionario['cargo_nome']) ?></td>
-                            <td><?= htmlspecialchars($funcionario['status']) ?></td>
-                            <td><a href="mostrar_funcionario.php?id=<?= $funcionario['id'] ?>">Ver informações</a></td>
+                            <td>Nenhum funcionário encontrado.</td>
                         </tr>
-                    <?php endwhile; ?>
+                    <?php endif; ?>
                 </tbody>
 
             </table>

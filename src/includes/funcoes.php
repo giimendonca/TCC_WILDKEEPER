@@ -65,7 +65,5 @@ function selectTabela($conexao, $tabela)
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
 
-    $stmt->close();
-
     return $stmt->get_result();
 }
