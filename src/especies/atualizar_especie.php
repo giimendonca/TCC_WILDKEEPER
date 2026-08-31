@@ -14,7 +14,15 @@ if(!isset($_SESSION['id'])){
 // Verifica a permissão que o usuário possui
 requireNivel(100);
 
-// Dados da nova especie
+// Pega o id do funcionário
+$especieId = trim($_POST['id'] ?? '');
+
+// Verifica se o id veio vazio
+if (empty($especieId)) {
+    die("ID inválido.");
+}
+
+// Dados da especie
 $especie = [
     "nome_popular" => trim($_POST['nome_popular'] ?? ''),
     "nome_cientifico" => trim($_POST['nome_cientifico'] ?? ''),
@@ -25,7 +33,8 @@ $especie = [
     "altura_media" => trim($_POST['altura_media'] ?? ''),
     "categoria_id" => trim($_POST['categoria'] ?? ''),
     "classificacao_alimentar_id" => trim($_POST['classificacao_alimentar'] ?? ''),
-    "risco_extincao_id" => trim($_POST['risco_extincao'] ?? '')
+    "risco_extincao_id" => trim($_POST['risco_extincao'] ?? ''),
+    "especie_id" => $especieId
 ];
 
 // Campos obrigatórios
@@ -39,7 +48,8 @@ $camposObrigatorios = [
     "altura_media",
     "categoria_id",
     "classificacao_alimentar_id",
-    "risco_extincao_id"
+    "risco_extincao_id",
+    "especie_id"
 ];
 
 
@@ -48,13 +58,18 @@ if (!verificarCamposObrigatorios($especie, $camposObrigatorios)) {
     die("Há campos obrigatórios não preenchidos.");
 }
 
-$sql = "INSERT INTO especies (nome_popular, nome_cientifico, descricao, origem, vida_media, peso_medio, altura_media, categoria_id, classificacao_alimentar_id, risco_extincao_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+try {
+    // Prepara o UPDATE na tabela de users
+    $sql = "UPDATE especies SET nome_popular = ?, nome_cientifico = ?, descricao = ?, origem = ?, vida_media = ?, peso_medio = ?, altura_media = ?, categoria_id = ?, classificacao_alimentar_id = ?, risco_extincao_id = ? 
+    WHERE id = ?";
 
-$stmt = $conexao->prepare($sql);
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("ssssiddiiii", ...array_values($especie));
+    $stmt->execute();
 
-$stmt->bind_param("ssssiddiii", ...array_values($especie));
-$stmt->execute();
-
-header("Location: index.php");
-exit();
+    header("Location: mostrar_especie.php?id=$especieId");
+    exit();
+} catch (mysqli_sql_exception $e) {
+    die("Erro ao atualizar: " . $e->getMessage());
+}
 ?>
