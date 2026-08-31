@@ -1,6 +1,6 @@
 <header>
     <div>
-        <a href="/TCC_WILDKEEPER/dashboard/index.php">
+        <a href="/TCC_WILDKEEPER/src/dashboard/index.php">
             <img
                 src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp"
                 alt="Logo do WildKeeper"

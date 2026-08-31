@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 // Verifica a permissão que o usuário possui
-requireNivel(100);
+requireNivel(40);
 
 // Faz o select das categorias, classificações e riscos existentes
 $categorias = selectTabela($conexao, "categorias");

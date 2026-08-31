@@ -83,6 +83,7 @@ if (!isset($_SESSION['id'])) {
 
                     <a href="">Alimentação</a>
                     <a href="">Habitats</a>
+                    <a href="../especies/index.php">Espécies</a>
                 </article>
             <?php endif; ?>
 

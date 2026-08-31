@@ -12,7 +12,7 @@ if(!isset($_SESSION['id'])){
 }
 
 // Verifica a permissão que o usuário possui
-requireNivel(100);
+requireNivel(40);
 
 // Pega o id do funcionário
 $especieId = trim($_POST['id'] ?? '');
