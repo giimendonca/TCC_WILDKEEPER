@@ -82,7 +82,7 @@ if (!isset($_SESSION['id'])) {
                     <h3>Manejo</h3>
 
                     <a href="">Alimentação</a>
-                    <a href="">Habitats</a>
+                    <a href="../habitats/index.php">Habitats</a>
                     <a href="../especies/index.php">Espécies</a>
                 </article>
             <?php endif; ?>
