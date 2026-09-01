@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS animais (
     data_nascimento DATE DEFAULT NULL,
     data_chegada DATE DEFAULT NULL,
     peso DECIMAL(10,3) NOT NULL, -- kg
-    altura DECIMAL(10,3) NOT NULL, --cm
+    altura DECIMAL(10,3) NOT NULL, -- cm
     microchip VARCHAR(20) NOT NULL UNIQUE,
     observacoes TEXT,
     especie_id INT NOT NULL,
