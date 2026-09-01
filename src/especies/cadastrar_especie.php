@@ -47,14 +47,14 @@ $riscos = selectTabela($conexao, "risco_extincao");
                 <label for="origem">Origem</label>
                 <input type="text" name="origem" id="origem" placeholder="País de origem" required>
 
-                <label for="vida_media">Vida Média</label>
+                <label for="vida_media">Vida Média (anos)</label>
                 <input type="number" name="vida_media" id="vida_media" min="1" placeholder="Em anos" required>
 
-                <label for="peso_medio">Peso Médio</label>
+                <label for="peso_medio">Peso Médio (Kg)</label>
                 <input type="number" name="peso_medio" id="peso_medio" step="0.001" min="0.001" placeholder="Em Kg" required>                
 
-                <label for="altura_media">Altura Média</label>
-                <input type="number" name="altura_media" id="altura_media" step="0.001" min="0.001" placeholder="Em metros" required>
+                <label for="altura_media">Altura Média (cm)</label>
+                <input type="number" name="altura_media" id="altura_media" step="0.001" min="0.001" placeholder="Em centímetros" required>
 
                 <label for="categoria">Categoria</label>
                 <select name="categoria" id="categoria" required>

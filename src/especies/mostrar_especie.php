@@ -88,7 +88,7 @@ if(!$especie){
 
                 <p>Vida Média: <?= htmlspecialchars($especie['vida_media']) ?> anos</p>
                 <p>Peso Médio: <?= htmlspecialchars($especie['peso_medio']) ?> kg</p>
-                <p>Altura Média: <?= htmlspecialchars($especie['altura_media']) ?> m</p>
+                <p>Altura Média: <?= htmlspecialchars($especie['altura_media']) ?> cm</p>
             </article>
 
             <article>

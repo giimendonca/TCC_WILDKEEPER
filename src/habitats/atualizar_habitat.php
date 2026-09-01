@@ -53,6 +53,10 @@ if (!verificarCamposObrigatorios($habitat, $camposObrigatorios)) {
     die("Há campos obrigatórios não preenchidos.");
 }
 
+if ($habitat['umidade'] < 0 || $habitat['umidade'] > 100) {
+    die("A umidade deve estar entre 0% e 100%.");
+}
+
 try {
     // Prepara o UPDATE na tabela de habitats
     $sql = "UPDATE habitats SET nome = ?, bioma = ?, descricao = ?, temperatura = ?, umidade = ?, capacidade = ?, status = ?

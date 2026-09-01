@@ -129,9 +129,9 @@ CREATE TABLE IF NOT EXISTS especies (
     nome_cientifico VARCHAR(255) NOT NULL,
     descricao TEXT NOT NULL,
     origem VARCHAR(255) NOT NULL,
-    vida_media INT NOT NULL,
-    peso_medio DECIMAL(10,3) NOT NULL,
-    altura_media DECIMAL(10,3) NOT NULL,
+    vida_media INT NOT NULL, -- anos 
+    peso_medio DECIMAL(10,3) NOT NULL, -- kg
+    altura_media DECIMAL(10,3) NOT NULL, -- cm
     categoria_id INT NOT NULL,
     classificacao_alimentar_id INT NOT NULL,
     risco_extincao_id INT NOT NULL,
@@ -151,9 +151,9 @@ CREATE TABLE IF NOT EXISTS habitats (
     nome VARCHAR(50) NOT NULL,
     descricao TEXT NOT NULL,
     bioma VARCHAR(50) NOT NULL,
-    temperatura DECIMAL(5,2) NOT NULL,
-    umidade DECIMAL(5,2) NOT NULL,
-    capacidade INT NOT NULL,
+    temperatura DECIMAL(5,2) NOT NULL, -- °Celsius
+    umidade DECIMAL(5,2) NOT NULL, -- % de umidade relativa
+    capacidade INT NOT NULL, -- animais
     status ENUM('Ativo', 'Em manutenção', 'Interditado') DEFAULT 'Ativo',
     instituicao_id INT NOT NULL,
 
@@ -207,8 +207,8 @@ CREATE TABLE IF NOT EXISTS animais (
     sexo ENUM('Masculino', 'Feminino', 'Indeterminado'),
     data_nascimento DATE DEFAULT NULL,
     data_chegada DATE DEFAULT NULL,
-    peso DECIMAL(10,3) NOT NULL,
-    altura DECIMAL(10,3) NOT NULL,
+    peso DECIMAL(10,3) NOT NULL, -- kg
+    altura DECIMAL(10,3) NOT NULL, --cm
     microchip VARCHAR(20) NOT NULL UNIQUE,
     observacoes TEXT,
     especie_id INT NOT NULL,
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS medicamentos(
     nome VARCHAR(50) NOT NULL,
     descricao TEXT NOT NULL,
     fabricante VARCHAR(50) NOT NULL,
-    estoque INT NOT NULL,
+    estoque INT NOT NULL, -- unidades
     lote VARCHAR(50) NOT NULL,
     vencimento DATE NOT NULL,
     
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS medicamentos_consulta (
     id INT PRIMARY KEY AUTO_INCREMENT,
     consulta_id INT NOT NULL,
     medicamento_id INT NOT NULL,
-    dosagem VARCHAR(50) NOT NULL,
+    dosagem VARCHAR(50) NOT NULL, -- definida na prescrição
     observacoes TEXT DEFAULT NULL,
 
     FOREIGN KEY (consulta_id) REFERENCES consultas(id) ON DELETE CASCADE,
@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXISTS alimentacoes (
     animal_id INT NOT NULL,
     funcionario_id INT NOT NULL,
     descricao_alimento VARCHAR(100) NOT NULL,
-    quantidade DECIMAL(8,2) NOT NULL,
+    quantidade DECIMAL(8,2) NOT NULL, -- kg
     data_hora DATETIME NOT NULL,
     observacoes TEXT,
 

@@ -43,6 +43,10 @@ if (!verificarCamposObrigatorios($habitat, $camposObrigatorios)) {
     die("Há campos obrigatórios não preenchidos.");
 }
 
+if ($habitat['umidade'] < 0 || $habitat['umidade'] > 100) {
+    die("A umidade deve estar entre 0% e 100%.");
+}
+
 $sql = "INSERT INTO habitats (nome, bioma, descricao, temperatura, umidade, capacidade, status, instituicao_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conexao->prepare($sql);
