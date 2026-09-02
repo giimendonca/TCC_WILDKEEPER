@@ -62,7 +62,7 @@ if (!isset($_SESSION['id'])) {
                     <h3>Adminsitração</h3>
 
                     <a href="../funcionarios/index.php">Funcionários</a>
-                    <a href="">Configurações</a>
+                    <a href="../perfil/index.php">Configurações</a>
                 </article>
 
             <?php endif; ?>
@@ -71,9 +71,9 @@ if (!isset($_SESSION['id'])) {
                 <article>
                     <h3>Veterinária</h3>
 
-                    <a href="">Consultas</a>
-                    <a href="">Vacinas</a>
-                    <a href="">Medicamentos</a>
+                    <a href="../consultas/index.php">Consultas</a>
+                    <a href="../vacinas/index.php">Vacinas</a>
+                    <a href="../medicamentos/index.php">Medicamentos</a>
                 </article>
             <?php endif; ?>
 
@@ -81,7 +81,7 @@ if (!isset($_SESSION['id'])) {
                 <article>
                     <h3>Manejo</h3>
 
-                    <a href="">Alimentação</a>
+                    <a href="../alimentacoes/index.php">Alimentação</a>
                     <a href="../habitats/index.php">Habitats</a>
                     <a href="../especies/index.php">Espécies</a>
                 </article>
@@ -91,8 +91,8 @@ if (!isset($_SESSION['id'])) {
                 <article>
                     <h3>Operações</h3>
 
-                    <a href="">Animais</a>
-                    <a href="">Eventos</a>
+                    <a href="../animais/index.php">Animais</a>
+                    <a href="../eventos/index.php">Eventos</a>
                 </article>
             <?php endif; ?>
         </section>
