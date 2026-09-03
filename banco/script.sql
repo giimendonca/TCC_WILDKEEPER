@@ -233,6 +233,7 @@ CREATE TABLE IF NOT EXISTS animais_fotos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     animal_id INT NOT NULL,
     caminho_arquivo VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
     instituicao_id INT NOT NULL,
 
     FOREIGN KEY (animal_id) REFERENCES animais(id) ON DELETE CASCADE,

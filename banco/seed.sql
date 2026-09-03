@@ -167,37 +167,167 @@ VALUES
 -- na pasta do projeto ou altere os caminhos conforme sua estrutura.
 -- ============================================================
 
-INSERT INTO animais_fotos (id, animal_id, caminho_arquivo, instituicao_id) VALUES
-(1, 1, 'assets/img/animais/leao-simba.jpg', 1),
-(2, 2, 'assets/img/animais/onca-juma.jpg', 1),
-(3, 3, 'assets/img/animais/girafa-amelia.jpg', 1),
-(4, 4, 'assets/img/animais/elefante-bento.jpg', 1),
-(5, 5, 'assets/img/animais/lobo-guara-guara.jpg', 1),
-(6, 6, 'assets/img/animais/macaco-pipoca.jpg', 1),
-(7, 7, 'assets/img/animais/tamandua-teca.jpg', 1),
-(8, 8, 'assets/img/animais/arara-azul.jpg', 1),
-(9, 9, 'assets/img/animais/tucano-tico.jpg', 1),
-(10, 10, 'assets/img/animais/pinguim-mare.jpg', 1),
-(11, 11, 'assets/img/animais/jiboia-jibo.jpg', 1),
-(12, 12, 'assets/img/animais/iguana-lima.jpg', 1),
-(13, 13, 'assets/img/animais/jacare-panta.jpg', 1),
-(14, 14, 'assets/img/animais/sapo-cururu.jpg', 1),
-(15, 15, 'assets/img/animais/capivara-capi.jpg', 1),
-(16, 16, 'assets/img/animais/urso-bruno.jpg', 2),
-(17, 17, 'assets/img/animais/panda-nina.jpg', 2),
-(18, 18, 'assets/img/animais/hipopotamo-hippo.jpg', 2),
-(19, 19, 'assets/img/animais/zebra-listrado.jpg', 2),
-(20, 20, 'assets/img/animais/suricato-kiko.jpg', 2),
-(21, 21, 'assets/img/animais/gorila-kong.jpg', 2),
-(22, 22, 'assets/img/animais/orangotango-mimi.jpg', 2),
-(23, 23, 'assets/img/animais/flamingo-rosa.jpg', 2),
-(24, 24, 'assets/img/animais/aguia-sky.jpg', 2),
-(25, 25, 'assets/img/animais/coruja-lua.jpg', 2),
-(26, 26, 'assets/img/animais/dragao-komodo.jpg', 2),
-(27, 27, 'assets/img/animais/tartaruga-marina.jpg', 2),
-(28, 28, 'assets/img/animais/axolote-axel.jpg', 2),
-(29, 29, 'assets/img/animais/peixe-nemo.jpg', 2),
-(30, 30, 'assets/img/animais/pirarucu-acu.jpg', 2);
+INSERT INTO animais_fotos 
+(id, animal_id, caminho_arquivo, descricao, instituicao_id) VALUES
+
+-- ============================================================
+-- INSTITUIÇÃO 1
+-- ============================================================
+
+-- Simba - Leão
+(1, 1, 'assets/img/animais/seed/leao-simba-1.webp', 'Simba em seu habitat atual', 1),
+(2, 1, 'assets/img/animais/seed/leao-simba-2.webp', 'Simba durante o período de alimentação', 1),
+(3, 1, 'assets/img/animais/seed/leao-simba-3.webp', 'Simba em uma avaliação de rotina', 1),
+
+-- Juma - Onça-pintada
+(4, 2, 'assets/img/animais/seed/onca-juma-1.webp', 'Juma descansando em seu habitat', 1),
+(5, 2, 'assets/img/animais/seed/onca-juma-2.webp', 'Juma caminhando pelo recinto', 1),
+(6, 2, 'assets/img/animais/seed/onca-juma-3.webp', 'Juma durante uma atividade de enriquecimento', 1),
+
+-- Amélia - Girafa
+(7, 3, 'assets/img/animais/seed/girafa-amelia-1.webp', 'Amélia em seu habitat', 1),
+(8, 3, 'assets/img/animais/seed/girafa-amelia-2.webp', 'Amélia durante a alimentação', 1),
+(9, 3, 'assets/img/animais/seed/girafa-amelia-3.webp', 'Amélia próxima à área de observação', 1),
+
+-- Bento - Elefante
+(10, 4, 'assets/img/animais/seed/elefante-bento-1.webp', 'Bento em seu recinto', 1),
+(11, 4, 'assets/img/animais/seed/elefante-bento-2.webp', 'Bento durante a alimentação', 1),
+(12, 4, 'assets/img/animais/seed/elefante-bento-3.webp', 'Bento durante atividade de enriquecimento', 1),
+
+-- Guará - Lobo-guará
+(13, 5, 'assets/img/animais/seed/lobo-guara-guara-1.webp', 'Guará em seu habitat', 1),
+(14, 5, 'assets/img/animais/seed/lobo-guara-guara-2.webp', 'Guará explorando o recinto', 1),
+(15, 5, 'assets/img/animais/seed/lobo-guara-guara-3.webp', 'Guará durante uma atividade de manejo', 1),
+
+-- Pipoca - Macaco
+(16, 6, 'assets/img/animais/seed/macaco-pipoca-1.webp', 'Pipoca em seu habitat', 1),
+(17, 6, 'assets/img/animais/seed/macaco-pipoca-2.webp', 'Pipoca durante a alimentação', 1),
+(18, 6, 'assets/img/animais/seed/macaco-pipoca-3.webp', 'Pipoca durante atividade de enriquecimento', 1),
+
+-- Teca - Tamanduá
+(19, 7, 'assets/img/animais/seed/tamandua-teca-1.webp', 'Teca em seu recinto', 1),
+(20, 7, 'assets/img/animais/seed/tamandua-teca-2.webp', 'Teca explorando o habitat', 1),
+(21, 7, 'assets/img/animais/seed/tamandua-teca-3.webp', 'Teca durante a alimentação', 1),
+
+-- Arara Azul
+(22, 8, 'assets/img/animais/seed/arara-azul-1.webp', 'Arara-azul em seu viveiro', 1),
+(23, 8, 'assets/img/animais/seed/arara-azul-2.webp', 'Arara-azul durante a alimentação', 1),
+(24, 8, 'assets/img/animais/seed/arara-azul-3.webp', 'Arara-azul em uma área de enriquecimento', 1),
+
+-- Tico - Tucano
+(25, 9, 'assets/img/animais/seed/tucano-tico-1.webp', 'Tico em seu viveiro', 1),
+(26, 9, 'assets/img/animais/seed/tucano-tico-2.webp', 'Tico durante a alimentação', 1),
+(27, 9, 'assets/img/animais/seed/tucano-tico-3.webp', 'Tico em uma atividade de enriquecimento', 1),
+
+-- Maré - Pinguim
+(28, 10, 'assets/img/animais/seed/pinguim-mare-1.webp', 'Maré em seu habitat', 1),
+(29, 10, 'assets/img/animais/seed/pinguim-mare-2.webp', 'Maré durante a alimentação', 1),
+(30, 10, 'assets/img/animais/seed/pinguim-mare-3.webp', 'Maré na área aquática do recinto', 1),
+
+-- Jibo - Jiboia
+(31, 11, 'assets/img/animais/seed/jiboia-jibo-1.webp', 'Jibo em seu terrário', 1),
+(32, 11, 'assets/img/animais/seed/jiboia-jibo-2.webp', 'Jibo em repouso', 1),
+(33, 11, 'assets/img/animais/seed/jiboia-jibo-3.webp', 'Jibo durante uma atividade de manejo', 1),
+
+-- Lima - Iguana
+(34, 12, 'assets/img/animais/seed/iguana-lima-1.webp', 'Lima em seu terrário', 1),
+(35, 12, 'assets/img/animais/seed/iguana-lima-2.webp', 'Lima em uma área de descanso', 1),
+(36, 12, 'assets/img/animais/seed/iguana-lima-3.webp', 'Lima durante a alimentação', 1),
+
+-- Panta - Jacaré
+(37, 13, 'assets/img/animais/seed/jacare-panta-1.webp', 'Panta em seu habitat', 1),
+(38, 13, 'assets/img/animais/seed/jacare-panta-2.webp', 'Panta próximo à área aquática', 1),
+(39, 13, 'assets/img/animais/seed/jacare-panta-3.webp', 'Panta durante o período de alimentação', 1),
+
+-- Cururu - Sapo
+(40, 14, 'assets/img/animais/seed/sapo-cururu-1.webp', 'Cururu em seu terrário', 1),
+(41, 14, 'assets/img/animais/seed/sapo-cururu-2.webp', 'Cururu em uma área de descanso', 1),
+(42, 14, 'assets/img/animais/seed/sapo-cururu-3.webp', 'Cururu durante a alimentação', 1),
+
+-- Capi - Capivara
+(43, 15, 'assets/img/animais/seed/capivara-capi-1.webp', 'Capi em seu habitat', 1),
+(44, 15, 'assets/img/animais/seed/capivara-capi-2.webp', 'Capi próxima à área aquática', 1),
+(45, 15, 'assets/img/animais/seed/capivara-capi-3.webp', 'Capi durante a alimentação', 1),
+
+
+-- ============================================================
+-- INSTITUIÇÃO 2
+-- ============================================================
+
+-- Bruno - Urso
+(46, 16, 'assets/img/animais/seed/urso-bruno-1.webp', 'Bruno em seu habitat', 2),
+(47, 16, 'assets/img/animais/seed/urso-bruno-2.webp', 'Bruno durante a alimentação', 2),
+(48, 16, 'assets/img/animais/seed/urso-bruno-3.webp', 'Bruno explorando o recinto', 2),
+
+-- Nina - Panda
+(49, 17, 'assets/img/animais/seed/panda-nina-1.webp', 'Nina em seu habitat', 2),
+(50, 17, 'assets/img/animais/seed/panda-nina-2.webp', 'Nina durante a alimentação', 2),
+(51, 17, 'assets/img/animais/seed/panda-nina-3.webp', 'Nina descansando em seu recinto', 2),
+
+-- Hippo - Hipopótamo
+(52, 18, 'assets/img/animais/seed/hipopotamo-hippo-1.webp', 'Hippo em seu habitat', 2),
+(53, 18, 'assets/img/animais/seed/hipopotamo-hippo-2.webp', 'Hippo na área aquática', 2),
+(54, 18, 'assets/img/animais/seed/hipopotamo-hippo-3.webp', 'Hippo durante a alimentação', 2),
+
+-- Listrado - Zebra
+(55, 19, 'assets/img/animais/seed/zebra-listrado-1.webp', 'Listrado em seu habitat', 2),
+(56, 19, 'assets/img/animais/seed/zebra-listrado-2.webp', 'Listrado explorando o recinto', 2),
+(57, 19, 'assets/img/animais/seed/zebra-listrado-3.webp', 'Listrado durante a alimentação', 2),
+
+-- Kiko - Suricato
+(58, 20, 'assets/img/animais/seed/suricato-kiko-1.webp', 'Kiko em seu recinto', 2),
+(59, 20, 'assets/img/animais/seed/suricato-kiko-2.webp', 'Kiko explorando o habitat', 2),
+(60, 20, 'assets/img/animais/seed/suricato-kiko-3.webp', 'Kiko durante uma atividade de enriquecimento', 2),
+
+-- Kong - Gorila
+(61, 21, 'assets/img/animais/seed/gorila-kong-1.webp', 'Kong em seu habitat', 2),
+(62, 21, 'assets/img/animais/seed/gorila-kong-2.webp', 'Kong durante a alimentação', 2),
+(63, 21, 'assets/img/animais/seed/gorila-kong-3.webp', 'Kong durante atividade de enriquecimento', 2),
+
+-- Mimi - Orangotango
+(64, 22, 'assets/img/animais/seed/orangotango-mimi-1.webp', 'Mimi em seu habitat', 2),
+(65, 22, 'assets/img/animais/seed/orangotango-mimi-2.webp', 'Mimi durante a alimentação', 2),
+(66, 22, 'assets/img/animais/seed/orangotango-mimi-3.webp', 'Mimi explorando o recinto', 2),
+
+-- Rosa - Flamingo
+(67, 23, 'assets/img/animais/seed/flamingo-rosa-1.webp', 'Rosa em seu habitat', 2),
+(68, 23, 'assets/img/animais/seed/flamingo-rosa-2.webp', 'Rosa próxima à área aquática', 2),
+(69, 23, 'assets/img/animais/seed/flamingo-rosa-3.webp', 'Rosa durante a alimentação', 2),
+
+-- Sky - Águia
+(70, 24, 'assets/img/animais/seed/aguia-sky-1.webp', 'Sky em seu viveiro', 2),
+(71, 24, 'assets/img/animais/seed/aguia-sky-2.webp', 'Sky durante a alimentação', 2),
+(72, 24, 'assets/img/animais/seed/aguia-sky-3.webp', 'Sky em atividade de enriquecimento', 2),
+
+-- Lua - Coruja
+(73, 25, 'assets/img/animais/seed/coruja-lua-1.webp', 'Lua em seu viveiro', 2),
+(74, 25, 'assets/img/animais/seed/coruja-lua-2.webp', 'Lua em uma área de descanso', 2),
+(75, 25, 'assets/img/animais/seed/coruja-lua-3.webp', 'Lua durante a alimentação', 2),
+
+-- Dragão-de-Komodo
+(76, 26, 'assets/img/animais/seed/dragao-komodo-1.webp', 'Dragão-de-Komodo em seu recinto', 2),
+(77, 26, 'assets/img/animais/seed/dragao-komodo-2.webp', 'Dragão-de-Komodo explorando o habitat', 2),
+(78, 26, 'assets/img/animais/seed/dragao-komodo-3.webp', 'Dragão-de-Komodo durante a alimentação', 2),
+
+-- Tartaruga Marinha
+(79, 27, 'assets/img/animais/seed/tartaruga-marina-1.webp', 'Tartaruga-marinha em seu habitat', 2),
+(80, 27, 'assets/img/animais/seed/tartaruga-marina-2.webp', 'Tartaruga-marinha durante a alimentação', 2),
+(81, 27, 'assets/img/animais/seed/tartaruga-marina-3.webp', 'Tartaruga-marinha na área aquática', 2),
+
+-- Axel - Axolote
+(82, 28, 'assets/img/animais/seed/axolote-axel-1.webp', 'Axel em seu aquário', 2),
+(83, 28, 'assets/img/animais/seed/axolote-axel-2.webp', 'Axel durante a alimentação', 2),
+(84, 28, 'assets/img/animais/seed/axolote-axel-3.webp', 'Axel em seu ambiente aquático', 2),
+
+-- Nemo - Peixe
+(85, 29, 'assets/img/animais/seed/peixe-nemo-1.webp', 'Nemo em seu aquário', 2),
+(86, 29, 'assets/img/animais/seed/peixe-nemo-2.webp', 'Nemo durante a alimentação', 2),
+(87, 29, 'assets/img/animais/seed/peixe-nemo-3.webp', 'Nemo explorando o ambiente aquático', 2),
+
+-- Pirarucu-Açu
+(88, 30, 'assets/img/animais/seed/pirarucu-acu-1.webp', 'Pirarucu-açu em seu habitat', 2),
+(89, 30, 'assets/img/animais/seed/pirarucu-acu-2.webp', 'Pirarucu-açu durante a alimentação', 2),
+(90, 30, 'assets/img/animais/seed/pirarucu-acu-3.webp', 'Pirarucu-açu em seu ambiente aquático', 2);
 
 -- ============================================================
 -- MEDICAMENTOS
