@@ -131,7 +131,7 @@ $result = $stmt->get_result();
 
 
             <?php if (nivelMinimo(40)): ?>
-                <a href="../animals/cadastrar_animal.php">Cadastrar Animal</a>
+                <a href="../animais/cadastrar_animal.php">Cadastrar Animal</a>
             <?php endif; ?>
 
             <form action="index.php" method="get">
