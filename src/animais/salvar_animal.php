@@ -66,20 +66,93 @@ foreach($_POST['descricoes'] as $descricao){
 }
 
 try {
+    $conexao->begin_transaction();
+
     $sql = "INSERT INTO animais (nome, sexo, data_nascimento, data_chegada, peso, altura, microchip, observacoes, especie_id, habitat_id, status_id, saude_status_id, instituicao_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conexao->prepare($sql);
 
-    $stmt->bind_param("ssssddsiiiii", ...array_values($animal));
+    $stmt->bind_param("ssssddssiiiii", ...array_values($animal));
     $stmt->execute();
 
-    
     // Pega o ID do animal que foi inserido
     $animalID = $conexao->insert_id;
 
+    // verifica se foram enviados arquivos
+    if(isset($_FILES['fotos'])){
+        $pasta = "../../assets/img/animais/";
+
+        $tipoPermitidos = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
+
+        $limite = 5 * 1024 * 1024; // 5 MB
+
+        // percorre todas as fotos
+        foreach($_FILES['fotos']['tmp_name'] as $indice => $tmpName){
+            $nomeOriginal = $_FILES['fotos']['name'][$indice];
+            $tamanho = $_FILES['fotos']['size'][$indice];
+            $erro = $_FILES['fotos']['error'][$indice];
+ 
+            // verifica se o upload terminou corretamente
+            if($erro !== UPLOAD_ERR_OK){
+                continue;
+            }
+
+            // verifica o tamanho do arquivo
+            if($tamanho > $limite){
+                continue;
+            }
+
+            // descobre o tipo real da imagem/arquivo
+            $finfo =  new finfo(FILEINFO_MIME_TYPE);
+            $mime = $finfo->file($tmpName);
+
+            // verifica se o tipo é permitido
+            if(!in_array($mime, $tipoPermitidos)){
+                continue;
+            }
+
+            // relaciona o type com a extensão
+            // descobre a extensão daquele type
+            $extensoes = [
+                "image/jpeg" => "jpeg",
+                "image/png" => "png",
+                "image/webp" => "webp"
+            ];
+
+            $extensao = $extensoes[$mime];
+
+            // gera o nome unico da imagem
+            $nomeArquivo = uniqid() . "." . $extensao;
+
+            // define onde vai salvar a imagem
+            $destino = $pasta . $nomeArquivo;
+
+            // move o arquivo
+            if(move_uploaded_file($tmpName, $destino)){
+                $caminho = "assets/img/animais/" . $nomeArquivo;
+
+                // salva no banco de dados o caminho e a descricao
+                $descricao = $_POST['descricoes'][$indice] ?? '';
+
+                $stmtFoto = $conexao->prepare("INSERT INTO animais_fotos (animal_id, caminho_arquivo, descricao, instituicao_id) VALUE (?, ?, ?, ?)");
+                $stmtFoto->bind_param("issi", $animalID, $caminho, $descricao, $_SESSION['instituicao_id']);
+                $stmtFoto->execute();
+            }
+        }
+    }
+
+    $conexao->commit();
 
 } catch (mysqli_sql_exception $e) {
+    $conexao->rollback();
+
+    die("Erro ao cadastrar: " . $e->getMessage());
 }
 
 header("Location: index.php");
 exit();
+?>
