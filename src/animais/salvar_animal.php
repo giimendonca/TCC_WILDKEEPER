@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include "../includes/conexao.php";
@@ -59,11 +60,15 @@ if(count($_FILES['fotos']['name']) > 5){
     die("Você pode selecionar no máximo 5 fotos.");
 }
 
-foreach($_POST['descricoes'] as $descricao){
-    if(empty($descricao)){
-        die("Há fotos sem descrição.");
+if(isset($_POST['descricoes'])){
+    foreach($_POST['descricoes'] as $descricao){
+        if(empty($descricao)){
+            die("Há fotos sem descrição.");
+        }
     }
 }
+
+$arquivosSalvos = [];
 
 try {
     $conexao->begin_transaction();
@@ -88,22 +93,21 @@ try {
             "image/webp"
         ];
 
-        $limite = 5 * 1024 * 1024; // 5 MB
+        $limite = 5 * 1024 * 1024; // 5 MB    
 
         // percorre todas as fotos
         foreach($_FILES['fotos']['tmp_name'] as $indice => $tmpName){
-            $nomeOriginal = $_FILES['fotos']['name'][$indice];
             $tamanho = $_FILES['fotos']['size'][$indice];
             $erro = $_FILES['fotos']['error'][$indice];
  
             // verifica se o upload terminou corretamente
             if($erro !== UPLOAD_ERR_OK){
-                continue;
+                throw new Exception("O upload falhou.");
             }
 
             // verifica o tamanho do arquivo
             if($tamanho > $limite){
-                continue;
+                throw new Exception("O tamanho da imagem excede o limite de 5 MB.");
             }
 
             // descobre o tipo real da imagem/arquivo
@@ -112,7 +116,7 @@ try {
 
             // verifica se o tipo é permitido
             if(!in_array($mime, $tipoPermitidos)){
-                continue;
+                throw new Exception("O tipo de imagem não permitido.");
             }
 
             // relaciona o type com a extensão
@@ -133,6 +137,8 @@ try {
 
             // move o arquivo
             if(move_uploaded_file($tmpName, $destino)){
+                $arquivosSalvos[] = $destino;
+
                 $caminho = "assets/img/animais/" . $nomeArquivo;
 
                 // salva no banco de dados o caminho e a descricao
@@ -141,14 +147,22 @@ try {
                 $stmtFoto = $conexao->prepare("INSERT INTO animais_fotos (animal_id, caminho_arquivo, descricao, instituicao_id) VALUE (?, ?, ?, ?)");
                 $stmtFoto->bind_param("issi", $animalID, $caminho, $descricao, $_SESSION['instituicao_id']);
                 $stmtFoto->execute();
+            } else{
+                throw new Exception("Erro ao salvar a imagem.");
             }
         }
     }
 
     $conexao->commit();
 
-} catch (mysqli_sql_exception $e) {
+} catch (Exception $e) {
     $conexao->rollback();
+
+    foreach($arquivosSalvos as $arquivo){
+        if(file_exists($arquivo)){
+            unlink($arquivo);
+        }
+    }
 
     die("Erro ao cadastrar: " . $e->getMessage());
 }

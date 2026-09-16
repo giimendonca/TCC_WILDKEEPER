@@ -119,6 +119,7 @@ $resultFotos = $stmtFotos->get_result();
 
                         <?php endif; ?>
                     </div>
+                    <a href="editar_fotos.php?id=<?= htmlspecialchars($animalId) ?>">Editar Fotos</a>
             </div>
 
 
