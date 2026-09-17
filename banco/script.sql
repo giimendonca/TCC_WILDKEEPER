@@ -29,7 +29,7 @@ CREATE TABLE
         nivel INT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    ) ENGINE = InnoDB DEFAULT CHARSET = uftf8mb4 COLLATE = utf8mb4_unicode_ci;
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 INSERT INTO
     cargos (nome, nivel)
@@ -320,9 +320,11 @@ CREATE TABLE
         quantidade DECIMAL(8, 2) NOT NULL, -- kg
         data_hora DATETIME NOT NULL,
         observacoes TEXT,
+        evento_id INT NOT NULL,
         instituicao_id INT NOT NULL,
         FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
         FOREIGN KEY (animal_id) REFERENCES animais (id),
+        FOREIGN KEY (evento_id) REFERENCES eventos (id),
         FOREIGN KEY (funcionario_id) REFERENCES users (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -336,10 +338,12 @@ CREATE TABLE
         data_aplicacao DATE NOT NULL,
         proxima_aplicacao DATE DEFAULT NULL,
         observacoes TEXT DEFAULT NULL,
+        evento_id INT NOT NULL,
         funcionario_id INT NOT NULL,
         instituicao_id INT NOT NULL,
         FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
         FOREIGN KEY (animal_id) REFERENCES animais (id),
+        FOREIGN KEY (evento_id) REFERENCES eventos (id),
         FOREIGN KEY (funcionario_id) REFERENCES users (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -358,8 +362,10 @@ CREATE TABLE
             'Concluída',
             'Cancelada'
         ) DEFAULT 'Pendente',
+        evento_id INT NOT NULL,
         instituicao_id INT NOT NULL,
         FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
+        FOREIGN KEY (evento_id) REFERENCES eventos (id),
         FOREIGN KEY (habitat_id) REFERENCES habitats (id),
         FOREIGN KEY (funcionario_id) REFERENCES users (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -375,9 +381,11 @@ CREATE TABLE
         data_mudanca DATE NOT NULL,
         motivo TEXT NOT NULL,
         funcionario_id INT NOT NULL,
+        evento_id INT NOT NULL,
         instituicao_id INT NOT NULL,
         FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
         FOREIGN KEY (animal_id) REFERENCES animais (id),
+        FOREIGN KEY (evento_id) REFERENCES eventos (id),
         FOREIGN KEY (habitat_anterior_id) REFERENCES habitats (id),
         FOREIGN KEY (habitat_novo_id) REFERENCES habitats (id),
         FOREIGN KEY (funcionario_id) REFERENCES users (id),

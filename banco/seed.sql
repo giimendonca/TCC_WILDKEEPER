@@ -266,7 +266,6 @@ VALUES
 (6, 'Prednisolona', 'Corticosteroide utilizado em situações específicas de tratamento.', 'BioVet', 22, 'PRE-2606', '2027-09-25', 1),
 (7, 'Clorexidina', 'Antisséptico para higienização e cuidados locais.', 'VetCare', 60, 'CLO-2607', '2028-02-28', 1),
 (8, 'Suplemento vitamínico', 'Suplementação nutricional utilizada quando indicada pela equipe.', 'NutriVet', 45, 'SUP-2608', '2027-12-12', 1),
-
 (9, 'Amoxicilina', 'Antibiótico utilizado em tratamentos prescritos pela equipe veterinária.', 'VetPharma', 38, 'AMX-2609', '2027-06-20', 2),
 (10, 'Meloxicam', 'Anti-inflamatório não esteroidal para uso veterinário.', 'AnimalMed', 30, 'MEL-2610', '2027-09-10', 2),
 (11, 'Ivermectina', 'Medicamento antiparasitário utilizado conforme avaliação veterinária.', 'VetPharma', 25, 'IVE-2611', '2027-12-15', 2),
@@ -278,24 +277,70 @@ VALUES
 
 -- ============================================================
 -- EVENTOS
--- Os eventos vêm ANTES das consultas
+-- Cada registro operacional possui seu próprio evento.
 -- ============================================================
 
 INSERT INTO eventos
 (id, titulo, descricao, tipo, data_inicio, data_fim, animal_id, funcionario_id, status, instituicao_id)
 VALUES
 (1, 'Consulta de rotina - Simba', 'Avaliação veterinária periódica.', 'Consulta', '2026-03-10 09:00:00', '2026-03-10 10:00:00', 1, 2, 'Concluído', 1),
-(2, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-11 10:00:00', '2026-03-11 10:30:00', 2, 2, 'Concluído', 1),
+(2, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-18 10:00:00', '2026-01-18 10:30:00', 2, 2, 'Concluído', 1),
 (3, 'Alimentação especial - Teca', 'Alimentação acompanhada pela equipe.', 'Alimentação', '2026-03-12 11:00:00', '2026-03-12 11:30:00', 7, 3, 'Concluído', 1),
 (4, 'Manutenção do Terrário Tropical', 'Revisão da climatização e limpeza.', 'Manutenção', '2026-03-13 08:00:00', '2026-03-13 12:00:00', NULL, 4, 'Em andamento', 1),
-(5, 'Transferência temporária - Maré', 'Mudança de recinto para adaptação.', 'Transferência', '2026-03-14 14:00:00', '2026-03-14 15:00:00', 10, 3, 'Concluído', 1),
+(5, 'Transferência temporária - Maré', 'Mudança de recinto para adaptação.', 'Transferência', '2026-02-15 14:00:00', '2026-02-15 15:00:00', 10, 3, 'Concluído', 1),
 (6, 'Avaliação veterinária - Capi', 'Avaliação clínica preventiva.', 'Consulta', '2026-03-15 09:30:00', '2026-03-15 10:30:00', 15, 2, 'Agendado', 1),
 (7, 'Consulta de rotina - Bruno', 'Avaliação veterinária periódica.', 'Consulta', '2026-03-10 09:00:00', '2026-03-10 10:00:00', 16, 7, 'Concluído', 2),
-(8, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-11 10:00:00', '2026-03-11 10:30:00', 21, 7, 'Concluído', 2),
+(8, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-15 10:00:00', '2026-02-15 10:30:00', 21, 7, 'Concluído', 2),
 (9, 'Alimentação - Rosa', 'Alimentação supervisionada no lago.', 'Alimentação', '2026-03-12 11:00:00', '2026-03-12 11:30:00', 23, 8, 'Concluído', 2),
 (10, 'Manutenção do Aquário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-03-13 08:00:00', '2026-03-13 12:00:00', NULL, 8, 'Cancelado', 2),
-(11, 'Transferência - Marina', 'Transferência para recinto de recuperação.', 'Transferência', '2026-03-14 14:00:00', '2026-03-14 15:00:00', 27, 7, 'Concluído', 2),
-(12, 'Avaliação do Axolote', 'Reavaliação do estado de saúde.', 'Consulta', '2026-03-16 09:00:00', '2026-03-16 09:45:00', 28, 7, 'Agendado', 2);
+(11, 'Transferência - Marina', 'Transferência para recinto de recuperação.', 'Transferência', '2026-02-01 14:00:00', '2026-02-01 15:00:00', 27, 7, 'Concluído', 2),
+(12, 'Avaliação do Axolote', 'Reavaliação do estado de saúde.', 'Consulta', '2026-03-16 09:00:00', '2026-03-16 09:45:00', 28, 7, 'Agendado', 2),
+
+(13, 'Alimentação - Simba', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 08:00:00', '2026-03-01 08:30:00', 1, 3, 'Concluído', 1),
+(14, 'Alimentação - Juma', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 08:30:00', '2026-03-01 09:00:00', 2, 3, 'Concluído', 1),
+(15, 'Alimentação - Amélia', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 09:00:00', '2026-03-01 09:30:00', 3, 3, 'Concluído', 1),
+(16, 'Alimentação - Bento', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 09:30:00', '2026-03-01 10:00:00', 4, 3, 'Concluído', 1),
+(17, 'Alimentação - Guará', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 10:00:00', '2026-03-01 10:30:00', 5, 3, 'Concluído', 1),
+(18, 'Alimentação - Teca', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 10:30:00', '2026-03-01 11:00:00', 7, 3, 'Concluído', 1),
+(19, 'Alimentação - Azul', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 11:00:00', '2026-03-01 11:30:00', 8, 3, 'Concluído', 1),
+(20, 'Alimentação - Capi', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 12:00:00', '2026-03-01 12:30:00', 15, 3, 'Concluído', 1),
+(21, 'Alimentação - Bruno', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 08:00:00', '2026-03-02 08:30:00', 16, 8, 'Concluído', 2),
+(22, 'Alimentação - Hippo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 09:00:00', '2026-03-02 09:30:00', 18, 8, 'Concluído', 2),
+(23, 'Alimentação - Listrado', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 09:30:00', '2026-03-02 10:00:00', 19, 8, 'Concluído', 2),
+(24, 'Alimentação - Kiko', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 10:00:00', '2026-03-02 10:30:00', 20, 8, 'Concluído', 2),
+(25, 'Alimentação - Kong', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 10:30:00', '2026-03-02 11:00:00', 21, 8, 'Concluído', 2),
+(26, 'Alimentação - Rosa', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 11:00:00', '2026-03-02 11:30:00', 23, 8, 'Concluído', 2),
+(27, 'Alimentação - Komodo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 12:00:00', '2026-03-02 12:30:00', 26, 8, 'Concluído', 2),
+(28, 'Alimentação - Açu', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 13:00:00', '2026-03-02 13:30:00', 30, 8, 'Concluído', 2),
+
+(29, 'Vacinação - Simba', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-15 10:00:00', '2026-01-15 10:30:00', 1, 2, 'Concluído', 1),
+(30, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-18 10:00:00', '2026-01-18 10:30:00', 2, 2, 'Concluído', 1),
+(31, 'Vacinação - Guará', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-03 10:00:00', '2026-02-03 10:30:00', 5, 2, 'Concluído', 1),
+(32, 'Vacinação - Pipoca', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-10 10:00:00', '2026-02-10 10:30:00', 6, 2, 'Concluído', 1),
+(33, 'Vacinação - Capi', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-20 10:00:00', '2026-02-20 10:30:00', 15, 2, 'Concluído', 1),
+(34, 'Vacinação - Bruno', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-22 10:00:00', '2026-01-22 10:30:00', 16, 7, 'Concluído', 2),
+(35, 'Vacinação - Hippo', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-05 10:00:00', '2026-02-05 10:30:00', 18, 7, 'Concluído', 2),
+(36, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-15 10:00:00', '2026-02-15 10:30:00', 21, 7, 'Concluído', 2),
+(37, 'Vacinação - Rosa', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-18 10:00:00', '2026-02-18 10:30:00', 23, 7, 'Concluído', 2),
+(38, 'Vacinação - Komodo', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-01 10:00:00', '2026-03-01 10:30:00', 26, 7, 'Concluído', 2),
+(39, 'Vacinação - Marina', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-03 10:00:00', '2026-03-03 10:30:00', 27, 7, 'Concluído', 2),
+(40, 'Vacinação - Açu', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-08 10:00:00', '2026-03-08 10:30:00', 30, 7, 'Concluído', 2),
+
+(41, 'Manutenção da Savana Africana', 'Revisão das cercas e dos portões de acesso.', 'Manutenção', '2026-01-10 08:00:00', '2026-01-10 12:00:00', NULL, 4, 'Concluído', 1),
+(42, 'Manutenção da Floresta Amazônica', 'Limpeza e revisão das estruturas de escalada.', 'Manutenção', '2026-01-22 08:00:00', '2026-01-22 12:00:00', NULL, 4, 'Concluído', 1),
+(43, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2026-02-05 08:00:00', '2026-02-05 12:00:00', NULL, 4, 'Em andamento', 1),
+(44, 'Manutenção da Área Semiaquática', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Manutenção', '2026-02-18 08:00:00', '2026-02-18 12:00:00', NULL, 3, 'Concluído', 1),
+(45, 'Manutenção da Floresta Temperada', 'Revisão de árvores e estruturas internas.', 'Manutenção', '2026-01-28 08:00:00', '2026-01-28 12:00:00', NULL, 9, 'Concluído', 2),
+(46, 'Manutenção do Lago das Aves', 'Limpeza das margens do lago e revisão de filtros.', 'Manutenção', '2026-02-12 08:00:00', '2026-02-12 12:00:00', NULL, 9, 'Em andamento', 2),
+(47, 'Manutenção do Terrário de Répteis', 'Manutenção do sistema de controle de temperatura.', 'Manutenção', '2026-02-25 08:00:00', '2026-02-25 12:00:00', NULL, 8, 'Agendado', 2),
+(48, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão de bombas.', 'Manutenção', '2026-03-05 08:00:00', '2026-03-05 12:00:00', NULL, 8, 'Concluído', 2),
+
+(49, 'Transferência - Guará', 'Mudança de habitat para adequação ambiental.', 'Transferência', '2025-11-10 14:00:00', '2025-11-10 15:00:00', 5, 4, 'Concluído', 1),
+(50, 'Transferência - Teca', 'Mudança para área com estrutura de observação clínica.', 'Transferência', '2026-01-08 14:00:00', '2026-01-08 15:00:00', 7, 3, 'Concluído', 1),
+(51, 'Transferência - Maré', 'Adaptação gradual a ambiente semiaquático.', 'Transferência', '2026-02-15 14:00:00', '2026-02-15 15:00:00', 10, 3, 'Concluído', 1),
+(52, 'Transferência - Hippo', 'Reorganização dos recintos para manutenção da área anterior.', 'Transferência', '2025-12-02 14:00:00', '2025-12-02 15:00:00', 18, 9, 'Concluído', 2),
+(53, 'Transferência - Sky', 'Transferência temporária para observação e recuperação.', 'Transferência', '2026-01-20 14:00:00', '2026-01-20 15:00:00', 24, 7, 'Concluído', 2),
+(54, 'Transferência - Marina', 'Adequação do recinto ao acompanhamento de recuperação.', 'Transferência', '2026-02-01 14:00:00', '2026-02-01 15:00:00', 27, 7, 'Concluído', 2);
 
 -- ============================================================
 -- CONSULTAS
@@ -327,74 +372,74 @@ VALUES
 -- ============================================================
 
 INSERT INTO alimentacoes
-(id, animal_id, funcionario_id, descricao_alimento, quantidade, data_hora, observacoes, instituicao_id)
+(id, animal_id, funcionario_id, descricao_alimento, quantidade, data_hora, observacoes, evento_id, instituicao_id)
 VALUES
-(1, 1, 3, 'Carne bovina', 8.50, '2026-03-01 08:00:00', 'Porção dividida em dois pontos do recinto.', 1),
-(2, 2, 3, 'Carne bovina', 4.20, '2026-03-01 08:30:00', 'Alimentação consumida normalmente.', 1),
-(3, 3, 3, 'Folhas e vegetais', 18.00, '2026-03-01 09:00:00', 'Distribuição em diferentes pontos.', 1),
-(4, 4, 3, 'Frutas e vegetais', 45.00, '2026-03-01 09:30:00', 'Quantidade conforme plano alimentar.', 1),
-(5, 5, 3, 'Frutas e pequenos alimentos', 3.50, '2026-03-01 10:00:00', 'Animal apresentou boa aceitação.', 1),
-(6, 7, 3, 'Formigas e cupins', 2.20, '2026-03-01 10:30:00', 'Alimentação monitorada.', 1),
-(7, 8, 3, 'Frutas e sementes', 0.35, '2026-03-01 11:00:00', 'Boa aceitação.', 1),
-(8, 15, 3, 'Capim e vegetais', 6.50, '2026-03-01 12:00:00', 'Grupo alimentado em área externa.', 1),
-(9, 16, 8, 'Carne e frutas', 9.00, '2026-03-02 08:00:00', 'Porção individual.', 2),
-(10, 18, 8, 'Vegetais e frutas', 25.00, '2026-03-02 09:00:00', 'Alimentação supervisionada.', 2),
-(11, 19, 8, 'Capim e feno', 12.00, '2026-03-02 09:30:00', 'Animal consumiu normalmente.', 2),
-(12, 20, 8, 'Insetos e pequenos alimentos', 0.25, '2026-03-02 10:00:00', 'Porção individual.', 2),
-(13, 21, 8, 'Vegetais e frutas', 14.00, '2026-03-02 10:30:00', 'Alimentação acompanhada pela equipe.', 2),
-(14, 23, 8, 'Peixes e pequenos crustáceos', 0.60, '2026-03-02 11:00:00', 'Alimentação distribuída no lago.', 2),
-(15, 26, 8, 'Carne', 2.50, '2026-03-02 12:00:00', 'Manejo realizado conforme protocolo.', 2),
-(16, 30, 8, 'Peixes', 3.00, '2026-03-02 13:00:00', 'Alimentação realizada no tanque.', 2);
+(1, 1, 3, 'Carne bovina', 8.50, '2026-03-01 08:00:00', 'Porção dividida em dois pontos do recinto.', 13, 1),
+(2, 2, 3, 'Carne bovina', 4.20, '2026-03-01 08:30:00', 'Alimentação consumida normalmente.', 14, 1),
+(3, 3, 3, 'Folhas e vegetais', 18.00, '2026-03-01 09:00:00', 'Distribuição em diferentes pontos.', 15, 1),
+(4, 4, 3, 'Frutas e vegetais', 45.00, '2026-03-01 09:30:00', 'Quantidade conforme plano alimentar.', 16, 1),
+(5, 5, 3, 'Frutas e pequenos alimentos', 3.50, '2026-03-01 10:00:00', 'Animal apresentou boa aceitação.', 17, 1),
+(6, 7, 3, 'Formigas e cupins', 2.20, '2026-03-01 10:30:00', 'Alimentação monitorada.', 18, 1),
+(7, 8, 3, 'Frutas e sementes', 0.35, '2026-03-01 11:00:00', 'Boa aceitação.', 19, 1),
+(8, 15, 3, 'Capim e vegetais', 6.50, '2026-03-01 12:00:00', 'Grupo alimentado em área externa.', 20, 1),
+(9, 16, 8, 'Carne e frutas', 9.00, '2026-03-02 08:00:00', 'Porção individual.', 21, 2),
+(10, 18, 8, 'Vegetais e frutas', 25.00, '2026-03-02 09:00:00', 'Alimentação supervisionada.', 22, 2),
+(11, 19, 8, 'Capim e feno', 12.00, '2026-03-02 09:30:00', 'Animal consumiu normalmente.', 23, 2),
+(12, 20, 8, 'Insetos e pequenos alimentos', 0.25, '2026-03-02 10:00:00', 'Porção individual.', 24, 2),
+(13, 21, 8, 'Vegetais e frutas', 14.00, '2026-03-02 10:30:00', 'Alimentação acompanhada pela equipe.', 25, 2),
+(14, 23, 8, 'Peixes e pequenos crustáceos', 0.60, '2026-03-02 11:00:00', 'Alimentação distribuída no lago.', 26, 2),
+(15, 26, 8, 'Carne', 2.50, '2026-03-02 12:00:00', 'Manejo realizado conforme protocolo.', 27, 2),
+(16, 30, 8, 'Peixes', 3.00, '2026-03-02 13:00:00', 'Alimentação realizada no tanque.', 28, 2);
 
 -- ============================================================
 -- VACINAS
 -- ============================================================
 
 INSERT INTO vacinas
-(id, animal_id, nome_vacina, data_aplicacao, proxima_aplicacao, observacoes, funcionario_id, instituicao_id)
+(id, animal_id, nome_vacina, data_aplicacao, proxima_aplicacao, observacoes, evento_id, funcionario_id, instituicao_id)
 VALUES
-(1, 1, 'Vacina preventiva A', '2026-01-15', '2027-01-15', 'Aplicação sem intercorrências.', 2, 1),
-(2, 2, 'Vacina preventiva A', '2026-01-18', '2027-01-18', 'Animal colaborativo durante o procedimento.', 2, 1),
-(3, 5, 'Vacina preventiva B', '2026-02-03', '2027-02-03', 'Aplicação registrada no prontuário.', 2, 1),
-(4, 6, 'Vacina preventiva B', '2026-02-10', '2027-02-10', 'Sem observações adicionais.', 2, 1),
-(5, 15, 'Vacina preventiva C', '2026-02-20', '2027-02-20', 'Procedimento concluído normalmente.', 2, 1),
-(6, 16, 'Vacina preventiva A', '2026-01-22', '2027-01-22', 'Sem intercorrências.', 7, 2),
-(7, 18, 'Vacina preventiva C', '2026-02-05', '2027-02-05', 'Animal monitorado após aplicação.', 7, 2),
-(8, 21, 'Vacina preventiva A', '2026-02-15', '2027-02-15', 'Aplicação registrada.', 7, 2),
-(9, 23, 'Vacina preventiva B', '2026-02-18', '2027-02-18', 'Sem alterações.', 7, 2),
-(10, 26, 'Vacina preventiva C', '2026-03-01', '2027-03-01', 'Aplicação concluída.', 7, 2),
-(11, 27, 'Vacina preventiva B', '2026-03-03', '2027-03-03', 'Animal permaneceu em observação após procedimento.', 7, 2),
-(12, 30, 'Vacina preventiva A', '2026-03-08', '2027-03-08', 'Sem intercorrências.', 7, 2);
+(1, 1, 'Vacina preventiva A', '2026-01-15', '2027-01-15', 'Aplicação sem intercorrências.', 29, 2, 1),
+(2, 2, 'Vacina preventiva A', '2026-01-18', '2027-01-18', 'Animal colaborativo durante o procedimento.', 30, 2, 1),
+(3, 5, 'Vacina preventiva B', '2026-02-03', '2027-02-03', 'Aplicação registrada no prontuário.', 31, 2, 1),
+(4, 6, 'Vacina preventiva B', '2026-02-10', '2027-02-10', 'Sem observações adicionais.', 32, 2, 1),
+(5, 15, 'Vacina preventiva C', '2026-02-20', '2027-02-20', 'Procedimento concluído normalmente.', 33, 2, 1),
+(6, 16, 'Vacina preventiva A', '2026-01-22', '2027-01-22', 'Sem intercorrências.', 34, 7, 2),
+(7, 18, 'Vacina preventiva C', '2026-02-05', '2027-02-05', 'Animal monitorado após aplicação.', 35, 7, 2),
+(8, 21, 'Vacina preventiva A', '2026-02-15', '2027-02-15', 'Aplicação registrada.', 36, 7, 2),
+(9, 23, 'Vacina preventiva B', '2026-02-18', '2027-02-18', 'Sem alterações.', 37, 7, 2),
+(10, 26, 'Vacina preventiva C', '2026-03-01', '2027-03-01', 'Aplicação concluída.', 38, 7, 2),
+(11, 27, 'Vacina preventiva B', '2026-03-03', '2027-03-03', 'Animal permaneceu em observação após procedimento.', 39, 7, 2),
+(12, 30, 'Vacina preventiva A', '2026-03-08', '2027-03-08', 'Sem intercorrências.', 40, 7, 2);
 
 -- ============================================================
 -- MANUTENÇÃO DE HABITATS
 -- ============================================================
 
 INSERT INTO manutencao_habitats
-(id, habitat_id, funcionario_id, data_manutencao, descricao, status, instituicao_id)
+(id, habitat_id, funcionario_id, data_manutencao, descricao, status, evento_id, instituicao_id)
 VALUES
-(1, 1, 4, '2026-01-10', 'Revisão das cercas e dos portões de acesso.', 'Concluída', 1),
-(2, 2, 4, '2026-01-22', 'Limpeza e revisão das estruturas de escalada.', 'Concluída', 1),
-(3, 5, 4, '2026-02-05', 'Manutenção do sistema de climatização.', 'Em andamento', 1),
-(4, 6, 3, '2026-02-18', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Concluída', 1),
-(5, 7, 9, '2026-01-28', 'Revisão de árvores e estruturas internas.', 'Concluída', 2),
-(6, 10, 9, '2026-02-12', 'Limpeza das margens do lago e revisão de filtros.', 'Em andamento', 2),
-(7, 11, 8, '2026-02-25', 'Manutenção do sistema de controle de temperatura.', 'Pendente', 2),
-(8, 12, 8, '2026-03-05', 'Limpeza dos tanques e revisão de bombas.', 'Concluída', 2);
+(1, 1, 4, '2026-01-10', 'Revisão das cercas e dos portões de acesso.', 'Concluída', 41, 1),
+(2, 2, 4, '2026-01-22', 'Limpeza e revisão das estruturas de escalada.', 'Concluída', 42, 1),
+(3, 5, 4, '2026-02-05', 'Manutenção do sistema de climatização.', 'Em andamento', 43, 1),
+(4, 6, 3, '2026-02-18', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Concluída', 44, 1),
+(5, 7, 9, '2026-01-28', 'Revisão de árvores e estruturas internas.', 'Concluída', 45, 2),
+(6, 10, 9, '2026-02-12', 'Limpeza das margens do lago e revisão de filtros.', 'Em andamento', 46, 2),
+(7, 11, 8, '2026-02-25', 'Manutenção do sistema de controle de temperatura.', 'Pendente', 47, 2),
+(8, 12, 8, '2026-03-05', 'Limpeza dos tanques e revisão de bombas.', 'Concluída', 48, 2);
 
 -- ============================================================
 -- HISTÓRICO DE HABITATS
 -- ============================================================
 
 INSERT INTO historico_habitats
-(id, animal_id, habitat_anterior_id, habitat_novo_id, data_mudanca, motivo, funcionario_id, instituicao_id)
+(id, animal_id, habitat_anterior_id, habitat_novo_id, data_mudanca, motivo, funcionario_id, evento_id, instituicao_id)
 VALUES
-(1, 5, 3, 2, '2025-11-10', 'Adequação do ambiente às necessidades comportamentais do animal.', 4, 1),
-(2, 7, 2, 3, '2026-01-08', 'Mudança para área com estrutura de observação clínica.', 3, 1),
-(3, 10, 4, 6, '2026-02-15', 'Adaptação gradual a ambiente semiaquático.', 3, 1),
-(4, 18, 9, 7, '2025-12-02', 'Reorganização dos recintos para manutenção da área anterior.', 9, 2),
-(5, 24, 10, 7, '2026-01-20', 'Transferência temporária para observação e recuperação.', 7, 2),
-(6, 27, 11, 12, '2026-02-01', 'Adequação do recinto ao acompanhamento de recuperação.', 7, 2);
+(1, 5, 3, 2, '2025-11-10', 'Adequação do ambiente às necessidades comportamentais do animal.', 4, 49, 1),
+(2, 7, 2, 3, '2026-01-08', 'Mudança para área com estrutura de observação clínica.', 3, 50, 1),
+(3, 10, 4, 6, '2026-02-15', 'Adaptação gradual a ambiente semiaquático.', 3, 51, 1),
+(4, 18, 9, 7, '2025-12-02', 'Reorganização dos recintos para manutenção da área anterior.', 9, 52, 2),
+(5, 24, 10, 7, '2026-01-20', 'Transferência temporária para observação e recuperação.', 7, 53, 2),
+(6, 27, 11, 12, '2026-02-01', 'Adequação do recinto ao acompanhamento de recuperação.', 7, 54, 2);
 
 -- ============================================================
 -- FIM DO SEED
