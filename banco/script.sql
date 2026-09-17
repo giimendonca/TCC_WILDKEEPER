@@ -254,9 +254,11 @@ CREATE TABLE IF NOT EXISTS consultas (
     tratamento TEXT NOT NULL,
     observacoes TEXT,
     data_retorno DATE NOT NULL,
+    instituicao_id INT NOT NULL
 
     FOREIGN KEY (animal_id) REFERENCES animais(id),
     FOREIGN KEY (funcionario_id) REFERENCES users(id),
+    FOREIGN KEY (instituicao_id) REFERENCES instituicoes(id),
     
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
