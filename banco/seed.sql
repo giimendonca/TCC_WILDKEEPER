@@ -1,22 +1,22 @@
-*-- ============================================================*
+-- ============================================================
 
-*-- WILDKEEPER - SEED DE DADOS DE DEMONSTRAÇÃO*
+-- WILDKEEPER - SEED DE DADOS DE DEMONSTRAÇÃO
 
-*-- ============================================================*
+-- ============================================================
 
-*-- Este arquivo NÃO insere novamente as tabelas fixas/de referência:*
+-- Este arquivo NÃO insere novamente as tabelas fixas/de referência:
 
-*-- cargos, categorias, classificacao_alimentar, risco_extincao,*
+-- cargos, categorias, classificacao_alimentar, risco_extincao,
 
-*-- status_animais e saude_status.*
+-- status_animais e saude_status.
 
-*--*
+--
 
-*-- ATENÇÃO: o bloco de limpeza abaixo apaga TODOS os dados das*
+-- ATENÇÃO: o bloco de limpeza abaixo apaga TODOS os dados das
 
-*-- tabelas variáveis. Use apenas no banco de desenvolvimento/teste.*
+-- tabelas variáveis. Use apenas no banco de desenvolvimento/teste.
 
-*-- ============================================================*
+-- ============================================================
 
 USE wildkeeper;
 
@@ -52,11 +52,11 @@ TRUNCATE TABLE instituicoes;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
-*-- ============================================================*
+-- ============================================================
 
-*-- INSTITUIÇÕES*
+-- INSTITUIÇÕES
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO instituicoes
 
@@ -68,17 +68,17 @@ VALUES
 
 (2, 'Centro de Conservação Mata Atlântica', '00.000.000/0002-02', 'contato@ccma.example', '(11) 3000-1002', 'https\://ccma.example', 'Avenida da Mata', '450', 'Vila das Árvores', 'Campinas', 'SP', '13000-002', NULL, 'Instituição fictícia voltada à conservação da fauna e educação ambiental.');
 
-*-- ============================================================*
+-- ============================================================
 
-*-- USUÁRIOS*
+-- USUÁRIOS
 
-*-- Senha de todos: 123456*
+-- Senha de todos: 123456
 
-*-- Hash bcrypt fornecido pelo projeto.*
+-- Hash bcrypt fornecido pelo projeto.
 
-*-- 5 cargos por instituição.*
+-- 5 cargos por instituição.
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO users
 
@@ -106,17 +106,17 @@ VALUES
 
 (10, 'Felipe Oliveira', '222.222.222-05', '1996-08-16', 'Masculino', '(19) 92000-2005', 'felipe.oliveira@ccma.example', '$2y$10$gsfGxmNjZDLE75cZ/LISzOrfSR6IRlWIctTNwQsfSP955tAB/F/x2', 5, 'Ativo', 2);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- ESPÉCIES*
+-- ESPÉCIES
 
-*-- IDs 1-15 serão utilizadas na instituição 1.*
+-- IDs 1-15 serão utilizadas na instituição 1.
 
-*-- IDs 16-30 serão utilizadas na instituição 2.*
+-- IDs 16-30 serão utilizadas na instituição 2.
 
-*-- A tabela especies é global e não possui instituicao_id.*
+-- A tabela especies é global e não possui instituicao_id.
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO especies
 
@@ -184,11 +184,11 @@ VALUES
 
 (30, 'Pirarucu', 'Arapaima gigas', 'Grande peixe de água doce da Amazônia, capaz de realizar respiração aérea periódica.', 'América do Sul', 20, 150.000, 2.500, 5, 6, 1);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- HABITATS*
+-- HABITATS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO habitats
 
@@ -220,13 +220,13 @@ VALUES
 
 (12, 'Aquário Tropical', 'Tanques de água doce e salgada para espécies aquáticas.', 'Ambiente aquático', 24.00, 80.00, 20, 'Ativo', 2);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- ANIMAIS*
+-- ANIMAIS
 
-*-- 15 por instituição, cada um associado a uma espécie diferente.*
+-- 15 por instituição, cada um associado a uma espécie diferente.
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO animais
 
@@ -294,27 +294,27 @@ VALUES
 
 (30, 'Açu', 'Masculino', '2019-05-26', '2021-07-16', 145.000, 2.420, 'WK000000000030', 'Animal ativo e com boa resposta à alimentação.', 30, 12, 1, 1, 2);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- FOTOS*
+-- FOTOS
 
-*-- Os caminhos são exemplos. Coloque as imagens correspondentes*
+-- Os caminhos são exemplos. Coloque as imagens correspondentes
 
-*-- na pasta do projeto ou altere os caminhos conforme sua estrutura.*
+-- na pasta do projeto ou altere os caminhos conforme sua estrutura.
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO animais_fotos 
 
 (id, animal_id, caminho_arquivo, descricao, instituicao_id) VALUES
 
-*-- ============================================================*
+-- ============================================================
 
-*-- INSTITUIÇÃO 1*
+-- INSTITUIÇÃO 1
 
-*-- ============================================================*
+-- ============================================================
 
-*-- Simba - Leão*
+-- Simba - Leão
 
 (1, 1, 'assets/img/animais/seed/leao-simba-1.webp', 'Simba em seu habitat atual', 1),
 
@@ -322,7 +322,7 @@ INSERT INTO animais_fotos
 
 (3, 1, 'assets/img/animais/seed/leao-simba-3.webp', 'Simba em uma avaliação de rotina', 1),
 
-*-- Juma - Onça-pintada*
+-- Juma - Onça-pintada
 
 (4, 2, 'assets/img/animais/seed/onca-juma-1.webp', 'Juma descansando em seu habitat', 1),
 
@@ -330,7 +330,7 @@ INSERT INTO animais_fotos
 
 (6, 2, 'assets/img/animais/seed/onca-juma-3.webp', 'Juma durante uma atividade de enriquecimento', 1),
 
-*-- Amélia - Girafa*
+-- Amélia - Girafa
 
 (7, 3, 'assets/img/animais/seed/girafa-amelia-1.webp', 'Amélia em seu habitat', 1),
 
@@ -338,7 +338,7 @@ INSERT INTO animais_fotos
 
 (9, 3, 'assets/img/animais/seed/girafa-amelia-3.webp', 'Amélia próxima à área de observação', 1),
 
-*-- Bento - Elefante*
+-- Bento - Elefante
 
 (10, 4, 'assets/img/animais/seed/elefante-bento-1.webp', 'Bento em seu recinto', 1),
 
@@ -346,7 +346,7 @@ INSERT INTO animais_fotos
 
 (12, 4, 'assets/img/animais/seed/elefante-bento-3.webp', 'Bento durante atividade de enriquecimento', 1),
 
-*-- Guará - Lobo-guará*
+-- Guará - Lobo-guará
 
 (13, 5, 'assets/img/animais/seed/lobo-guara-guara-1.webp', 'Guará em seu habitat', 1),
 
@@ -354,7 +354,7 @@ INSERT INTO animais_fotos
 
 (15, 5, 'assets/img/animais/seed/lobo-guara-guara-3.webp', 'Guará durante uma atividade de manejo', 1),
 
-*-- Pipoca - Macaco*
+-- Pipoca - Macaco
 
 (16, 6, 'assets/img/animais/seed/macaco-pipoca-1.webp', 'Pipoca em seu habitat', 1),
 
@@ -362,7 +362,7 @@ INSERT INTO animais_fotos
 
 (18, 6, 'assets/img/animais/seed/macaco-pipoca-3.webp', 'Pipoca durante atividade de enriquecimento', 1),
 
-*-- Teca - Tamanduá*
+-- Teca - Tamanduá
 
 (19, 7, 'assets/img/animais/seed/tamandua-teca-1.webp', 'Teca em seu recinto', 1),
 
@@ -370,7 +370,7 @@ INSERT INTO animais_fotos
 
 (21, 7, 'assets/img/animais/seed/tamandua-teca-3.webp', 'Teca durante a alimentação', 1),
 
-*-- Arara Azul*
+-- Arara Azul
 
 (22, 8, 'assets/img/animais/seed/arara-azul-1.webp', 'Arara-azul em seu viveiro', 1),
 
@@ -378,7 +378,7 @@ INSERT INTO animais_fotos
 
 (24, 8, 'assets/img/animais/seed/arara-azul-3.webp', 'Arara-azul em uma área de enriquecimento', 1),
 
-*-- Tico - Tucano*
+-- Tico - Tucano
 
 (25, 9, 'assets/img/animais/seed/tucano-tico-1.webp', 'Tico em seu viveiro', 1),
 
@@ -386,7 +386,7 @@ INSERT INTO animais_fotos
 
 (27, 9, 'assets/img/animais/seed/tucano-tico-3.webp', 'Tico em uma atividade de enriquecimento', 1),
 
-*-- Maré - Pinguim*
+-- Maré - Pinguim
 
 (28, 10, 'assets/img/animais/seed/pinguim-mare-1.webp', 'Maré em seu habitat', 1),
 
@@ -394,7 +394,7 @@ INSERT INTO animais_fotos
 
 (30, 10, 'assets/img/animais/seed/pinguim-mare-3.webp', 'Maré na área aquática do recinto', 1),
 
-*-- Jibo - Jiboia*
+-- Jibo - Jiboia
 
 (31, 11, 'assets/img/animais/seed/jiboia-jibo-1.webp', 'Jibo em seu terrário', 1),
 
@@ -402,7 +402,7 @@ INSERT INTO animais_fotos
 
 (33, 11, 'assets/img/animais/seed/jiboia-jibo-3.webp', 'Jibo durante uma atividade de manejo', 1),
 
-*-- Lima - Iguana*
+-- Lima - Iguana
 
 (34, 12, 'assets/img/animais/seed/iguana-lima-1.webp', 'Lima em seu terrário', 1),
 
@@ -410,7 +410,7 @@ INSERT INTO animais_fotos
 
 (36, 12, 'assets/img/animais/seed/iguana-lima-3.webp', 'Lima durante a alimentação', 1),
 
-*-- Panta - Jacaré*
+-- Panta - Jacaré
 
 (37, 13, 'assets/img/animais/seed/jacare-panta-1.webp', 'Panta em seu habitat', 1),
 
@@ -418,7 +418,7 @@ INSERT INTO animais_fotos
 
 (39, 13, 'assets/img/animais/seed/jacare-panta-3.webp', 'Panta durante o período de alimentação', 1),
 
-*-- Cururu - Sapo*
+-- Cururu - Sapo
 
 (40, 14, 'assets/img/animais/seed/sapo-cururu-1.webp', 'Cururu em seu terrário', 1),
 
@@ -426,7 +426,7 @@ INSERT INTO animais_fotos
 
 (42, 14, 'assets/img/animais/seed/sapo-cururu-3.webp', 'Cururu durante a alimentação', 1),
 
-*-- Capi - Capivara*
+-- Capi - Capivara
 
 (43, 15, 'assets/img/animais/seed/capivara-capi-1.webp', 'Capi em seu habitat', 1),
 
@@ -436,13 +436,13 @@ INSERT INTO animais_fotos
 
 
 
-*-- ============================================================*
+-- ============================================================
 
-*-- INSTITUIÇÃO 2*
+-- INSTITUIÇÃO 2
 
-*-- ============================================================*
+-- ============================================================
 
-*-- Bruno - Urso*
+-- Bruno - Urso
 
 (46, 16, 'assets/img/animais/seed/urso-bruno-1.webp', 'Bruno em seu habitat', 2),
 
@@ -450,7 +450,7 @@ INSERT INTO animais_fotos
 
 (48, 16, 'assets/img/animais/seed/urso-bruno-3.webp', 'Bruno explorando o recinto', 2),
 
-*-- Nina - Panda*
+-- Nina - Panda
 
 (49, 17, 'assets/img/animais/seed/panda-nina-1.webp', 'Nina em seu habitat', 2),
 
@@ -458,7 +458,7 @@ INSERT INTO animais_fotos
 
 (51, 17, 'assets/img/animais/seed/panda-nina-3.webp', 'Nina descansando em seu recinto', 2),
 
-*-- Hippo - Hipopótamo*
+-- Hippo - Hipopótamo
 
 (52, 18, 'assets/img/animais/seed/hipopotamo-hippo-1.webp', 'Hippo em seu habitat', 2),
 
@@ -466,7 +466,7 @@ INSERT INTO animais_fotos
 
 (54, 18, 'assets/img/animais/seed/hipopotamo-hippo-3.webp', 'Hippo durante a alimentação', 2),
 
-*-- Listrado - Zebra*
+-- Listrado - Zebra
 
 (55, 19, 'assets/img/animais/seed/zebra-listrado-1.webp', 'Listrado em seu habitat', 2),
 
@@ -474,7 +474,7 @@ INSERT INTO animais_fotos
 
 (57, 19, 'assets/img/animais/seed/zebra-listrado-3.webp', 'Listrado durante a alimentação', 2),
 
-*-- Kiko - Suricato*
+-- Kiko - Suricato
 
 (58, 20, 'assets/img/animais/seed/suricato-kiko-1.webp', 'Kiko em seu recinto', 2),
 
@@ -482,7 +482,7 @@ INSERT INTO animais_fotos
 
 (60, 20, 'assets/img/animais/seed/suricato-kiko-3.webp', 'Kiko durante uma atividade de enriquecimento', 2),
 
-*-- Kong - Gorila*
+-- Kong - Gorila
 
 (61, 21, 'assets/img/animais/seed/gorila-kong-1.webp', 'Kong em seu habitat', 2),
 
@@ -490,7 +490,7 @@ INSERT INTO animais_fotos
 
 (63, 21, 'assets/img/animais/seed/gorila-kong-3.webp', 'Kong durante atividade de enriquecimento', 2),
 
-*-- Mimi - Orangotango*
+-- Mimi - Orangotango
 
 (64, 22, 'assets/img/animais/seed/orangotango-mimi-1.webp', 'Mimi em seu habitat', 2),
 
@@ -498,7 +498,7 @@ INSERT INTO animais_fotos
 
 (66, 22, 'assets/img/animais/seed/orangotango-mimi-3.webp', 'Mimi explorando o recinto', 2),
 
-*-- Rosa - Flamingo*
+-- Rosa - Flamingo
 
 (67, 23, 'assets/img/animais/seed/flamingo-rosa-1.webp', 'Rosa em seu habitat', 2),
 
@@ -506,7 +506,7 @@ INSERT INTO animais_fotos
 
 (69, 23, 'assets/img/animais/seed/flamingo-rosa-3.webp', 'Rosa durante a alimentação', 2),
 
-*-- Sky - Águia*
+-- Sky - Águia
 
 (70, 24, 'assets/img/animais/seed/aguia-sky-1.webp', 'Sky em seu viveiro', 2),
 
@@ -514,7 +514,7 @@ INSERT INTO animais_fotos
 
 (72, 24, 'assets/img/animais/seed/aguia-sky-3.webp', 'Sky em atividade de enriquecimento', 2),
 
-*-- Lua - Coruja*
+-- Lua - Coruja
 
 (73, 25, 'assets/img/animais/seed/coruja-lua-1.webp', 'Lua em seu viveiro', 2),
 
@@ -522,7 +522,7 @@ INSERT INTO animais_fotos
 
 (75, 25, 'assets/img/animais/seed/coruja-lua-3.webp', 'Lua durante a alimentação', 2),
 
-*-- Dragão-de-Komodo*
+-- Dragão-de-Komodo
 
 (76, 26, 'assets/img/animais/seed/dragao-komodo-1.webp', 'Dragão-de-Komodo em seu recinto', 2),
 
@@ -530,7 +530,7 @@ INSERT INTO animais_fotos
 
 (78, 26, 'assets/img/animais/seed/dragao-komodo-3.webp', 'Dragão-de-Komodo durante a alimentação', 2),
 
-*-- Tartaruga Marinha*
+-- Tartaruga Marinha
 
 (79, 27, 'assets/img/animais/seed/tartaruga-marina-1.webp', 'Tartaruga-marinha em seu habitat', 2),
 
@@ -538,7 +538,7 @@ INSERT INTO animais_fotos
 
 (81, 27, 'assets/img/animais/seed/tartaruga-marina-3.webp', 'Tartaruga-marinha na área aquática', 2),
 
-*-- Axel - Axolote*
+-- Axel - Axolote
 
 (82, 28, 'assets/img/animais/seed/axolote-axel-1.webp', 'Axel em seu aquário', 2),
 
@@ -546,7 +546,7 @@ INSERT INTO animais_fotos
 
 (84, 28, 'assets/img/animais/seed/axolote-axel-3.webp', 'Axel em seu ambiente aquático', 2),
 
-*-- Nemo - Peixe*
+-- Nemo - Peixe
 
 (85, 29, 'assets/img/animais/seed/peixe-nemo-1.webp', 'Nemo em seu aquário', 2),
 
@@ -554,7 +554,7 @@ INSERT INTO animais_fotos
 
 (87, 29, 'assets/img/animais/seed/peixe-nemo-3.webp', 'Nemo explorando o ambiente aquático', 2),
 
-*-- Pirarucu-Açu*
+-- Pirarucu-Açu
 
 (88, 30, 'assets/img/animais/seed/pirarucu-acu-1.webp', 'Pirarucu-açu em seu habitat', 2),
 
@@ -562,11 +562,11 @@ INSERT INTO animais_fotos
 
 (90, 30, 'assets/img/animais/seed/pirarucu-acu-3.webp', 'Pirarucu-açu em seu ambiente aquático', 2);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- MEDICAMENTOS*
+-- MEDICAMENTOS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO medicamentos
 
@@ -590,11 +590,11 @@ VALUES
 
 (8, 'Suplemento vitamínico', 'Suplementação nutricional utilizada quando indicada pela equipe.', 'NutriVet', 45, 'SUP-2608', '2027-12-12');
 
-*-- ============================================================*
+-- ============================================================
 
-*-- CONSULTAS*
+-- CONSULTAS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO consultas
 
@@ -626,11 +626,11 @@ VALUES
 
 (12, 28, 7, '2026-03-20', 'Atividade abaixo do padrão observado.', 'Observação e monitoramento.', 'Reavaliar caso não haja melhora.', '2026-03-27', 2);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- MEDICAMENTOS DAS CONSULTAS*
+-- MEDICAMENTOS DAS CONSULTAS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO medicamentos_consulta
 
@@ -662,11 +662,11 @@ VALUES
 
 (12, 9, 8, 'Conforme prescrição', 'Associado ao plano nutricional.');
 
-*-- ============================================================*
+-- ============================================================
 
-*-- ALIMENTAÇÕES*
+-- ALIMENTAÇÕES
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO alimentacoes
 
@@ -706,11 +706,11 @@ VALUES
 
 (16, 30, 8, 'Peixes', 3.00, '2026-03-02 13:00:00', 'Alimentação realizada no tanque.');
 
-*-- ============================================================*
+-- ============================================================
 
-*-- VACINAS*
+-- VACINAS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO vacinas
 
@@ -742,11 +742,11 @@ VALUES
 
 (12, 30, 'Vacina preventiva A', '2026-03-08', '2027-03-08', 'Sem intercorrências.', 7);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- MANUTENÇÃO DE HABITATS*
+-- MANUTENÇÃO DE HABITATS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO manutencao_habitats
 
@@ -770,11 +770,11 @@ VALUES
 
 (8, 12, 8, '2026-03-05', 'Limpeza dos tanques e revisão de bombas.', 'Concluída');
 
-*-- ============================================================*
+-- ============================================================
 
-*-- HISTÓRICO DE HABITATS*
+-- HISTÓRICO DE HABITATS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO historico_habitats
 
@@ -794,11 +794,11 @@ VALUES
 
 (6, 27, 11, 12, '2026-02-01', 'Adequação do recinto ao acompanhamento de recuperação.', 7);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- EVENTOS*
+-- EVENTOS
 
-*-- ============================================================*
+-- ============================================================
 
 INSERT INTO eventos
 
@@ -830,8 +830,8 @@ VALUES
 
 (12, 'Avaliação do Axolote', 'Reavaliação do estado de saúde.', 'Consulta', '2026-03-16 09:00:00', '2026-03-16 09:45:00', 28, 7, 'Agendado', 2);
 
-*-- ============================================================*
+-- ============================================================
 
-*-- FIM DO SEED*
+-- FIM DO SEED
 
-*-- ============================================================*
+-- ============================================================

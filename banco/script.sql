@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS consultas (
     tratamento TEXT NOT NULL,
     observacoes TEXT,
     data_retorno DATE NOT NULL,
-    instituicao_id INT NOT NULL
+    instituicao_id INT NOT NULL,
 
     FOREIGN KEY (animal_id) REFERENCES animais(id),
     FOREIGN KEY (funcionario_id) REFERENCES users(id),
