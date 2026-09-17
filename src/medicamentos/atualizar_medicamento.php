@@ -15,7 +15,7 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 
-requireNivel(40);
+requireNivel(60);
 
 // ====================================
 // Pega os dados enviados

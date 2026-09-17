@@ -16,7 +16,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 // Verifica a permissão que o usuário possui
-requireNivel(40);
+requireNivel(60);
 
 // ====================================
 // Pega o ID do medicamento
