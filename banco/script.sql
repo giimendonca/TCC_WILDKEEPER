@@ -249,6 +249,7 @@ CREATE TABLE
         data_inicio DATETIME NOT NULL,
         data_fim DATETIME NOT NULL,
         animal_id INT DEFAULT NULL,
+        habitat_id INT DEFAULT NULL,
         funcionario_id INT NOT NULL,
         status ENUM (
             'Agendado',
@@ -258,6 +259,7 @@ CREATE TABLE
         ) DEFAULT 'Agendado',
         instituicao_id INT NOT NULL,
         FOREIGN KEY (animal_id) REFERENCES animais (id),
+        FOREIGN KEY (habitat_id) REFERENCES habitats (id),
         FOREIGN KEY (funcionario_id) REFERENCES users (id),
         FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -267,18 +269,12 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS consultas (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        animal_id INT NOT NULL,
-        funcionario_id INT NOT NULL,
         evento_id INT NOT NULL,
         diagnostico TEXT DEFAULT NULL,
         tratamento TEXT DEFAULT NULL,
         observacoes TEXT DEFAULT NULL,
         data_retorno DATE DEFAULT NULL,
-        instituicao_id INT NOT NULL,
-        FOREIGN KEY (animal_id) REFERENCES animais (id),
-        FOREIGN KEY (funcionario_id) REFERENCES users (id),
         FOREIGN KEY (evento_id) REFERENCES eventos (id),
-        FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
@@ -314,18 +310,12 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS alimentacoes (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        animal_id INT NOT NULL,
-        funcionario_id INT NOT NULL,
         descricao_alimento VARCHAR(100) NOT NULL,
         quantidade DECIMAL(8, 2) NOT NULL, -- kg
         data_hora DATETIME NOT NULL,
         observacoes TEXT,
         evento_id INT NOT NULL,
-        instituicao_id INT NOT NULL,
-        FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
-        FOREIGN KEY (animal_id) REFERENCES animais (id),
         FOREIGN KEY (evento_id) REFERENCES eventos (id),
-        FOREIGN KEY (funcionario_id) REFERENCES users (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
@@ -333,18 +323,12 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS vacinas (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        animal_id INT NOT NULL,
         nome_vacina VARCHAR(50) NOT NULL,
         data_aplicacao DATE NOT NULL,
         proxima_aplicacao DATE DEFAULT NULL,
         observacoes TEXT DEFAULT NULL,
         evento_id INT NOT NULL,
-        funcionario_id INT NOT NULL,
-        instituicao_id INT NOT NULL,
-        FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
-        FOREIGN KEY (animal_id) REFERENCES animais (id),
         FOREIGN KEY (evento_id) REFERENCES eventos (id),
-        FOREIGN KEY (funcionario_id) REFERENCES users (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
@@ -352,22 +336,9 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS manutencao_habitats (
         id INT PRIMARY KEY AUTO_INCREMENT,
-        habitat_id INT NOT NULL,
-        funcionario_id INT NOT NULL,
-        data_manutencao DATE NOT NULL,
         descricao TEXT NOT NULL,
-        status ENUM (
-            'Pendente',
-            'Em andamento',
-            'Concluída',
-            'Cancelada'
-        ) DEFAULT 'Pendente',
         evento_id INT NOT NULL,
-        instituicao_id INT NOT NULL,
-        FOREIGN KEY (instituicao_id) REFERENCES instituicoes (id),
         FOREIGN KEY (evento_id) REFERENCES eventos (id),
-        FOREIGN KEY (habitat_id) REFERENCES habitats (id),
-        FOREIGN KEY (funcionario_id) REFERENCES users (id),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

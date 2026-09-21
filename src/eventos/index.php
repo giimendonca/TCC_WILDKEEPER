@@ -39,11 +39,13 @@ $sql = "SELECT
     eventos.data_fim,
     eventos.status,
     eventos.animal_id,
+    eventos.habitat_id,
     animais.nome AS animal_nome,
     eventos.funcionario_id,
     users.nome AS funcionario_nome
 FROM eventos
 LEFT JOIN animais ON animais.id = eventos.animal_id
+LEFT JOIN habitats ON habitats.id = eventos.habitats_id
 INNER JOIN users ON users.id = eventos.funcionario_id
 WHERE eventos.instituicao_id = ?";
 

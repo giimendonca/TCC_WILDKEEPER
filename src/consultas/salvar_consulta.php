@@ -1,5 +1,7 @@
-<?php
+    <?php
+
 session_start();
+
 include "../includes/conexao.php";
 include "../includes/autenticacao.php";
 
@@ -12,67 +14,112 @@ requireNivel(60);
 
 $instituicao_id = $_SESSION['instituicao_id'];
 
-$animal_id = $_POST['animal_id'] ?? null;
-$funcionario_id = $_POST['funcionario_id'] ?? null;
-$data_consulta = $_POST['data_consulta'] ?? null;
+// Pega os dados enviados pelo formulário
+$evento_id = $_POST['evento_id'] ?? null;
 $diagnostico = trim($_POST['diagnostico'] ?? '');
 $tratamento = trim($_POST['tratamento'] ?? '');
 $observacoes = trim($_POST['observacoes'] ?? '');
-$data_retorno = $_POST['data_retorno'] ?? null;
+$data_retorno = trim($_POST['data_retorno'] ?? '');
 
-if (!$animal_id || !$funcionario_id || !$data_consulta || !$diagnostico || !$tratamento || !$data_retorno) {
+// Verifica os campos obrigatórios
+if (!$evento_id || !$diagnostico || !$tratamento) {
     die("Preencha todos os campos obrigatórios.");
 }
 
-// Verifica se o animal pertence à instituição
-$sqlAnimal = "SELECT id FROM animais WHERE id = ? AND instituicao_id = ?";
-$stmtAnimal = $conexao->prepare($sqlAnimal);
-$stmtAnimal->bind_param("ii", $animal_id, $instituicao_id);
-$stmtAnimal->execute();
-$resultAnimal = $stmtAnimal->get_result();
+// ====================================
+// Busca e valida o evento
+// ====================================
 
-if ($resultAnimal->num_rows === 0) {
-    die("Animal inválido.");
+$sqlEvento = "SELECT id, status
+FROM eventos
+WHERE id = ?
+AND tipo = 'Consulta'
+AND instituicao_id = ?";
+
+$stmtEvento = $conexao->prepare($sqlEvento);
+$stmtEvento->bind_param("ii", $evento_id, $instituicao_id);
+$stmtEvento->execute();
+
+$resultEvento = $stmtEvento->get_result();
+$evento = $resultEvento->fetch_assoc();
+
+// Verifica se o evento existe
+if (!$evento) {
+    die("Evento de consulta inválido.");
 }
 
-// Verifica se o funcionário é veterinário da instituição
-$sqlVeterinario = "SELECT users.id
-                   FROM users
-                   INNER JOIN cargos ON users.cargo_id = cargos.id
-                   WHERE users.id = ?
-                   AND users.instituicao_id = ?
-                   AND cargos.nome = 'Veterinário'
-                   AND users.status != 'Desligado'";
-
-$stmtVeterinario = $conexao->prepare($sqlVeterinario);
-$stmtVeterinario->bind_param("ii", $funcionario_id, $instituicao_id);
-$stmtVeterinario->execute();
-$resultVeterinario = $stmtVeterinario->get_result();
-
-if ($resultVeterinario->num_rows === 0) {
-    die("Veterinário inválido.");
+// Verifica se o evento pode ser realizado
+if ($evento['status'] != 'Agendado' && $evento['status'] != 'Em andamento') {
+    die("Este evento não pode ser realizado.");
 }
 
-$sql = "INSERT INTO consultas
-        (animal_id, funcionario_id, instituicao_id, data_consulta, diagnostico, tratamento, observacoes, data_retorno)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+// ====================================
+// Verifica se a consulta já foi realizada
+// ====================================
 
-$stmt = $conexao->prepare($sql);
-$stmt->bind_param(
-    "iiisssss",
-    $animal_id,
-    $funcionario_id,
-    $instituicao_id,
-    $data_consulta,
-    $diagnostico,
-    $tratamento,
-    $observacoes,
-    $data_retorno
-);
+$sqlConsulta = "SELECT id
+FROM consultas
+WHERE evento_id = ?";
 
-if ($stmt->execute()) {
-    header("Location: index.php?sucesso=cadastrado");
+$stmtConsulta = $conexao->prepare($sqlConsulta);
+$stmtConsulta->bind_param("i", $evento_id);
+$stmtConsulta->execute();
+
+$resultConsulta = $stmtConsulta->get_result();
+
+if ($resultConsulta->num_rows > 0) {
+    die("Esta consulta já foi realizada.");
+}
+
+// ====================================
+// Salva a consulta e conclui o evento
+// ====================================
+
+$conexao->begin_transaction();
+
+try {
+
+    // Insere o resultado da consulta
+    $sql = "INSERT INTO consultas
+        (evento_id, diagnostico, tratamento, observacoes, data_retorno)
+        VALUES (?, ?, ?, ?, ?)";
+
+    $stmt = $conexao->prepare($sql);
+
+    $stmt->bind_param(
+        "issss",
+        $evento_id,
+        $diagnostico,
+        $tratamento,
+        $observacoes,
+        $data_retorno
+    );
+
+    if (!$stmt->execute()) {
+        throw new Exception("Erro ao registrar a consulta.");
+    }
+
+    // Altera o status do evento para concluído
+    $sqlEvento = "UPDATE eventos
+    SET status = 'Concluído'
+    WHERE id = ?
+    AND instituicao_id = ?";
+
+    $stmtEvento = $conexao->prepare($sqlEvento);
+    $stmtEvento->bind_param("ii", $evento_id, $instituicao_id);
+
+    if (!$stmtEvento->execute()) {
+        throw new Exception("Erro ao concluir o evento.");
+    }
+
+    $conexao->commit();
+
+    header("Location: index.php?sucesso=realizado");
     exit();
-}
 
-die("Erro ao cadastrar consulta: " . $conexao->error);
+} catch (Exception $e) {
+
+    $conexao->rollback();
+
+    die("Erro ao realizar consulta: " . $e->getMessage());
+}

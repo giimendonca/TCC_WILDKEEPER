@@ -9,7 +9,7 @@ include "../includes/autenticacao.php";
 // Verificações de sessão
 // ====================================
 
-// Verifica se ja existe uma sessão
+// Verifica se já existe uma sessão
 if (!isset($_SESSION['id'])) {
     header("Location: ../auth/login.php");
     exit();
@@ -22,37 +22,56 @@ requireNivel(60);
 // Filtros
 // ====================================
 
-// Pega os filtros enviados pelo metódo GET
+// Pega os filtros enviados pelo método GET
 $nomeAnimal = trim($_GET['nome_animal'] ?? "");
 $nomeFuncionario = trim($_GET['nome_funcionario'] ?? "");
 $dataConsulta = trim($_GET['data_consulta'] ?? "");
 $dataRetorno = trim($_GET['data_retorno'] ?? "");
 
-// Faz o SELECT dos consultas
+// ====================================
+// SELECT
+// ====================================
+
+// Busca os eventos do tipo Consulta e,
+// quando a consulta já foi realizada,
+// busca também os dados da tabela consultas.
 $sql = "SELECT 
-    consultas.id,
-    consultas.data_consulta,
-    consultas.diagnostico,
-    
-    consultas.data_retorno,
+    eventos.id AS evento_id,
+    eventos.titulo,
+    eventos.data_inicio,
+    eventos.data_fim,
+    eventos.status AS evento_status,
 
     animais.id AS animal_id,
     animais.nome AS animal_nome,
 
     users.id AS funcionario_id,
-    users.nome AS funcionario_nome
-FROM consultas
-INNER JOIN animais ON consultas.animal_id = animais.id
-INNER JOIN users ON consultas.funcionario_id = users.id
-WHERE 1=1 AND consultas.instituicao_id = ?";
+    users.nome AS funcionario_nome,
+
+    consultas.id AS consulta_id,
+    consultas.diagnostico,
+    consultas.data_retorno
+
+FROM eventos
+
+INNER JOIN animais ON eventos.animal_id = animais.id
+INNER JOIN users ON eventos.funcionario_id = users.id
+
+LEFT JOIN consultas ON consultas.evento_id = eventos.id
+
+WHERE eventos.tipo = 'Consulta'
+AND eventos.instituicao_id = ?";
 
 // Declara os parâmetros e tipos iniciais da pesquisa
 $params = [
     $_SESSION['instituicao_id']
 ];
-$types = "s";
+$types = "i";
 
-// Verifica quais filtros foram enviados
+// ====================================
+// Filtros
+// ====================================
+
 // Filtro do nome do animal
 if ($nomeAnimal != "") {
     $sql .= " AND animais.nome LIKE ?";
@@ -69,22 +88,26 @@ if ($nomeFuncionario != "") {
 
 // Filtro da data de retorno
 if ($dataRetorno != "") {
-    $sql .= " AND consultas.data_retorno LIKE ?";
-    $params[] = "$dataRetorno";
+    $sql .= " AND consultas.data_retorno = ?";
+    $params[] = $dataRetorno;
     $types .= "s";
 }
 
 // Filtro da data da consulta
 if ($dataConsulta != "") {
-    $sql .= " AND consultas.data_consulta LIKE ?";
-    $params[] = "$dataConsulta";
+    $sql .= " AND DATE(eventos.data_inicio) = ?";
+    $params[] = $dataConsulta;
     $types .= "s";
 }
 
+$sql .= " ORDER BY eventos.data_inicio DESC";
+
 $stmt = $conexao->prepare($sql);
+
 if (!empty($types) && !empty($params)) {
     $stmt->bind_param($types, ...$params);
 }
+
 $stmt->execute();
 
 $result = $stmt->get_result();
@@ -100,6 +123,7 @@ $result = $stmt->get_result();
 
 <body>
     <?php include "../includes/dashboard-header.php" ?>
+
     <main>
         <section>
             <h1>Gerenciamento de Consultas</h1>
@@ -107,16 +131,16 @@ $result = $stmt->get_result();
             <form action="index.php" method="get">
                 <label for="nome_animal">Nome Animal</label>
                 <input type="text" name="nome_animal" id="nome_animal" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeAnimal) ?>">
-                
+
                 <label for="nome_funcionario">Nome Funcionário</label>
                 <input type="text" name="nome_funcionario" id="nome_funcionario" placeholder="Encontrar pelo nome do funcionário" value="<?= htmlspecialchars($nomeFuncionario) ?>">
 
                 <label for="data_consulta">Data da Consulta</label>
-                <input type="date" name="data_consulta" id="data_consulta" placeholder="Encontar por data da consulta" value="<?= htmlspecialchars($dataConsulta) ?>">
+                <input type="date" name="data_consulta" id="data_consulta" value="<?= htmlspecialchars($dataConsulta) ?>">
 
-                <label for="data_retorno">Data da Retorno</label>
-                <input type="date" name="data_retorno" id="data_retorno" placeholder="Encontar por data de retorno" value="<?= htmlspecialchars($dataRetorno) ?>">
-                
+                <label for="data_retorno">Data de Retorno</label>
+                <input type="date" name="data_retorno" id="data_retorno" value="<?= htmlspecialchars($dataRetorno) ?>">
+
                 <button type="submit">Pesquisar</button>
             </form>
 
@@ -126,6 +150,7 @@ $result = $stmt->get_result();
                         <th>Nome Animal</th>
                         <th>Funcionário Responsável</th>
                         <th>Data da Consulta</th>
+                        <th>Status</th>
                         <th>Diagnóstico</th>
                         <th>Data de Retorno</th>
                         <th>Ações</th>
@@ -137,11 +162,35 @@ $result = $stmt->get_result();
                         <?php while ($consulta = $result->fetch_assoc()): ?>
                             <tr>
                                 <td><?= htmlspecialchars($consulta['animal_nome']) ?></td>
+
                                 <td><?= htmlspecialchars($consulta['funcionario_nome']) ?></td>
-                                <td><?= htmlspecialchars($consulta['data_consulta']) ?></td>
-                                <td><?= htmlspecialchars($consulta['diagnostico']) ?></td>
-                                <td><?= htmlspecialchars($consulta['data_retorno']) ?></td>
-                                <td><a href="mostrar_consulta.php?id=<?= $consulta['id'] ?>">Ver informações</a> <a href="editar_consulta.php?id=<?= $consulta['id'] ?>">Editar</a></td>
+
+                                <td><?= htmlspecialchars($consulta['data_inicio']) ?></td>
+
+                                <td><?= htmlspecialchars($consulta['evento_status']) ?></td>
+
+                                <td>
+                                    <?php if ($consulta['consulta_id']): ?>
+                                        <?= htmlspecialchars($consulta['diagnostico'] ?? '') ?>
+                                    <?php else: ?>
+                                        Não realizada
+                                    <?php endif; ?>
+                                </td>
+
+                                <td><?= htmlspecialchars($consulta['data_retorno'] ?? '') ?></td>
+
+                                <td>
+                                    <?php if ($consulta['evento_status'] == 'Agendado' && !$consulta['consulta_id']): ?>
+                                        <a href="realizar_consulta.php?evento_id=<?= $consulta['evento_id'] ?>">Realizar consulta</a>
+
+                                    <?php elseif ($consulta['consulta_id']): ?>
+                                        <a href="mostrar_consulta.php?id=<?= $consulta['consulta_id'] ?>">Ver informações</a>
+                                        <a href="editar_consulta.php?id=<?= $consulta['consulta_id'] ?>">Editar</a>
+
+                                    <?php else: ?>
+                                        <a href="../eventos/mostrar_evento.php?id=<?= $consulta['evento_id'] ?>">Ver evento</a>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
 
@@ -151,12 +200,10 @@ $result = $stmt->get_result();
                         </tr>
                     <?php endif; ?>
                 </tbody>
-
             </table>
         </section>
-
-        <a href="../consultas/cadastrar_consulta.php">Cadastrar Consulta</a>
     </main>
+
     <?php include "../includes/dashboard-footer.php" ?>
 </body>
 
