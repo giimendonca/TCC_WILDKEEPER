@@ -526,113 +526,113 @@ INSERT INTO eventos
 
 VALUES
 
-(1, 'Consulta de rotina - Simba', 'Avaliação veterinária periódica.', 'Consulta', '2026-03-10 09:00:00', '2026-03-10 10:00:00', 1, 1, 2, 'Concluído', 1),
+(1, 'Consulta de rotina - Simba', 'Avaliação veterinária periódica.', 'Consulta', '2026-09-25 09:00:00', '2026-09-25 10:00:00', 1, 1, 2, 'Concluído', 1),
 
-(2, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-18 10:00:00', '2026-01-18 10:30:00', 2, 2, 2, 'Concluído', 1),
+(2, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-09-26 10:00:00', '2026-09-26 10:30:00', 2, 2, 2, 'Concluído', 1),
 
-(3, 'Alimentação especial - Teca', 'Alimentação acompanhada pela equipe.', 'Alimentação', '2026-03-12 11:00:00', '2026-03-12 11:30:00', 7, 3, 3, 'Concluído', 1),
+(3, 'Alimentação especial - Teca', 'Alimentação acompanhada pela equipe.', 'Alimentação', '2026-09-27 11:00:00', '2026-09-27 11:30:00', 7, 3, 3, 'Concluído', 1),
 
-(4, 'Manutenção do Terrário Tropical', 'Revisão da climatização e limpeza.', 'Manutenção', '2026-03-13 08:00:00', '2026-03-13 12:00:00', NULL, NULL, 4, 'Em andamento', 1),
+(4, 'Manutenção do Terrário Tropical', 'Revisão das estruturas e equipamentos do recinto.', 'Manutenção', '2026-09-28 08:00:00', '2026-09-28 12:00:00', NULL, NULL, 4, 'Em andamento', 1),
 
-(5, 'Transferência temporária - Maré', 'Mudança de recinto para adaptação.', 'Transferência', '2026-02-15 14:00:00', '2026-02-15 15:00:00', 10, 6, 3, 'Concluído', 1),
+(5, 'Transferência temporária - Maré', 'Mudança de recinto para adaptação.', 'Transferência', '2026-09-29 14:00:00', '2026-09-29 15:00:00', 10, 6, 3, 'Concluído', 1),
 
-(6, 'Avaliação veterinária - Capi', 'Avaliação clínica preventiva.', 'Consulta', '2026-03-15 09:30:00', '2026-03-15 10:30:00', 15, 6, 2, 'Agendado', 1),
+(6, 'Avaliação veterinária - Capi', 'Avaliação clínica preventiva.', 'Consulta', '2026-09-30 09:30:00', '2026-09-30 10:30:00', 15, 6, 2, 'Agendado', 1),
 
-(7, 'Consulta de rotina - Bruno', 'Avaliação veterinária periódica.', 'Consulta', '2026-03-10 09:00:00', '2026-03-10 10:00:00', 16, 7, 7, 'Concluído', 2),
+(7, 'Consulta de rotina - Bruno', 'Avaliação veterinária periódica.', 'Consulta', '2026-10-01 09:00:00', '2026-10-01 10:00:00', 16, 7, 7, 'Concluído', 2),
 
-(8, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-15 10:00:00', '2026-02-15 10:30:00', 21, 7, 7, 'Concluído', 2),
+(8, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-10-02 10:00:00', '2026-10-02 10:30:00', 21, 7, 7, 'Concluído', 2),
 
-(9, 'Alimentação - Rosa', 'Alimentação supervisionada no lago.', 'Alimentação', '2026-03-12 11:00:00', '2026-03-12 11:30:00', 23, 10, 8, 'Concluído', 2),
+(9, 'Alimentação - Rosa', 'Alimentação supervisionada no lago.', 'Alimentação', '2026-10-03 11:00:00', '2026-10-03 11:30:00', 23, 10, 8, 'Concluído', 2),
 
-(10, 'Manutenção do Aquário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-03-13 08:00:00', '2026-03-13 12:00:00', NULL, NULL, 8, 'Cancelado', 2),
+(10, 'Manutenção do Aquário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-10-04 08:00:00', '2026-10-04 12:00:00', NULL, NULL, 8, 'Cancelado', 2),
 
-(11, 'Transferência - Marina', 'Transferência para recinto de recuperação.', 'Transferência', '2026-02-01 14:00:00', '2026-02-01 15:00:00', 27, 12, 7, 'Concluído', 2),
+(11, 'Transferência - Marina', 'Transferência para recinto de recuperação.', 'Transferência', '2026-10-05 14:00:00', '2026-10-05 15:00:00', 27, 12, 7, 'Concluído', 2),
 
-(12, 'Avaliação do Axolote', 'Reavaliação do estado de saúde.', 'Consulta', '2026-03-16 09:00:00', '2026-03-16 09:45:00', 28, 12, 7, 'Agendado', 2),
+(12, 'Avaliação do Axolote', 'Reavaliação do estado de saúde.', 'Consulta', '2026-10-06 09:00:00', '2026-10-06 09:45:00', 28, 12, 7, 'Agendado', 2),
 
-(13, 'Alimentação - Simba', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 08:00:00', '2026-03-01 08:30:00', 1, 1, 3, 'Concluído', 1),
+(13, 'Alimentação - Simba', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-07 08:00:00', '2026-10-07 08:30:00', 1, 1, 3, 'Concluído', 1),
 
-(14, 'Alimentação - Juma', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 08:30:00', '2026-03-01 09:00:00', 2, 2, 3, 'Concluído', 1),
+(14, 'Alimentação - Juma', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-09 08:30:00', '2026-10-09 09:00:00', 2, 2, 3, 'Concluído', 1),
 
-(15, 'Alimentação - Amélia', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 09:00:00', '2026-03-01 09:30:00', 3, 1, 3, 'Concluído', 1),
+(15, 'Alimentação - Amélia', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-11 09:00:00', '2026-10-11 09:30:00', 3, 1, 3, 'Concluído', 1),
 
-(16, 'Alimentação - Bento', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 09:30:00', '2026-03-01 10:00:00', 4, 1, 3, 'Concluído', 1),
+(16, 'Alimentação - Bento', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-13 09:30:00', '2026-10-13 10:00:00', 4, 1, 3, 'Concluído', 1),
 
-(17, 'Alimentação - Guará', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 10:00:00', '2026-03-01 10:30:00', 5, 3, 3, 'Concluído', 1),
+(17, 'Alimentação - Guará', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-15 10:00:00', '2026-10-15 10:30:00', 5, 3, 3, 'Concluído', 1),
 
-(18, 'Alimentação - Teca', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 10:30:00', '2026-03-01 11:00:00', 7, 3, 3, 'Concluído', 1),
+(18, 'Alimentação - Teca', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-17 10:30:00', '2026-10-17 11:00:00', 7, 3, 3, 'Concluído', 1),
 
-(19, 'Alimentação - Azul', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 11:00:00', '2026-03-01 11:30:00', 8, 4, 3, 'Concluído', 1),
+(19, 'Alimentação - Azul', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-19 11:00:00', '2026-10-19 11:30:00', 8, 4, 3, 'Concluído', 1),
 
-(20, 'Alimentação - Capi', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-01 12:00:00', '2026-03-01 12:30:00', 15, 6, 3, 'Concluído', 1),
+(20, 'Alimentação - Capi', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-21 12:00:00', '2026-10-21 12:30:00', 15, 6, 3, 'Concluído', 1),
 
-(21, 'Alimentação - Bruno', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 08:00:00', '2026-03-02 08:30:00', 16, 7, 8, 'Concluído', 2),
+(21, 'Alimentação - Bruno', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-23 08:00:00', '2026-10-23 08:30:00', 16, 7, 8, 'Concluído', 2),
 
-(22, 'Alimentação - Hippo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 09:00:00', '2026-03-02 09:30:00', 18, 9, 8, 'Concluído', 2),
+(22, 'Alimentação - Hippo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-25 09:00:00', '2026-10-25 09:30:00', 18, 9, 8, 'Concluído', 2),
 
-(23, 'Alimentação - Listrado', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 09:30:00', '2026-03-02 10:00:00', 19, 9, 8, 'Concluído', 2),
+(23, 'Alimentação - Listrado', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-27 09:30:00', '2026-10-27 10:00:00', 19, 9, 8, 'Concluído', 2),
 
-(24, 'Alimentação - Kiko', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 10:00:00', '2026-03-02 10:30:00', 20, 9, 8, 'Concluído', 2),
+(24, 'Alimentação - Kiko', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-29 10:00:00', '2026-10-29 10:30:00', 20, 9, 8, 'Concluído', 2),
 
-(25, 'Alimentação - Kong', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 10:30:00', '2026-03-02 11:00:00', 21, 7, 8, 'Concluído', 2),
+(25, 'Alimentação - Kong', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-31 10:30:00', '2026-10-31 11:00:00', 21, 7, 8, 'Concluído', 2),
 
-(26, 'Alimentação - Rosa', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 11:00:00', '2026-03-02 11:30:00', 23, 10, 8, 'Concluído', 2),
+(26, 'Alimentação - Rosa', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-11-02 11:00:00', '2026-11-02 11:30:00', 23, 10, 8, 'Concluído', 2),
 
-(27, 'Alimentação - Komodo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 12:00:00', '2026-03-02 12:30:00', 26, 11, 8, 'Concluído', 2),
+(27, 'Alimentação - Komodo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-11-04 12:00:00', '2026-11-04 12:30:00', 26, 11, 8, 'Concluído', 2),
 
-(28, 'Alimentação - Açu', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-03-02 13:00:00', '2026-03-02 13:30:00', 30, 12, 8, 'Concluído', 2),
+(28, 'Alimentação - Açu', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-11-06 13:00:00', '2026-11-06 13:30:00', 30, 12, 8, 'Concluído', 2),
 
-(29, 'Vacinação - Simba', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-15 10:00:00', '2026-01-15 10:30:00', 1, 1, 2, 'Concluído', 1),
+(29, 'Vacinação - Simba', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-08 10:00:00', '2026-11-08 10:30:00', 1, 1, 2, 'Concluído', 1),
 
-(30, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-18 10:00:00', '2026-01-18 10:30:00', 2, 2, 2, 'Concluído', 1),
+(30, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-10 10:00:00', '2026-11-10 10:30:00', 2, 2, 2, 'Concluído', 1),
 
-(31, 'Vacinação - Guará', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-03 10:00:00', '2026-02-03 10:30:00', 5, 3, 2, 'Concluído', 1),
+(31, 'Vacinação - Guará', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-12 10:00:00', '2026-11-12 10:30:00', 5, 3, 2, 'Concluído', 1),
 
-(32, 'Vacinação - Pipoca', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-10 10:00:00', '2026-02-10 10:30:00', 6, 2, 2, 'Concluído', 1),
+(32, 'Vacinação - Pipoca', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-14 10:00:00', '2026-11-14 10:30:00', 6, 2, 2, 'Concluído', 1),
 
-(33, 'Vacinação - Capi', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-20 10:00:00', '2026-02-20 10:30:00', 15, 6, 2, 'Concluído', 1),
+(33, 'Vacinação - Capi', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-16 10:00:00', '2026-11-16 10:30:00', 15, 6, 2, 'Concluído', 1),
 
-(34, 'Vacinação - Bruno', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-01-22 10:00:00', '2026-01-22 10:30:00', 16, 7, 7, 'Concluído', 2),
+(34, 'Vacinação - Bruno', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-18 10:00:00', '2026-11-18 10:30:00', 16, 7, 7, 'Concluído', 2),
 
-(35, 'Vacinação - Hippo', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-05 10:00:00', '2026-02-05 10:30:00', 18, 9, 7, 'Concluído', 2),
+(35, 'Vacinação - Hippo', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-20 10:00:00', '2026-11-20 10:30:00', 18, 9, 7, 'Concluído', 2),
 
-(36, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-15 10:00:00', '2026-02-15 10:30:00', 21, 7, 7, 'Concluído', 2),
+(36, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-22 10:00:00', '2026-11-22 10:30:00', 21, 7, 7, 'Concluído', 2),
 
-(37, 'Vacinação - Rosa', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-02-18 10:00:00', '2026-02-18 10:30:00', 23, 10, 7, 'Concluído', 2),
+(37, 'Vacinação - Rosa', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-24 10:00:00', '2026-11-24 10:30:00', 23, 10, 7, 'Concluído', 2),
 
-(38, 'Vacinação - Komodo', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-01 10:00:00', '2026-03-01 10:30:00', 26, 11, 7, 'Concluído', 2),
+(38, 'Vacinação - Komodo', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-26 10:00:00', '2026-11-26 10:30:00', 26, 11, 7, 'Concluído', 2),
 
-(39, 'Vacinação - Marina', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-03 10:00:00', '2026-03-03 10:30:00', 27, 12, 7, 'Concluído', 2),
+(39, 'Vacinação - Marina', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-28 10:00:00', '2026-11-28 10:30:00', 27, 12, 7, 'Concluído', 2),
 
-(40, 'Vacinação - Açu', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-03-08 10:00:00', '2026-03-08 10:30:00', 30, 12, 7, 'Concluído', 2),
+(40, 'Vacinação - Açu', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-30 10:00:00', '2026-11-30 10:30:00', 30, 12, 7, 'Concluído', 2),
 
-(41, 'Manutenção da Savana Africana', 'Revisão das cercas e dos portões de acesso.', 'Manutenção', '2026-01-10 08:00:00', '2026-01-10 12:00:00', NULL, NULL, 4, 'Concluído', 1),
+(41, 'Manutenção da Savana Africana', 'Revisão das cercas e dos portões de acesso.', 'Manutenção', '2026-12-01 08:00:00', '2026-12-01 12:00:00', NULL, NULL, 4, 'Concluído', 1),
 
-(42, 'Manutenção da Floresta Amazônica', 'Limpeza e revisão das estruturas de escalada.', 'Manutenção', '2026-01-22 08:00:00', '2026-01-22 12:00:00', NULL, NULL, 4, 'Concluído', 1),
+(42, 'Manutenção da Floresta Amazônica', 'Limpeza e revisão das estruturas de escalada.', 'Manutenção', '2026-12-03 08:00:00', '2026-12-03 12:00:00', NULL, NULL, 4, 'Concluído', 1),
 
-(43, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2026-02-05 08:00:00', '2026-02-05 12:00:00', NULL, NULL, 4, 'Em andamento', 1),
+(43, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2026-12-05 08:00:00', '2026-12-05 12:00:00', NULL, NULL, 4, 'Em andamento', 1),
 
-(44, 'Manutenção da Área Semiaquática', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Manutenção', '2026-02-18 08:00:00', '2026-02-18 12:00:00', NULL, NULL, 3, 'Concluído', 1),
+(44, 'Manutenção da Área Semiaquática', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Manutenção', '2026-12-07 08:00:00', '2026-12-07 12:00:00', NULL, NULL, 3, 'Concluído', 1),
 
-(45, 'Manutenção da Floresta Temperada', 'Revisão de árvores e estruturas internas.', 'Manutenção', '2026-01-28 08:00:00', '2026-01-28 12:00:00', NULL, NULL, 9, 'Concluído', 2),
+(45, 'Manutenção da Floresta Temperada', 'Revisão de árvores e estruturas internas.', 'Manutenção', '2026-12-09 08:00:00', '2026-12-09 12:00:00', NULL, NULL, 9, 'Concluído', 2),
 
-(46, 'Manutenção do Lago das Aves', 'Limpeza das margens do lago e revisão de filtros.', 'Manutenção', '2026-02-12 08:00:00', '2026-02-12 12:00:00', NULL, NULL, 9, 'Em andamento', 2),
+(46, 'Manutenção do Lago das Aves', 'Limpeza das margens do lago e revisão de filtros.', 'Manutenção', '2026-12-11 08:00:00', '2026-12-11 12:00:00', NULL, NULL, 9, 'Em andamento', 2),
 
-(47, 'Manutenção do Terrário de Répteis', 'Manutenção do sistema de controle de temperatura.', 'Manutenção', '2026-02-25 08:00:00', '2026-02-25 12:00:00', NULL, NULL, 8, 'Agendado', 2),
+(47, 'Manutenção do Terrário de Répteis', 'Manutenção do sistema de controle de temperatura.', 'Manutenção', '2026-12-13 08:00:00', '2026-12-13 12:00:00', NULL, NULL, 8, 'Agendado', 2),
 
-(48, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão de bombas.', 'Manutenção', '2026-03-05 08:00:00', '2026-03-05 12:00:00', NULL, NULL, 8, 'Concluído', 2),
+(48, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão de bombas.', 'Manutenção', '2026-12-15 08:00:00', '2026-12-15 12:00:00', NULL, NULL, 8, 'Concluído', 2),
 
-(49, 'Transferência - Guará', 'Mudança de habitat para adequação ambiental.', 'Transferência', '2025-11-10 14:00:00', '2025-11-10 15:00:00', 5, 2, 4, 'Concluído', 1),
+(49, 'Transferência - Guará', 'Mudança de habitat para adequação ambiental.', 'Transferência', '2026-12-17 14:00:00', '2026-12-17 15:00:00', 5, 2, 4, 'Concluído', 1),
 
-(50, 'Transferência - Teca', 'Mudança para área com estrutura de observação clínica.', 'Transferência', '2026-01-08 14:00:00', '2026-01-08 15:00:00', 7, 3, 3, 'Concluído', 1),
+(50, 'Transferência - Teca', 'Mudança para área com estrutura de observação clínica.', 'Transferência', '2026-12-19 14:00:00', '2026-12-19 15:00:00', 7, 3, 3, 'Concluído', 1),
 
-(51, 'Transferência - Maré', 'Adaptação gradual a ambiente semiaquático.', 'Transferência', '2026-02-15 14:00:00', '2026-02-15 15:00:00', 10, 6, 3, 'Concluído', 1),
+(51, 'Transferência - Maré', 'Adaptação gradual a ambiente semiaquático.', 'Transferência', '2026-12-21 14:00:00', '2026-12-21 15:00:00', 10, 6, 3, 'Concluído', 1),
 
-(52, 'Transferência - Hippo', 'Reorganização dos recintos para manutenção da área anterior.', 'Transferência', '2025-12-02 14:00:00', '2025-12-02 15:00:00', 18, 7, 9, 'Concluído', 2),
+(52, 'Transferência - Hippo', 'Reorganização dos recintos para manutenção da área anterior.', 'Transferência', '2026-12-23 14:00:00', '2026-12-23 15:00:00', 18, 7, 9, 'Concluído', 2),
 
-(53, 'Transferência - Sky', 'Transferência temporária para observação e recuperação.', 'Transferência', '2026-01-20 14:00:00', '2026-01-20 15:00:00', 24, 7, 7, 'Concluído', 2),
+(53, 'Transferência - Sky', 'Transferência temporária para observação e recuperação.', 'Transferência', '2026-12-26 14:00:00', '2026-12-26 15:00:00', 24, 7, 7, 'Concluído', 2),
 
-(54, 'Transferência - Marina', 'Adequação do recinto ao acompanhamento de recuperação.', 'Transferência', '2026-02-01 14:00:00', '2026-02-01 15:00:00', 27, 7, 7, 'Concluído', 2);
+(54, 'Transferência - Marina', 'Adequação do recinto ao acompanhamento de recuperação.', 'Transferência', '2026-12-28 14:00:00', '2026-12-28 15:00:00', 27, 7, 7, 'Concluído', 2);
 
 -- ============================================================
 
