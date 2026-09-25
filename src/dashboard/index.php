@@ -283,7 +283,7 @@ $animaisPorSaude = countAnimaisPorSaude($conexao, $idInstituicao);
                             <span><?= htmlspecialchars($evento['tipo']) ?></span>
                             <h3>Título: <?= htmlspecialchars($evento['titulo']) ?></h3>
                         </div>
-                        <p><?= htmlspecialchars($evento['data_inicio']) ?></p>
+                        <p><?= htmlspecialchars($dataEvento) ?></p>
                         <?php if (!empty($evento['animal_nome'])): ?>
                             <p>Animal: <?= htmlspecialchars($evento['animal_nome']) ?></p>
                         <?php elseif (!empty($evento['habitat_nome'])): ?>

@@ -41,11 +41,12 @@ $sql = "SELECT
     eventos.animal_id,
     eventos.habitat_id,
     animais.nome AS animal_nome,
+    habitats.nome AS habitat_nome,
     eventos.funcionario_id,
     users.nome AS funcionario_nome
 FROM eventos
 LEFT JOIN animais ON animais.id = eventos.animal_id
-LEFT JOIN habitats ON habitats.id = eventos.habitats_id
+LEFT JOIN habitats ON habitats.id = eventos.habitat_id
 INNER JOIN users ON users.id = eventos.funcionario_id
 WHERE eventos.instituicao_id = ?";
 
@@ -146,6 +147,7 @@ $result = $stmt->get_result();
                         <th>Início</th>
                         <th>Fim</th>
                         <th>Animal</th>
+                        <th>Habitat</th>
                         <th>Funcionário</th>
                         <th>Status</th>
                         <th>Ações</th>
@@ -169,7 +171,11 @@ $result = $stmt->get_result();
                                 <td><?= date("d/m/Y H:i", strtotime($evento['data_fim'])) ?></td>
 
                                 <td>
-                                    <?= $evento['animal_nome'] ? htmlspecialchars($evento['animal_nome']) : "Evento geral" ?>
+                                    <?= $evento['animal_nome'] ? htmlspecialchars($evento['animal_nome']) : "—" ?>
+                                </td>
+
+                                <td>
+                                    <?= $evento['habitat_nome'] ? htmlspecialchars($evento['habitat_nome']) : "—" ?>
                                 </td>
 
                                 <td><?= htmlspecialchars($evento['funcionario_nome']) ?></td>
@@ -187,7 +193,7 @@ $result = $stmt->get_result();
                     <?php else: ?>
 
                         <tr>
-                            <td colspan="8">Nenhum evento encontrado.</td>
+                            <td colspan="9">Nenhum evento encontrado.</td>
                         </tr>
 
                     <?php endif; ?>
