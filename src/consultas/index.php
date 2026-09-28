@@ -169,15 +169,9 @@ $result = $stmt->get_result();
 
                                 <td><?= htmlspecialchars($consulta['evento_status']) ?></td>
 
-                                <td>
-                                    <?php if ($consulta['consulta_id']): ?>
-                                        <?= htmlspecialchars($consulta['diagnostico'] ?? '') ?>
-                                    <?php else: ?>
-                                        Não realizada
-                                    <?php endif; ?>
-                                </td>
+                                <td><?= $consulta['consulta_id'] ? htmlspecialchars($consulta['diagnostico']) : "Não realizada" ?></td>
 
-                                <td><?= htmlspecialchars($consulta['data_retorno'] ?? '') ?></td>
+                                <td><?= htmlspecialchars($consulta['data_retorno'] ?? 'Não possui') ?></td>
 
                                 <td>
                                     <?php if ($consulta['evento_status'] == 'Agendado' && !$consulta['consulta_id']): ?>

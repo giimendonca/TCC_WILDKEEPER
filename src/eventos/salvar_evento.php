@@ -29,6 +29,7 @@ $evento = [
     "data_inicio" => trim($_POST['data_inicio'] ?? ''),
     "data_fim" => trim($_POST['data_fim'] ?? ''),
     "animal_id" => trim($_POST['animal_id'] ?? ''),
+    "habitat_id" => trim($_POST['habitat_id'] ?? ''),
     "funcionario_id" => trim($_POST['funcionario_id'] ?? ''),
     "status" => trim($_POST['status'] ?? ''),
     "instituicao_id" => $_SESSION['instituicao_id']
@@ -122,6 +123,37 @@ if ($resultFuncionario->num_rows == 0) {
 }
 
 // ====================================
+// Verifica o habitat
+// ====================================
+
+if ($evento['habitat_id'] != "") {
+
+    $sqlHabitat = "SELECT id
+    FROM habitats
+    WHERE id = ?
+    AND instituicao_id = ?";
+
+    $stmtHabitat = $conexao->prepare($sqlHabitat);
+    $stmtHabitat->bind_param(
+        "ii",
+        $evento['habitat_id'],
+        $evento['instituicao_id']
+    );
+    $stmtHabitat->execute();
+
+    $resultHabitat = $stmtHabitat->get_result();
+
+    if ($resultHabitat->num_rows == 0) {
+        die("Habitat inválido.");
+    }
+
+} else {
+
+    $evento['habitat_id'] = null;
+
+}
+
+// ====================================
 // Verifica o animal
 // ====================================
 
@@ -157,19 +189,20 @@ if ($evento['animal_id'] != "") {
 // ====================================
 
 $sql = "INSERT INTO eventos
-(titulo, descricao, tipo, data_inicio, data_fim, animal_id, funcionario_id, status, instituicao_id)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+(titulo, descricao, tipo, data_inicio, data_fim, animal_id, habitat_id, funcionario_id, status, instituicao_id)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conexao->prepare($sql);
 
 $stmt->bind_param(
-    "sssssiisi",
+    "sssssiiisi",
     $evento['titulo'],
     $evento['descricao'],
     $evento['tipo'],
     $evento['data_inicio'],
     $evento['data_fim'],
     $evento['animal_id'],
+    $evento['habitat_id'],
     $evento['funcionario_id'],
     $evento['status'],
     $evento['instituicao_id']

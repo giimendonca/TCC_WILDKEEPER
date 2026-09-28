@@ -32,11 +32,14 @@ $sql = "SELECT
     eventos.data_fim,
     eventos.status,
     eventos.animal_id,
+    eventos.habitat_id,
     animais.nome AS animal_nome,
+    habitats.nome AS habitat_nome,
     eventos.funcionario_id,
     users.nome AS funcionario_nome
 FROM eventos
 LEFT JOIN animais ON animais.id = eventos.animal_id
+LEFT JOIN habitats ON habitats.id = eventos.habitat_id
 INNER JOIN users ON users.id = eventos.funcionario_id
 WHERE eventos.id = ? AND eventos.instituicao_id = ?";
 
@@ -51,48 +54,6 @@ $evento = $result->fetch_assoc();
 if (!$evento) {
     die("Evento não encontrado.");
 }
-
-// ====================================
-// Verifica onde o evento está sendo usado
-// ====================================
-
-$quantidadeConsultas = 0;
-$quantidadeAlimentacoes = 0;
-$quantidadeVacinas = 0;
-$quantidadeManutencoes = 0;
-$quantidadeHistoricos = 0;
-
-$stmt = $conexao->prepare("SELECT COUNT(*) AS total FROM consultas WHERE evento_id = ? AND instituicao_id = ?");
-$stmt->bind_param("ii", $eventoId, $_SESSION['instituicao_id']);
-$stmt->execute();
-$quantidadeConsultas = $stmt->get_result()->fetch_assoc()['total'];
-
-$stmt = $conexao->prepare("SELECT COUNT(*) AS total FROM alimentacoes WHERE evento_id = ? AND instituicao_id = ?");
-$stmt->bind_param("ii", $eventoId, $_SESSION['instituicao_id']);
-$stmt->execute();
-$quantidadeAlimentacoes = $stmt->get_result()->fetch_assoc()['total'];
-
-$stmt = $conexao->prepare("SELECT COUNT(*) AS total FROM vacinas WHERE evento_id = ? AND instituicao_id = ?");
-$stmt->bind_param("ii", $eventoId, $_SESSION['instituicao_id']);
-$stmt->execute();
-$quantidadeVacinas = $stmt->get_result()->fetch_assoc()['total'];
-
-$stmt = $conexao->prepare("SELECT COUNT(*) AS total FROM manutencao_habitats WHERE evento_id = ? AND instituicao_id = ?");
-$stmt->bind_param("ii", $eventoId, $_SESSION['instituicao_id']);
-$stmt->execute();
-$quantidadeManutencoes = $stmt->get_result()->fetch_assoc()['total'];
-
-$stmt = $conexao->prepare("SELECT COUNT(*) AS total FROM historico_habitats WHERE evento_id = ? AND instituicao_id = ?");
-$stmt->bind_param("ii", $eventoId, $_SESSION['instituicao_id']);
-$stmt->execute();
-$quantidadeHistoricos = $stmt->get_result()->fetch_assoc()['total'];
-
-$totalRegistrosRelacionados =
-    $quantidadeConsultas +
-    $quantidadeAlimentacoes +
-    $quantidadeVacinas +
-    $quantidadeManutencoes +
-    $quantidadeHistoricos;
 
 ?>
 
@@ -138,6 +99,11 @@ $totalRegistrosRelacionados =
             </p>
 
             <p>
+                <strong>Habitat:</strong>
+                <?= $evento['habitat_nome'] ? htmlspecialchars($evento['habitat_nome']) : "Evento geral" ?>
+            </p>
+
+            <p>
                 <strong>Funcionário responsável:</strong>
                 <?= htmlspecialchars($evento['funcionario_nome']) ?>
             </p>
@@ -154,44 +120,8 @@ $totalRegistrosRelacionados =
 
             </article>
 
-            <article>
-
-                <h2>Registros relacionados</h2>
-
-                <?php if ($totalRegistrosRelacionados > 0): ?>
-
-                    <?php if ($quantidadeConsultas > 0): ?>
-                        <p>Consultas: <?= $quantidadeConsultas ?></p>
-                    <?php endif; ?>
-
-                    <?php if ($quantidadeVacinas > 0): ?>
-                        <p>Vacinas: <?= $quantidadeVacinas ?></p>
-                    <?php endif; ?>
-
-                    <?php if ($quantidadeAlimentacoes > 0): ?>
-                        <p>Alimentações: <?= $quantidadeAlimentacoes ?></p>
-                    <?php endif; ?>
-
-                    <?php if ($quantidadeManutencoes > 0): ?>
-                        <p>Manutenções: <?= $quantidadeManutencoes ?></p>
-                    <?php endif; ?>
-
-                    <?php if ($quantidadeHistoricos > 0): ?>
-                        <p>Históricos de habitat: <?= $quantidadeHistoricos ?></p>
-                    <?php endif; ?>
-
-                <?php else: ?>
-
-                    <p>Este evento ainda não possui registros relacionados.</p>
-
-                <?php endif; ?>
-
-            </article>
-
             <?php if (nivelMinimo(40)): ?>
-
                 <a href="editar_evento.php?id=<?= $eventoId ?>">Editar</a>
-
             <?php endif; ?>
 
             <br>

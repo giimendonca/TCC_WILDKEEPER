@@ -57,6 +57,21 @@ $stmtAnimais->execute();
 $animais = $stmtAnimais->get_result();
 
 // ====================================
+// Busca os habitats
+// ====================================
+
+$sqlHabitats = "SELECT id, nome
+FROM habitats
+WHERE instituicao_id = ?
+ORDER BY nome ASC";
+
+$stmtHabitats = $conexao->prepare($sqlHabitats);
+$stmtHabitats->bind_param("i", $_SESSION['instituicao_id']);
+$stmtHabitats->execute();
+
+$habitats = $stmtHabitats->get_result();
+
+// ====================================
 // Busca os funcionários
 // ====================================
 
@@ -129,6 +144,21 @@ $funcionarios = $stmtFuncionarios->get_result();
 
                         <option value="<?= htmlspecialchars($animal['id']) ?>" <?= $animal['id'] == $evento['animal_id'] ? "selected" : "" ?>>
                             <?= htmlspecialchars($animal['nome']) ?>
+                        </option>
+
+                    <?php endwhile; ?>
+
+                </select>
+
+                <label for="habitat_id">Habitat</label>
+                <select name="habitat_id" id="habitat_id">
+
+                    <option value="">Nenhum / Evento geral</option>
+
+                    <?php while ($habitat = $habitats->fetch_assoc()): ?>
+
+                        <option value="<?= htmlspecialchars($habitat['id']) ?>" <?= $habitat['id'] == $evento['habitat_id'] ? "selected" : "" ?>>
+                            <?= htmlspecialchars($habitat['nome']) ?>
                         </option>
 
                     <?php endwhile; ?>

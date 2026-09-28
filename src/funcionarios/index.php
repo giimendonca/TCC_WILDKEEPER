@@ -128,7 +128,7 @@ $result = $stmt->get_result();
                                 <td><?= htmlspecialchars($funcionario['nome']) ?></td>
                                 <td><?= htmlspecialchars($funcionario['cargo_nome']) ?></td>
                                 <td><?= htmlspecialchars($funcionario['status']) ?></td>
-                                <td><a href="mostrar_funcionario.php?id=<?= $funcionario['id'] ?>">Ver informações</a></td>
+                                <td><a href="mostrar_funcionario.php?id=<?= htmlspecialchars($funcionario['id']) ?>">Ver informações</a> <a href="editar_funcionario.php?id=<?= htmlspecialchars($funcionario['id']) ?>">Editar</a></td>
                             </tr>
                         <?php endwhile; ?>
 

@@ -165,7 +165,7 @@ $result = $stmt->get_result();
                                 <td><?= htmlspecialchars($especie['categoria_nome']) ?></td>
                                 <td><?= htmlspecialchars($especie['classificacao_alimentar_nome']) ?></td>
                                 <td><?= htmlspecialchars($especie['risco_extincao_nome']) ?></td>
-                                <td><a href="mostrar_especie.php?id=<?= $especie['id'] ?>">Ver informações</a></td>
+                                <td><a href="mostrar_especie.php?id=<?= htmlspecialchars($especie['id']) ?>">Ver informações</a> <a href="editar_especie.php?id=<?= htmlspecialchars($especie['id']) ?>">Editar</a></td>
                             </tr>
                         <?php endwhile; ?>
 

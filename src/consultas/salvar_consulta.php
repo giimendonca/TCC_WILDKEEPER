@@ -26,6 +26,10 @@ if (!$evento_id || !$diagnostico || !$tratamento) {
     die("Preencha todos os campos obrigatórios.");
 }
 
+if(empty($data_retorno)){
+    $data_retorno = null;
+}
+
 // ====================================
 // Busca e valida o evento
 // ====================================
