@@ -87,6 +87,8 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
     <title>Habitats | WildKeeper</title>
 </head>
 
@@ -98,13 +100,13 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome do habitat" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" name="nome" id="nome" placeholder="Pesquisar por nome do habitat" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="bioma">Bioma</label>
-                <input type="text" name="bioma" id="bioma" placeholder="Pesquisar por bioma" value="<?= htmlspecialchars($biomaFiltrado) ?>">
+                <input type="text" data-pesquisa="bioma" name="bioma" id="bioma" placeholder="Pesquisar por bioma" value="<?= htmlspecialchars($biomaFiltrado) ?>">
 
                 <label for="capacidade">Capacidade</label>
-                <input type="number" name="capacidade" id="capacidade" placeholder="Pesquisar por quantidade mínima" value="<?= htmlspecialchars($capacidadeFiltrada) ?>">
+                <input type="number" data-pesquisa="capacidade" name="capacidade" id="capacidade" placeholder="Pesquisar por quantidade mínima" value="<?= htmlspecialchars($capacidadeFiltrada) ?>">
 
                 <label for="status">Status</label>
                 <select name="status" id="status">
@@ -118,7 +120,7 @@ $result = $stmt->get_result();
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <table border="1">
+            <table border="1" id="tabela">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -133,9 +135,9 @@ $result = $stmt->get_result();
                     <?php if ($result->num_rows > 0): ?>
                         <?php while ($habitat = $result->fetch_assoc()): ?>
                             <tr>
-                                <td><?= htmlspecialchars($habitat['nome']) ?></td>
-                                <td><?= htmlspecialchars($habitat['bioma']) ?></td>
-                                <td><?= htmlspecialchars($habitat['capacidade']) ?></td>
+                                <td data-campo="nome"><?= htmlspecialchars($habitat['nome']) ?></td>
+                                <td data-campo="bioma"><?= htmlspecialchars($habitat['bioma']) ?></td>
+                                <td data-campo="capacidade"><?= htmlspecialchars($habitat['capacidade']) ?></td>
                                 <td><?= htmlspecialchars($habitat['status']) ?></td>
 
                                 <td><a href="mostrar_habitat.php?id=<?= $habitat['id'] ?>">Ver informações</a></td>
@@ -155,6 +157,8 @@ $result = $stmt->get_result();
         <a href="cadastrar_habitat.php">Cadastrar Habitat</a>
     </main>
     <?php include "../includes/dashboard-footer.php" ?>
+
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 
 </html>

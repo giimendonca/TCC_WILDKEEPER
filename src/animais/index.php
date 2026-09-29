@@ -118,6 +118,9 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
+
     <title>Animais | WildKeeper</title>
 </head>
 
@@ -136,7 +139,7 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" name="nome" id="nome" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="especie">Espécie</label>
                 <select name="especie" id="especie">
@@ -173,7 +176,7 @@ $result = $stmt->get_result();
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <table border="1">
+            <table border="1" id="tabela">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -191,7 +194,7 @@ $result = $stmt->get_result();
                     <?php if ($result->num_rows > 0): ?>
                         <?php while ($animal = $result->fetch_assoc()): ?>
                             <tr>
-                                <td><?= htmlspecialchars($animal['nome']) ?></td>
+                                <td data-campo="nome"><?= htmlspecialchars($animal['nome']) ?></td>
                                 <td><?= htmlspecialchars($animal['especie_nome']) ?></td>
                                 <td><?= htmlspecialchars($animal['sexo']) ?></td>
                                 <td><?= htmlspecialchars($animal['data_nascimento']) ?></td>
@@ -213,6 +216,8 @@ $result = $stmt->get_result();
         </section>
     </main>
     <?php include "../includes/dashboard-footer.php" ?>
+
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 
 </html>
