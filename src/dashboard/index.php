@@ -311,7 +311,7 @@ $animaisPorSaude = countAnimaisPorSaude($conexao, $idInstituicao);
                     <h3>Administração</h3>
 
                     <a href="../funcionarios/index.php">Funcionários</a>
-                    <a href="../perfil/index.php">Configurações</a>
+                    <a href="../instituicao/index.php">Configurações da Instituição</a>
                 </article>
             <?php endif; ?>
 
