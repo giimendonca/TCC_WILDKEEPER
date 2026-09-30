@@ -100,13 +100,13 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" data-pesquisa="nome" name="nome" id="nome" placeholder="Pesquisar por nome do habitat" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" data-campos="nome" name="nome" id="nome" placeholder="Pesquisar por nome do habitat" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="bioma">Bioma</label>
-                <input type="text" data-pesquisa="bioma" name="bioma" id="bioma" placeholder="Pesquisar por bioma" value="<?= htmlspecialchars($biomaFiltrado) ?>">
+                <input type="text" data-pesquisa="bioma" data-campos="bioma" name="bioma" id="bioma" placeholder="Pesquisar por bioma" value="<?= htmlspecialchars($biomaFiltrado) ?>">
 
                 <label for="capacidade">Capacidade</label>
-                <input type="number" data-pesquisa="capacidade" name="capacidade" id="capacidade" placeholder="Pesquisar por quantidade mínima" value="<?= htmlspecialchars($capacidadeFiltrada) ?>">
+                <input type="number" data-pesquisa="capacidade" data-campos="capacidade" name="capacidade" id="capacidade" placeholder="Pesquisar por quantidade mínima" value="<?= htmlspecialchars($capacidadeFiltrada) ?>">
 
                 <label for="status">Status</label>
                 <select name="status" id="status">

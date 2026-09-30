@@ -92,6 +92,8 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
     <title>Eventos | WildKeeper</title>
 </head>
 <body>
@@ -112,7 +114,7 @@ $result = $stmt->get_result();
             <form action="index.php" method="get">
 
                 <label for="titulo">Título</label>
-                <input type="text" name="titulo" id="titulo" placeholder="Encontrar pelo título" value="<?= htmlspecialchars($tituloFiltrado) ?>">
+                <input type="text" data-pesquisa="titulo" data-campos="titulo" name="titulo" id="titulo" placeholder="Encontrar pelo título" value="<?= htmlspecialchars($tituloFiltrado) ?>">
 
                 <label for="tipo">Tipo</label>
                 <select name="tipo" id="tipo">
@@ -138,7 +140,7 @@ $result = $stmt->get_result();
 
             </form>
 
-            <table border="1">
+            <table border="1" id="tabela">
 
                 <thead>
                     <tr>
@@ -162,7 +164,7 @@ $result = $stmt->get_result();
 
                             <tr>
 
-                                <td><?= htmlspecialchars($evento['titulo']) ?></td>
+                                <td data-campo="titulo"><?= htmlspecialchars($evento['titulo']) ?></td>
 
                                 <td><?= htmlspecialchars($evento['tipo']) ?></td>
 
@@ -207,5 +209,6 @@ $result = $stmt->get_result();
 
     <?php include "../includes/dashboard-footer.php" ?>
 
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 </html>

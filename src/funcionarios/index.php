@@ -80,6 +80,8 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funcionários | WildKeeper</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
 </head>
 
 <body>
@@ -90,7 +92,7 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" data-campos="nome" name="nome" id="nome" placeholder="Pesquisar por nome" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="cargo">Cargo</label>
                 <select name="cargo" id="cargo">
@@ -111,7 +113,7 @@ $result = $stmt->get_result();
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <table border="1">
+            <table border="1" id="tabela">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -125,7 +127,7 @@ $result = $stmt->get_result();
                     <?php if ($result->num_rows > 0): ?>
                         <?php while ($funcionario = $result->fetch_assoc()): ?>
                             <tr>
-                                <td><?= htmlspecialchars($funcionario['nome']) ?></td>
+                                <td data-campo="nome"><?= htmlspecialchars($funcionario['nome']) ?></td>
                                 <td><?= htmlspecialchars($funcionario['cargo_nome']) ?></td>
                                 <td><?= htmlspecialchars($funcionario['status']) ?></td>
                                 <td><a href="mostrar_funcionario.php?id=<?= htmlspecialchars($funcionario['id']) ?>">Ver informações</a> <a href="editar_funcionario.php?id=<?= htmlspecialchars($funcionario['id']) ?>">Editar</a></td>
@@ -145,6 +147,8 @@ $result = $stmt->get_result();
         <a href="../funcionarios/cadastro_funcionario.php">Cadastrar Funcionário</a>
     </main>
     <?php include "../includes/dashboard-footer.php" ?>
+
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 
 </html>

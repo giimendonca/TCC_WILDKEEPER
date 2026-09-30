@@ -91,6 +91,8 @@ $resultado = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicamentos | WildKeeper</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
 </head>
 <body>
     <?php include "../includes/dashboard-header.php" ?>
@@ -106,7 +108,7 @@ $resultado = $stmt->get_result();
             <form action="index.php" method="get">
 
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" data-campos="nome" name="nome" id="nome" placeholder="Pesquisar por nome" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="estoque">Ordenar estoque</label>
                 <select name="estoque" id="estoque">
@@ -136,7 +138,7 @@ $resultado = $stmt->get_result();
 
             <?php if ($resultado->num_rows > 0): ?>
 
-                <table border="1">
+                <table border="1" id="tabela">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -153,7 +155,7 @@ $resultado = $stmt->get_result();
                         <?php while ($medicamento = $resultado->fetch_assoc()): ?>
 
                             <tr>
-                                <td><?= htmlspecialchars($medicamento['nome']) ?></td>
+                                <td data-campo="nome"><?= htmlspecialchars($medicamento['nome']) ?></td>
 
                                 <td><?= htmlspecialchars($medicamento['fabricante']) ?></td>
 
@@ -197,5 +199,7 @@ $resultado = $stmt->get_result();
     </main>
 
     <?php include "../includes/dashboard-footer.php" ?>
+
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 </html>

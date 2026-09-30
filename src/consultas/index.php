@@ -119,6 +119,8 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultas | WildKeeper</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
 </head>
 
 <body>
@@ -130,10 +132,10 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome_animal">Nome Animal</label>
-                <input type="text" name="nome_animal" id="nome_animal" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeAnimal) ?>">
+                <input type="text" data-pesquisa="nome_animal" data-campos="nome_animal" name="nome_animal" id="nome_animal" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeAnimal) ?>">
 
                 <label for="nome_funcionario">Nome Funcionário</label>
-                <input type="text" name="nome_funcionario" id="nome_funcionario" placeholder="Encontrar pelo nome do funcionário" value="<?= htmlspecialchars($nomeFuncionario) ?>">
+                <input type="text" data-pesquisa="nome_funcionario" data-campos="nome_funcionario" name="nome_funcionario" id="nome_funcionario" placeholder="Encontrar pelo nome do funcionário" value="<?= htmlspecialchars($nomeFuncionario) ?>">
 
                 <label for="data_consulta">Data da Consulta</label>
                 <input type="date" name="data_consulta" id="data_consulta" value="<?= htmlspecialchars($dataConsulta) ?>">
@@ -144,7 +146,7 @@ $result = $stmt->get_result();
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <table border="1">
+            <table border="1" id="tabela">
                 <thead>
                     <tr>
                         <th>Nome Animal</th>
@@ -161,9 +163,9 @@ $result = $stmt->get_result();
                     <?php if ($result->num_rows > 0): ?>
                         <?php while ($consulta = $result->fetch_assoc()): ?>
                             <tr>
-                                <td><?= htmlspecialchars($consulta['animal_nome']) ?></td>
+                                <td data-campo="nome_animal"><?= htmlspecialchars($consulta['animal_nome']) ?></td>
 
-                                <td><?= htmlspecialchars($consulta['funcionario_nome']) ?></td>
+                                <td data-campo="nome_funcionario"><?= htmlspecialchars($consulta['funcionario_nome']) ?></td>
 
                                 <td><?= htmlspecialchars($consulta['data_inicio']) ?></td>
 
@@ -199,6 +201,8 @@ $result = $stmt->get_result();
     </main>
 
     <?php include "../includes/dashboard-footer.php" ?>
+
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 
 </html>

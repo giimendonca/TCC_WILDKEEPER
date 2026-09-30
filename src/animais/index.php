@@ -139,7 +139,7 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" data-pesquisa="nome" name="nome" id="nome" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" data-campos="nome" name="nome" id="nome" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="especie">Espécie</label>
                 <select name="especie" id="especie">

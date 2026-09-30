@@ -61,7 +61,7 @@ $types = "";
 // Verifica quais filtros foram enviados
 // Filtro do nome
 if ($nomeFiltrado != "") {
-    $sql .= " AND especies.nome_popular LIKE ? OR especies.nome_cientifico LIKE ?";
+    $sql .= " AND (especies.nome_popular LIKE ? OR especies.nome_cientifico LIKE ?)";
     $params[] = "%$nomeFiltrado%";
     $params[] = "%$nomeFiltrado%";
     $types .= "ss";
@@ -103,6 +103,8 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espécies | WildKeeper</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/tabela.css">
 </head>
 
 <body>
@@ -113,7 +115,7 @@ $result = $stmt->get_result();
 
             <form action="index.php" method="get">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" placeholder="Pesquisar por nome científico ou popular" value="<?= htmlspecialchars($nomeFiltrado) ?>">
+                <input type="text" data-pesquisa="nome" data-campos="nome_popular,nome_cientifico" name="nome" id="nome" placeholder="Pesquisar por nome científico ou popular" value="<?= htmlspecialchars($nomeFiltrado) ?>">
 
                 <label for="categoria">Categoria</label>
                 <select name="categoria" id="categoria">
@@ -142,7 +144,7 @@ $result = $stmt->get_result();
                 <button type="submit">Pesquisar</button>
             </form>
 
-            <table border="1">
+            <table border="1" id="tabela">
                 <thead>
                     <tr>
                         <th>Nome Popular</th>
@@ -159,8 +161,8 @@ $result = $stmt->get_result();
                     <?php if ($result->num_rows > 0): ?>
                         <?php while ($especie = $result->fetch_assoc()): ?>
                             <tr>
-                                <td><?= htmlspecialchars($especie['nome_popular']) ?></td>
-                                <td><?= htmlspecialchars($especie['nome_cientifico']) ?></td>
+                                <td data-campo="nome_popular"><?= htmlspecialchars($especie['nome_popular']) ?></td>
+                                <td data-campo="nome_cientifico"><?= htmlspecialchars($especie['nome_cientifico']) ?></td>
                                 <td><?= htmlspecialchars($especie['origem']) ?></td>
                                 <td><?= htmlspecialchars($especie['categoria_nome']) ?></td>
                                 <td><?= htmlspecialchars($especie['classificacao_alimentar_nome']) ?></td>
@@ -182,6 +184,8 @@ $result = $stmt->get_result();
         <a href="../especies/cadastrar_especie.php">Cadastrar Espécie</a>
     </main>
     <?php include "../includes/dashboard-footer.php" ?>
+
+    <script src="../../assets/js/tabela.js"></script>
 </body>
 
 </html>
