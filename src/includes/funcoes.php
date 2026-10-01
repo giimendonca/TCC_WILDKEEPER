@@ -97,6 +97,63 @@ function countTabelaGlobal($conexao, $tabela)
     return $result['total'];
 }
 
+// COUNT de funcionários por coluna = valor
+function countFuncionarios($conexao, $coluna, $valor, $id_instituicao)
+{
+    $sql = "SELECT COUNT(*) AS total FROM users WHERE instituicao_id = ? AND $coluna = ?";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("is", $id_instituicao, $valor);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $result = $result->fetch_assoc();
+
+    return $result['total'];
+}
+
+// COUNT de funionários com GROUP BY
+function countFuncionariosPorColuna($conexao, $coluna, $id_instituicao)
+{
+    $sql = "SELECT $coluna, COUNT(*) as total FROM users WHERE instituicao_id = ? GROUP BY $coluna ";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param('i', $id_instituicao);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    $dados = [];
+
+    while ($r = $result->fetch_assoc()) {
+        $dados[] = $r;
+    }
+
+    return $dados;
+}
+
+// COUNT de funionários com GROUP BY
+function countFuncionariosPorCargo($conexao, $id_instituicao)
+{
+    $sql = "SELECT users.cargo_id, COUNT(*) AS total, cargos.nome FROM users 
+            INNER JOIN cargos ON cargos.id = users.cargo_id
+            WHERE users.instituicao_id = ? 
+            GROUP BY users.cargo_id, cargos.nome;";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param('i', $id_instituicao);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    $dados = [];
+
+    while ($r = $result->fetch_assoc()) {
+        $dados[] = $r;
+    }
+
+    return $dados;
+}
 
 // Faz o COUNT de eventos por coluna = valor
 // especificamente para Status e Tipo 

@@ -16,8 +16,6 @@ CREATE TABLE
         cidade VARCHAR(80) NOT NULL,
         estado CHAR(2) NOT NULL,
         cep VARCHAR(9) NOT NULL,
-        logo VARCHAR(255) DEFAULT NULL,
-        descricao TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

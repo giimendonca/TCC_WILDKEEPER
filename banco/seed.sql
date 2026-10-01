@@ -52,14 +52,13 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO instituicoes
 
-(id, nome, cnpj, email, telefone, website, rua, numero, bairro, cidade, estado, cep, logo, descricao)
+(id, nome, cnpj, email, telefone, website, rua, numero, bairro, cidade, estado, cep)
 
 VALUES
 
-(1, 'Instituto Vida Selvagem Paulista', '00.000.000/0001-01', 'contato@ivsp.example', '(11) 3000-1001', 'https://ivsp.example', 'Rua das Palmeiras', '120', 'Jardim Verde', 'São Paulo', 'SP', '01000-001', NULL, 'Instituição fictícia destinada à conservação, pesquisa e manejo de animais silvestres.'),
+(1, 'Instituto Vida Selvagem Paulista', '00.000.000/0001-01', 'contato@ivsp.example', '(11) 3000-1001', 'https://ivsp.example', 'Rua das Palmeiras', '120', 'Jardim Verde', 'São Paulo', 'SP', '01000-001'),
 
-(2, 'Centro de Conservação Mata Atlântica', '00.000.000/0002-02', 'contato@ccma.example', '(11) 3000-1002', 'https://ccma.example', 'Avenida da Mata', '450', 'Vila das Árvores', 'Campinas', 'SP', '13000-002', NULL, 'Instituição fictícia voltada à conservação da fauna e educação ambiental.');
-
+(2, 'Centro de Conservação Mata Atlântica', '00.000.000/0002-02', 'contato@ccma.example', '(11) 3000-1002', 'https://ccma.example', 'Avenida da Mata', '450', 'Vila das Árvores', 'Campinas', 'SP', '13000-002'
 -- ============================================================
 
 -- USUÁRIOS
