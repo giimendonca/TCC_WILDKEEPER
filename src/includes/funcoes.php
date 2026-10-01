@@ -363,3 +363,17 @@ function listarProximosEventos($conexao, $id_instituicao)
 
     return $dados;
 }
+
+// SELECT ultimo registro da tabela
+function ultimoInsert($conexao, $coluna, $tabela, $instituicao_id){
+    $sql = "SELECT $coluna, created_at FROM $tabela WHERE instituicao_id = ? ORDER BY created_at DESC
+    LIMIT 1";
+
+    $stmt = $conexao->prepare($sql);
+
+    $stmt->bind_param('i', $instituicao_id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
