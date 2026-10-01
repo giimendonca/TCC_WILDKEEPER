@@ -92,7 +92,9 @@ $resultado = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicamentos | WildKeeper</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
     <link rel="stylesheet" href="../../assets/css/tabela.css">
+    <?php include "../includes/fonte.php" ?>
 </head>
 <body>
     <?php include "../includes/dashboard-header.php" ?>

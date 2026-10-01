@@ -1,4 +1,4 @@
-<header>
+<header class="header">
     <div class="header-esquerda">
         <a href="/TCC_WILDKEEPER/src/dashboard/index.php" class="logo">
             <img src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp" alt="Logo do WildKeeper">
@@ -10,13 +10,28 @@
                 <button class="menu-botao">Menu</button>
 
                 <div class="menu-conteudo">
-                    <a href="/TCC_WILDKEEPER/src/animais/index.php">Animais</a>
-                    <a href="/TCC_WILDKEEPER/src/especies/index.php">Espécies</a>
-                    <a href="/TCC_WILDKEEPER/src/habitats/index.php">Habitats</a>
-                    <a href="/TCC_WILDKEEPER/src/eventos/index.php">Eventos</a>
-                    <a href="/TCC_WILDKEEPER/src/consultas/index.php">Consultas</a>
-                    <a href="/TCC_WILDKEEPER/src/funcionarios/index.php">Funcionários</a>
-                    <a href="/TCC_WILDKEEPER/src/instituicao/index.php">Minha Instituição</a>
+                    <?php if (nivelMinimo(100)): ?>
+                        <a href="/TCC_WILDKEEPER/src/funcionarios/index.php">Funcionários</a>
+                        <a href="/TCC_WILDKEEPER/src/instituicao/index.php">Minha Instituição</a>
+                    <?php endif; ?>
+
+                    <?php if (nivelMinimo(60)): ?>
+                        <a href="/TCC_WILDKEEPER/src/consultas/index.php">Consultas</a>
+                        <a href="/TCC_WILDKEEPER/src/vacinas/index.php">Vacinas</a>
+                        <a href="/TCC_WILDKEEPER/src/medicamentos/index.php">Medicamentos</a>
+                    <?php endif; ?>
+
+                    <?php if (nivelMinimo(40)): ?>
+                        <a href="/TCC_WILDKEEPER/src/alimentacoes/index.php">Alimentações</a>
+                        <a href="/TCC_WILDKEEPER/src/habitats/index.php">Habitats</a>
+                        <a href="/TCC_WILDKEEPER/src/especies/index.php">Espécies</a>
+                    <?php endif; ?>
+
+                    <?php if (nivelMinimo(20)): ?>
+                        <a href="/TCC_WILDKEEPER/src/animais/index.php">Animais</a>
+                        <a href="/TCC_WILDKEEPER/src/eventos/index.php">Eventos</a>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </nav>

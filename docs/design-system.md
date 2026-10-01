@@ -14,7 +14,7 @@ Cinza
 Branco
 #FFFFFF
 
-Erro
+Erro/Sair
 #D32F2F
 
 Sucesso
