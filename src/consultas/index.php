@@ -23,6 +23,7 @@ requireNivel(60);
 // ====================================
 
 // Pega os filtros enviados pelo método GET
+$titulo = trim($_GET['titulo'] ?? "");
 $nomeAnimal = trim($_GET['nome_animal'] ?? "");
 $nomeFuncionario = trim($_GET['nome_funcionario'] ?? "");
 $dataConsulta = trim($_GET['data_consulta'] ?? "");
@@ -71,6 +72,13 @@ $types = "i";
 // ====================================
 // Filtros
 // ====================================
+
+// Filtro do titulo do evento
+if($titulo != ""){
+    $sql .= " AND eventos.titulo LIKE ?";
+    $params[] = "%$titulo%";
+    $types .= "s";
+}
 
 // Filtro do nome do animal
 if ($nomeAnimal != "") {
@@ -133,6 +141,9 @@ $result = $stmt->get_result();
             <h1>Gerenciamento de Consultas</h1>
 
             <form action="index.php" method="get">
+                <label for="titulo">Título</label>
+                <input type="text" data-pesquisa="titulo" data-campos="titulo" name="titulo" id="titulo" placeholder="Encontrar pelo titulo do evento" value="<?= htmlspecialchars($titulo) ?>">
+
                 <label for="nome_animal">Nome Animal</label>
                 <input type="text" data-pesquisa="nome_animal" data-campos="nome_animal" name="nome_animal" id="nome_animal" placeholder="Encontrar pelo nome do animal" value="<?= htmlspecialchars($nomeAnimal) ?>">
 
@@ -151,6 +162,7 @@ $result = $stmt->get_result();
             <table border="1" id="tabela">
                 <thead>
                     <tr>
+                        <th>Título</th>
                         <th>Nome Animal</th>
                         <th>Funcionário Responsável</th>
                         <th>Data da Consulta</th>
@@ -165,6 +177,8 @@ $result = $stmt->get_result();
                     <?php if ($result->num_rows > 0): ?>
                         <?php while ($consulta = $result->fetch_assoc()): ?>
                             <tr>
+                                <td data-campo="titulo"><?= htmlspecialchars($consulta['titulo']) ?></td>
+
                                 <td data-campo="nome_animal"><?= htmlspecialchars($consulta['animal_nome']) ?></td>
 
                                 <td data-campo="nome_funcionario"><?= htmlspecialchars($consulta['funcionario_nome']) ?></td>
@@ -194,7 +208,7 @@ $result = $stmt->get_result();
 
                     <?php else: ?>
                         <tr>
-                            <td colspan="7">Nenhuma consulta encontrada.</td>
+                            <td colspan="8">Nenhuma consulta encontrada.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
