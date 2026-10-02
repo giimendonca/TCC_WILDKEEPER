@@ -34,6 +34,10 @@
     gap: 20px;
 }
 
+.header-direita a{
+    text-decoration: none;
+}
+
 .logo{
     display: flex;
     align-items: center;

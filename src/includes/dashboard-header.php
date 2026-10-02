@@ -38,11 +38,11 @@
     </div>
 
     <div class="header-direita">
-        <span class="instituicao"><?= htmlspecialchars($_SESSION['instituicao_nome']) ?></span>
+        <a class="instituicao" href="<?= nivelMinimo(100) ? '/TCC_WILDKEEPER/src/instituicao/index.php' : '/TCC_WILDKEEPER/src/dashboard/index.php' ; ?>"><?= htmlspecialchars($_SESSION['instituicao_nome']) ?></a>
 
         <div class="usuario">
-            <span class="usuario-nome"><?= htmlspecialchars($_SESSION['nome']) ?></span>
-            <span class="usuario-cargo"><?= htmlspecialchars($_SESSION['cargo_nome']) ?></span>
+            <a class="usuario-nome" href="/TCC_WILDKEEPER/src/perfil/index.php"><?= htmlspecialchars($_SESSION['nome']) ?></a>
+            <a class="usuario-cargo" href="/TCC_WILDKEEPER/src/perfil/index.php"><?= htmlspecialchars($_SESSION['cargo_nome']) ?></a>
         </div>
     </div>
 
