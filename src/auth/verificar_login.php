@@ -17,6 +17,7 @@ $sql = "SELECT
     users.nome,
     users.email,
     users.senha_hash,
+    users.status,
     cargos.id AS cargo_id,
     cargos.nome AS cargo_nome,
     cargos.nivel,
@@ -40,6 +41,11 @@ if (!$user || !password_verify($senha, $user['senha_hash'])) {
     die("Email e/ou senha inválido(s).");
 }
 
+// Verificação do status do usuário
+if ($user['status'] !== 'Ativo') {
+    die("Seu usuário não está ativo. Entre em contato com o administrador.");
+}
+
 // Começa a sessão e define os dados
 session_start();
 
@@ -48,6 +54,7 @@ session_regenerate_id(true);
 $_SESSION['id'] = $user['id'];
 $_SESSION['nome'] = $user['nome'];
 $_SESSION['email'] = $user['email'];
+$_SESSION['status'] = $user['status'];
 $_SESSION['nivel'] = $user['nivel'];
 $_SESSION['cargo_id'] = $user['cargo_id'];
 $_SESSION['cargo_nome'] = $user['cargo_nome'];
