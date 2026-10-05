@@ -512,16 +512,14 @@ VALUES
 (16, 'Suplemento vitamínico', 'Suplementação nutricional utilizada quando indicada pela equipe.', 'NutriVet', 40, 'SUP-2616', '2028-01-20', 2);
 
 -- ============================================================
-
 -- EVENTOS
-
 -- Cada registro operacional possui seu próprio evento.
-
 -- ============================================================
 
 INSERT INTO eventos
 (id, titulo, descricao, tipo, data_inicio, data_fim, animal_id, habitat_id, funcionario_id, status, instituicao_id)
 VALUES
+
 -- ============================================================
 -- INSTITUIÇÃO 1 - SETEMBRO
 -- ============================================================
@@ -529,14 +527,17 @@ VALUES
 (1, 'Consulta de rotina - Simba', 'Avaliação veterinária periódica.', 'Consulta', '2026-09-25 09:00:00', '2026-09-25 10:00:00', 1, 1, 2, 'Concluído', 1),
 (2, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-09-26 10:00:00', '2026-09-26 10:30:00', 2, 2, 2, 'Concluído', 1),
 (3, 'Alimentação especial - Teca', 'Alimentação acompanhada pela equipe.', 'Alimentação', '2026-09-27 11:00:00', '2026-09-27 11:30:00', 7, 3, 3, 'Concluído', 1),
-(4, 'Manutenção do Terrário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-09-28 08:00:00', '2026-09-28 12:00:00', NULL, NULL, 4, 'Em andamento', 1),
+(4, 'Manutenção do Terrário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-09-28 08:00:00', '2026-09-28 12:00:00', NULL, 5, 4, 'Em andamento', 1),
 (5, 'Transferência temporária - Maré', 'Mudança de recinto para adaptação.', 'Transferência', '2026-09-29 14:00:00', '2026-09-29 15:00:00', 10, 6, 3, 'Concluído', 1),
 
+-- ============================================================
 -- INSTITUIÇÃO 2 - SETEMBRO
+-- ============================================================
+
 (7, 'Consulta de rotina - Bruno', 'Avaliação veterinária periódica.', 'Consulta', '2026-09-25 09:00:00', '2026-09-25 10:00:00', 16, 7, 7, 'Concluído', 2),
 (8, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-09-26 10:00:00', '2026-09-26 10:30:00', 21, 7, 7, 'Concluído', 2),
 (9, 'Alimentação - Rosa', 'Alimentação supervisionada no lago.', 'Alimentação', '2026-09-27 11:00:00', '2026-09-27 11:30:00', 23, 10, 8, 'Concluído', 2),
-(10, 'Manutenção do Aquário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-09-29 08:00:00', '2026-09-29 12:00:00', NULL, NULL, 8, 'Cancelado', 2),
+(10, 'Manutenção do Aquário Tropical', 'Revisão de filtros e bombas.', 'Manutenção', '2026-09-29 08:00:00', '2026-09-29 12:00:00', NULL, 12, 8, 'Cancelado', 2),
 
 -- ============================================================
 -- OUTUBRO
@@ -552,7 +553,6 @@ VALUES
 (16, 'Alimentação - Bento', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-16 09:30:00', '2026-10-16 10:00:00', 4, 1, 3, 'Concluído', 1),
 (17, 'Alimentação - Guará', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-18 10:00:00', '2026-10-18 10:30:00', 5, 3, 3, 'Concluído', 1),
 (18, 'Alimentação - Teca', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-20 10:30:00', '2026-10-20 11:00:00', 7, 3, 3, 'Concluído', 1),
-
 (19, 'Alimentação - Azul', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-22 11:00:00', '2026-10-22 11:30:00', 8, 4, 3, 'Concluído', 1),
 (20, 'Alimentação - Capi', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-10-24 12:00:00', '2026-10-24 12:30:00', 15, 6, 3, 'Concluído', 1),
 
@@ -583,15 +583,15 @@ VALUES
 (39, 'Vacinação - Marina', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-18 10:00:00', '2026-11-18 10:30:00', 27, 12, 7, 'Concluído', 2),
 (40, 'Vacinação - Açu', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-11-21 10:00:00', '2026-11-21 10:30:00', 30, 12, 7, 'Concluído', 2),
 
-(41, 'Manutenção da Savana Africana', 'Revisão das cercas e dos portões de acesso.', 'Manutenção', '2026-11-16 08:00:00', '2026-11-16 12:00:00', NULL, NULL, 4, 'Concluído', 1),
-(42, 'Manutenção da Floresta Amazônica', 'Limpeza e revisão das estruturas de escalada.', 'Manutenção', '2026-11-20 08:00:00', '2026-11-20 12:00:00', NULL, NULL, 4, 'Concluído', 1),
-(43, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2026-11-24 08:00:00', '2026-11-24 12:00:00', NULL, NULL, 4, 'Em andamento', 1),
-(44, 'Manutenção da Área Semiaquática', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Manutenção', '2026-11-28 08:00:00', '2026-11-28 12:00:00', NULL, NULL, 3, 'Concluído', 1),
+(41, 'Manutenção da Savana Africana', 'Revisão das cercas e dos portões de acesso.', 'Manutenção', '2026-11-16 08:00:00', '2026-11-16 12:00:00', NULL, 1, 4, 'Concluído', 1),
+(42, 'Manutenção da Floresta Amazônica', 'Limpeza e revisão das estruturas de escalada.', 'Manutenção', '2026-11-20 08:00:00', '2026-11-20 12:00:00', NULL, 2, 4, 'Concluído', 1),
+(43, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2026-11-24 08:00:00', '2026-11-24 12:00:00', NULL, 5, 4, 'Em andamento', 1),
+(44, 'Manutenção da Área Semiaquática', 'Limpeza do tanque e revisão do sistema hidráulico.', 'Manutenção', '2026-11-28 08:00:00', '2026-11-28 12:00:00', NULL, 6, 3, 'Concluído', 1),
 
-(45, 'Manutenção da Floresta Temperada', 'Revisão de árvores e estruturas internas.', 'Manutenção', '2026-11-17 08:00:00', '2026-11-17 12:00:00', NULL, NULL, 9, 'Concluído', 2),
-(46, 'Manutenção do Lago das Aves', 'Limpeza das margens do lago e revisão de filtros.', 'Manutenção', '2026-11-22 08:00:00', '2026-11-22 12:00:00', NULL, NULL, 9, 'Em andamento', 2),
-(47, 'Manutenção do Terrário de Répteis', 'Manutenção do sistema de controle de temperatura.', 'Manutenção', '2026-11-26 08:00:00', '2026-11-26 12:00:00', NULL, NULL, 8, 'Agendado', 2),
-(48, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão de bombas.', 'Manutenção', '2026-11-30 08:00:00', '2026-11-30 12:00:00', NULL, NULL, 8, 'Concluído', 2),
+(45, 'Manutenção da Floresta Temperada', 'Revisão de árvores e estruturas internas.', 'Manutenção', '2026-11-17 08:00:00', '2026-11-17 12:00:00', NULL, 7, 9, 'Concluído', 2),
+(46, 'Manutenção do Lago das Aves', 'Limpeza das margens do lago e revisão de filtros.', 'Manutenção', '2026-11-22 08:00:00', '2026-11-22 12:00:00', NULL, 10, 9, 'Em andamento', 2),
+(47, 'Manutenção do Terrário de Répteis', 'Manutenção do sistema de controle de temperatura.', 'Manutenção', '2026-11-26 08:00:00', '2026-11-26 12:00:00', NULL, 11, 8, 'Agendado', 2),
+(48, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão de bombas.', 'Manutenção', '2026-11-30 08:00:00', '2026-11-30 12:00:00', NULL, 12, 8, 'Concluído', 2),
 
 -- ============================================================
 -- DEZEMBRO
@@ -604,21 +604,22 @@ VALUES
 (53, 'Transferência - Sky', 'Transferência temporária para observação e recuperação.', 'Transferência', '2026-12-18 14:00:00', '2026-12-18 15:00:00', 24, 7, 7, 'Concluído', 2),
 (54, 'Transferência - Marina', 'Adequação do recinto ao acompanhamento de recuperação.', 'Transferência', '2026-12-22 14:00:00', '2026-12-22 15:00:00', 27, 7, 7, 'Concluído', 2),
 
--- NOVOS EVENTOS INSTITUIÇÃO 1
 (55, 'Consulta de acompanhamento - Simba', 'Acompanhamento veterinário do animal.', 'Consulta', '2026-12-03 09:00:00', '2026-12-03 10:00:00', 1, 1, 2, 'Agendado', 1),
 (56, 'Alimentação especial - Guará', 'Manejo alimentar acompanhado pela equipe.', 'Alimentação', '2026-12-08 10:00:00', '2026-12-08 10:30:00', 5, 3, 3, 'Agendado', 1),
-(57, 'Manutenção da Savana Africana', 'Inspeção preventiva das estruturas.', 'Manutenção', '2026-12-12 08:00:00', '2026-12-12 12:00:00', NULL, NULL, 4, 'Agendado', 1),
+(57, 'Manutenção da Savana Africana', 'Inspeção preventiva das estruturas.', 'Manutenção', '2026-12-12 08:00:00', '2026-12-12 12:00:00', NULL, 1, 4, 'Agendado', 1),
 (58, 'Vacinação - Teca', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-12-20 10:00:00', '2026-12-20 10:30:00', 7, 3, 2, 'Agendado', 1),
 (59, 'Consulta de rotina - Capi', 'Avaliação veterinária periódica.', 'Consulta', '2026-12-27 09:30:00', '2026-12-27 10:30:00', 15, 6, 2, 'Agendado', 1),
 
--- NOVOS EVENTOS INSTITUIÇÃO 2
 (60, 'Consulta de acompanhamento - Bruno', 'Acompanhamento veterinário do animal.', 'Consulta', '2026-12-04 09:00:00', '2026-12-04 10:00:00', 16, 7, 7, 'Agendado', 2),
 (61, 'Alimentação especial - Hippo', 'Manejo alimentar acompanhado pela equipe.', 'Alimentação', '2026-12-09 10:00:00', '2026-12-09 10:30:00', 18, 9, 8, 'Agendado', 2),
-(62, 'Manutenção do Lago das Aves', 'Inspeção preventiva das estruturas.', 'Manutenção', '2026-12-13 08:00:00', '2026-12-13 12:00:00', NULL, NULL, 9, 'Agendado', 2),
+(62, 'Manutenção do Lago das Aves', 'Inspeção preventiva das estruturas.', 'Manutenção', '2026-12-13 08:00:00', '2026-12-13 12:00:00', NULL, 10, 9, 'Agendado', 2),
 (63, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2026-12-21 10:00:00', '2026-12-21 10:30:00', 21, 7, 7, 'Agendado', 2),
 (64, 'Consulta de rotina - Marina', 'Avaliação veterinária periódica.', 'Consulta', '2026-12-28 09:00:00', '2026-12-28 10:00:00', 27, 12, 7, 'Agendado', 2),
 
--- EVENTOS EXTRAS PARA EQUILIBRAR A DISTRIBUIÇÃO
+-- ============================================================
+-- EVENTOS EXTRAS
+-- ============================================================
+
 (65, 'Alimentação - Azul', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-09-30 11:00:00', '2026-09-30 11:30:00', 8, 4, 3, 'Concluído', 1),
 (66, 'Alimentação - Kiko', 'Alimentação registrada no manejo diário.', 'Alimentação', '2026-09-30 10:00:00', '2026-09-30 10:30:00', 20, 9, 8, 'Concluído', 2),
 (67, 'Consulta preventiva - Juma', 'Avaliação preventiva antes do período de vacinação.', 'Consulta', '2026-11-27 09:00:00', '2026-11-27 10:00:00', 2, 2, 2, 'Agendado', 1),
@@ -633,19 +634,19 @@ VALUES
 (71, 'Vacinação - Juma', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-01-25 10:00:00', '2027-01-25 10:30:00', 2, 2, 2, 'Agendado', 1),
 
 (72, 'Consulta veterinária - Capi', 'Avaliação clínica preventiva.', 'Consulta', '2027-02-05 09:30:00', '2027-02-05 10:30:00', 15, 6, 2, 'Agendado', 1),
-(73, 'Manutenção da Savana Africana', 'Revisão das estruturas do recinto.', 'Manutenção', '2027-02-17 08:00:00', '2027-02-17 12:00:00', NULL, NULL, 4, 'Agendado', 1),
+(73, 'Manutenção da Savana Africana', 'Revisão das estruturas do recinto.', 'Manutenção', '2027-02-17 08:00:00', '2027-02-17 12:00:00', NULL, 1, 4, 'Agendado', 1),
 (74, 'Alimentação - Guará', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-02-26 10:00:00', '2027-02-26 10:30:00', 5, 3, 3, 'Agendado', 1),
 
 (75, 'Vacinação - Simba', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-03-06 10:00:00', '2027-03-06 10:30:00', 1, 1, 2, 'Agendado', 1),
 (76, 'Alimentação - Azul', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-03-18 11:00:00', '2027-03-18 11:30:00', 8, 4, 3, 'Agendado', 1),
 (77, 'Consulta de acompanhamento - Teca', 'Acompanhamento veterinário.', 'Consulta', '2027-03-27 09:00:00', '2027-03-27 10:00:00', 7, 3, 2, 'Agendado', 1),
 
-(78, 'Manutenção da Floresta Amazônica', 'Revisão das estruturas internas.', 'Manutenção', '2027-04-04 08:00:00', '2027-04-04 12:00:00', NULL, NULL, 4, 'Agendado', 1),
+(78, 'Manutenção da Floresta Amazônica', 'Revisão das estruturas internas.', 'Manutenção', '2027-04-04 08:00:00', '2027-04-04 12:00:00', NULL, 2, 4, 'Agendado', 1),
 (79, 'Vacinação - Guará', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-04-15 10:00:00', '2027-04-15 10:30:00', 5, 3, 2, 'Agendado', 1),
 (80, 'Alimentação - Capi', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-04-26 12:00:00', '2027-04-26 12:30:00', 15, 6, 3, 'Agendado', 1),
 
 (81, 'Consulta de rotina - Simba', 'Avaliação veterinária periódica.', 'Consulta', '2027-05-07 09:00:00', '2027-05-07 10:00:00', 1, 1, 2, 'Agendado', 1),
-(82, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2027-05-18 08:00:00', '2027-05-18 12:00:00', NULL, NULL, 4, 'Agendado', 1),
+(82, 'Manutenção do Terrário Tropical', 'Manutenção do sistema de climatização.', 'Manutenção', '2027-05-18 08:00:00', '2027-05-18 12:00:00', NULL, 5, 4, 'Agendado', 1),
 (83, 'Alimentação - Juma', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-05-27 08:30:00', '2027-05-27 09:00:00', 2, 2, 3, 'Agendado', 1),
 
 (84, 'Vacinação - Capi', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-06-06 10:00:00', '2027-06-06 10:30:00', 15, 6, 2, 'Agendado', 1),
@@ -658,28 +659,27 @@ VALUES
 
 (87, 'Consulta de rotina - Bruno', 'Avaliação veterinária periódica.', 'Consulta', '2027-01-10 09:00:00', '2027-01-10 10:00:00', 16, 7, 7, 'Agendado', 2),
 (88, 'Alimentação - Rosa', 'Alimentação supervisionada no lago.', 'Alimentação', '2027-01-19 11:00:00', '2027-01-19 11:30:00', 23, 10, 8, 'Agendado', 2),
-(89, 'Manutenção do Aquário Tropical', 'Limpeza e revisão das bombas.', 'Manutenção', '2027-01-28 08:00:00', '2027-01-28 12:00:00', NULL, NULL, 8, 'Agendado', 2),
+(89, 'Manutenção do Aquário Tropical', 'Limpeza e revisão das bombas.', 'Manutenção', '2027-01-28 08:00:00', '2027-01-28 12:00:00', NULL, 12, 8, 'Agendado', 2),
 
 (90, 'Vacinação - Kong', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-02-07 10:00:00', '2027-02-07 10:30:00', 21, 7, 7, 'Agendado', 2),
 (91, 'Consulta - Marina', 'Avaliação veterinária preventiva.', 'Consulta', '2027-02-18 09:00:00', '2027-02-18 10:00:00', 27, 12, 7, 'Agendado', 2),
 (92, 'Alimentação - Hippo', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-02-27 09:00:00', '2027-02-27 09:30:00', 18, 9, 8, 'Agendado', 2),
 
-(93, 'Manutenção do Lago das Aves', 'Limpeza das margens e filtros.', 'Manutenção', '2027-03-05 08:00:00', '2027-03-05 12:00:00', NULL, NULL, 9, 'Agendado', 2),
+(93, 'Manutenção do Lago das Aves', 'Limpeza das margens e filtros.', 'Manutenção', '2027-03-05 08:00:00', '2027-03-05 12:00:00', NULL, 10, 9, 'Agendado', 2),
 (94, 'Vacinação - Rosa', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-03-16 10:00:00', '2027-03-16 10:30:00', 23, 10, 7, 'Agendado', 2),
 (95, 'Consulta - Komodo', 'Avaliação veterinária preventiva.', 'Consulta', '2027-03-28 09:00:00', '2027-03-28 10:00:00', 26, 11, 7, 'Agendado', 2),
 
 (96, 'Alimentação - Bruno', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-04-06 08:00:00', '2027-04-06 08:30:00', 16, 7, 8, 'Agendado', 2),
 (97, 'Vacinação - Marina', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-04-17 10:00:00', '2027-04-17 10:30:00', 27, 12, 7, 'Agendado', 2),
-(98, 'Manutenção do Terrário de Répteis', 'Revisão do sistema de temperatura.', 'Manutenção', '2027-04-28 08:00:00', '2027-04-28 12:00:00', NULL, NULL, 8, 'Agendado', 2),
+(98, 'Manutenção do Terrário de Répteis', 'Revisão do sistema de temperatura.', 'Manutenção', '2027-04-28 08:00:00', '2027-04-28 12:00:00', NULL, 11, 8, 'Agendado', 2),
 
 (99, 'Consulta - Rosa', 'Avaliação veterinária periódica.', 'Consulta', '2027-05-08 09:00:00', '2027-05-08 10:00:00', 23, 10, 7, 'Agendado', 2),
 (100, 'Alimentação - Kong', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-05-19 10:30:00', '2027-05-19 11:00:00', 21, 7, 8, 'Agendado', 2),
 (101, 'Vacinação - Hippo', 'Aplicação de vacina preventiva.', 'Vacinação', '2027-05-29 10:00:00', '2027-05-29 10:30:00', 18, 9, 7, 'Agendado', 2),
 
-(102, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão das bombas.', 'Manutenção', '2027-06-05 08:00:00', '2027-06-05 12:00:00', NULL, NULL, 8, 'Agendado', 2),
+(102, 'Manutenção do Aquário Tropical', 'Limpeza dos tanques e revisão das bombas.', 'Manutenção', '2027-06-05 08:00:00', '2027-06-05 12:00:00', NULL, 12, 8, 'Agendado', 2),
 (103, 'Consulta - Marina', 'Acompanhamento veterinário.', 'Consulta', '2027-06-17 09:00:00', '2027-06-17 10:00:00', 27, 12, 7, 'Agendado', 2),
 (104, 'Alimentação - Açu', 'Alimentação registrada no manejo diário.', 'Alimentação', '2027-06-28 13:00:00', '2027-06-28 13:30:00', 30, 12, 8, 'Agendado', 2);
-
 
 -- ============================================================
 

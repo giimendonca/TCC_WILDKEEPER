@@ -209,7 +209,7 @@ $result = $stmt->get_result();
                                     <?php if ($manutencao['manutencao_id']): ?>
                                         <?= htmlspecialchars($manutencao['manutencao_descricao']) ?>
                                     <?php else: ?>
-                                        Não realizada
+                                        Não realizada.
                                     <?php endif; ?>
                                 </td>
 
@@ -235,6 +235,10 @@ $result = $stmt->get_result();
 
                                         <a href="../eventos/mostrar_evento.php?id=<?= $manutencao['evento_id'] ?>">
                                             Ver evento
+                                        </a>
+
+                                        <a href="editar_manutencao.php?id=<?= $manutencao['manutencao_id'] ?>">
+                                            Editar
                                         </a>
 
                                     <?php endif; ?>
