@@ -5,19 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WildKeeper</title>
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/landing.css">
 </head>
 
 <body>
     <?php include "../src/includes/header.php" ?>
     <main>
-        <h1>Bem Vindo(a) ao WildKeeper</h1>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">GESTÃO PARA CONSERVAÇÃO</span>
 
-        <p>A plataforma inteligente para gestão de zoológicos, centros de conservação e instituições de preservação animal.</p>
+                <h1>Bem-vindo ao WildKeeper</h1>
 
-        <a href="../src/auth/login.php">Entrar</a>
+                <p>A plataforma inteligente para gestão de zoológicos, centros de conservação e instituições de preservação animal.</p>
 
-        <p>Ainda não possui uma instituição?</p>
-        <a href="../src/setup/instituicao.php">Cadastrar Instituição</a>
+                <div class="hero-actions">
+                    <a href="../src/setup/instituicao.php">Começar agora</a>
+                    <a href="#sobre">Conhecer o WildKeeper</a>
+                </div>
+            </div>
+        </section>
 
         <section>
             <h2>Gestão inteligente para instituições que cuidam da vida selvagem.</h2>

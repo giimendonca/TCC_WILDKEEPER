@@ -1,5 +1,40 @@
+:root {
+    --verde-principal: #2E7D32;
+    --verde-claro: #81C784;
+    --azul: #1565C0;
+    --cinza: #ECEFF1;
+    --branco: #FFFFFF;
+    --erro-sair: #D32F2F;
+    --sucesso: #388E3C;
+    --texto: #263238;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html { 
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--texto);
+    background-color: var(--branco);
+}
+
+a { 
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }

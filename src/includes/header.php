@@ -1,10 +1,10 @@
 <header>
-    <div class="logo">
+    <div class="logos">
         <h1 class="sr-only">WildKeeper</h1>
 
         <a href="/index.php">
-            <img src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp" alt="Logo do WildKeeper">
-            <img src="/TCC_WILDKEEPER/assets/img/name_wildkeeper.webp" alt="WildKeeper">
+            <img src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp" alt="Logo do WildKeeper" class="icone">
+            <img src="/TCC_WILDKEEPER/assets/img/name_wildkeeper.webp" alt="WildKeeper" class="nome">
         </a>
     </div>
 
