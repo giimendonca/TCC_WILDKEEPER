@@ -334,6 +334,7 @@ $animaisPorSaude = countAnimaisPorSaude($conexao, $idInstituicao);
 
                     <a href="../alimentacoes/index.php">Alimentação</a>
                     <a href="../habitats/index.php">Habitats</a>
+                    <a href="../manutencoes/index.php">Manutenção de Habitats</a>
                     <a href="../especies/index.php">Espécies</a>
                 </article>
             <?php endif; ?>
