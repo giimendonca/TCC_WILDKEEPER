@@ -22,9 +22,7 @@
                     <?php endif; ?>
 
                     <?php if (nivelMinimo(40)): ?>
-                        <a href="/TCC_WILDKEEPER/src/alimentacoes/index.php">Alimentações</a>
                         <a href="/TCC_WILDKEEPER/src/habitats/index.php">Habitats</a>
-                        <a href="/TCC_WILDKEEPER/src/manutencoes/index.php">Manutenção de Habitats</a>
                         <a href="/TCC_WILDKEEPER/src/especies/index.php">Espécies</a>
                     <?php endif; ?>
 

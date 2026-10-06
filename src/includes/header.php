@@ -10,10 +10,10 @@
 
     <nav>
         <ul>
-            <li><a href="">Início</a></li>
-            <li><a href="">Sobre</a></li>
-            <li><a href="">Recursos</a></li>
-            <li><a href="">Contato</a></li>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
 

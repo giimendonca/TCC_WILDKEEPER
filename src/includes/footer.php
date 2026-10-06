@@ -1,4 +1,4 @@
-<footer>
+<footer id="contato">
 
     <section class="footer-logo">
         <img src="/TCC_WILDKEEPER/assets/img/logo_wildkeeper.webp" alt="Logo WildKeeper">

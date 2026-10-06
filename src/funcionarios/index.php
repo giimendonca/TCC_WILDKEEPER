@@ -138,7 +138,7 @@ $result = $stmt->get_result();
 
                     <?php else: ?>
                         <tr>
-                            <td>Nenhum funcionário encontrado.</td>
+                            <td colspan="4">Nenhum funcionário encontrado.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

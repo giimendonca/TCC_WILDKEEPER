@@ -12,7 +12,7 @@
 <body>
     <?php include "../src/includes/header.php" ?>
     <main>
-        <section class="hero">
+        <section id="inicio" class="hero">
             <div class="hero-content">
                 <span class="hero-tag">GESTÃO PARA CONSERVAÇÃO</span>
 
@@ -27,7 +27,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="sobre">
             <h2>Gestão inteligente para instituições que cuidam da vida selvagem.</h2>
             <p>O WildKeeper centraliza o gerenciamento de animais, habitats, equipes, consultas veterinárias, alimentações e eventos em uma única plataforma, oferecendo mais organização, segurança e eficiência para instituições de conservação.</p>
         </section>
@@ -36,7 +36,7 @@
             <h3>Cuidar hoje, preservar sempre.</h3>
             <p>O WildKeeper é um sistema web desenvolvido para auxiliar zoológicos, parques ecológicos, centros de conservação e instituições de preservação animal na administração de suas atividades diárias. A plataforma reúne ferramentas para controlar informações dos animais, organizar equipes, registrar procedimentos veterinários e acompanhar eventos importantes de forma simples e intuitiva.</p>
         </section>
-        <section>
+        <section id="recursos">
             <h2>Recursos</h2>
             <div class="cards-container">
                 <div class="card">
