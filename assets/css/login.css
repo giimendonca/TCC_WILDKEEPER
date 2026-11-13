@@ -10,7 +10,9 @@
 }
 
 main {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/floresta.webp);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(../img/floresta.webp);
   background-size: cover;
   background-position: center;
 }
@@ -24,7 +26,8 @@ main {
   gap: 16px;
 }
 
-#hero h1, #hero p {
+#hero h1,
+#hero p {
   color: var(--branco);
 }
 
@@ -47,9 +50,7 @@ fieldset {
 }
 
 legend {
-  margin: 0 auto;
-  align-self: center;
-  font-weight: bolder;
+  display: none;
 }
 
 fieldset button {
@@ -60,7 +61,9 @@ fieldset button {
   background-color: var(--verde-principal);
   border: 2px solid var(--verde-principal);
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 fieldset button:hover {
@@ -68,7 +71,9 @@ fieldset button:hover {
   background-color: var(--sucesso);
 }
 
-fieldset button:focus-visible, .lembrar input[type="checkbox"]:focus-visible, .links a:focus-visible {
+fieldset button:focus-visible,
+.lembrar input[type="checkbox"]:focus-visible,
+.links a:focus-visible {
   outline: 2px solid var(--verde-principal);
   outline-offset: 3px;
 }
@@ -82,13 +87,15 @@ fieldset button:active {
   flex-direction: column;
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"],
+input[type="password"] {
   padding: 10px;
   border: 2px solid #dfe1e2;
   border-radius: 10px;
   transition: border-color 0.3s;
 }
-input[type="email"]:focus, input[type="password"]:focus {
+input[type="email"]:focus,
+input[type="password"]:focus {
   border: 2px solid var(--verde-claro);
   outline: none;
 }
@@ -129,6 +136,7 @@ input[type="email"]:focus, input[type="password"]:focus {
   color: var(--verde-principal);
 }
 
-.links a:hover, #cadastrar a:hover {
+.links a:hover,
+#cadastrar a:hover {
   text-decoration: underline;
 }
