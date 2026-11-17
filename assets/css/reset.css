@@ -20,9 +20,16 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: "Poppins", sans-serif;
     color: var(--texto);
     background-color: var(--branco);
+}
+
+main {
+    flex: 1;
 }
 
 a { 

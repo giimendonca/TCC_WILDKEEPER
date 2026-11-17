@@ -1,3 +1,4 @@
+/* HEADER */
 header {
   width: 100%;
   padding: 20px 8%;
@@ -79,4 +80,62 @@ nav a:hover {
 .actions a:last-child:hover {
   background-color: var(--sucesso);
   transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer{
+  margin-top: auto;
+  background-color: var(--branco);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+  gap: 16px;
+}
+
+.footer-grid {
+  display: grid;
+  padding-bottom: 16px;
+  width: auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  border-bottom: 2px solid var(--verde-principal);
+}
+
+.footer-grid section img {
+  max-width: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer-grid section, .footer-grid section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-grid ul li a{
+  transition: color 0.3s ease, font-weight 0.3s;
+}
+
+.footer-grid ul li a:hover {
+  color: var(--verde-principal);
+  font-weight: bold;
+}
+
+.footer-grid section p a {
+  transition: text-decoration 0.3s;
+}
+
+.footer-grid section p a:hover{
+  text-decoration: underline;
+
+}
+
+.footer-grid section h3 {
+  color: var(--verde-principal);
+}
+
+.footer-bottom {
+  text-align: center;
 }
