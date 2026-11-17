@@ -1,14 +1,3 @@
-:root {
-  --verde-principal: #2e7d32;
-  --verde-claro: #81c784;
-  --azul: #1565c0;
-  --cinza: #eceff1;
-  --branco: #ffffff;
-  --erro-sair: #d32f2f;
-  --sucesso: #388e3c;
-  --texto: #263238;
-}
-
 main {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
