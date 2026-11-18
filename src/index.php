@@ -83,6 +83,7 @@
         </section>
     </main>
     <?php include "../src/includes/footer.php" ?>
+    <script src="../assets/js/navbar.js"></script>
 </body>
 
 </html>

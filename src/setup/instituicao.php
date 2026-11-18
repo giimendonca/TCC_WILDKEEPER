@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Instituição | WildKeeper</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
 </head>
 
 <body>
@@ -104,6 +106,7 @@
         </section>
     </main>
     <?php include "../includes/footer.php" ?>
+    <script src="../../assets/js/navbar.js"></script>
 </body>
 
 </html>
