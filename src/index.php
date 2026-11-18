@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
@@ -15,71 +16,103 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-content">
-                <span class="hero-tag">GESTÃO PARA CONSERVAÇÃO</span>
+                <span class="hero-tag"><i class="fa-solid fa-leaf"></i> GESTÃO PARA CONSERVAÇÃO</span>
 
-                <h1>Bem-vindo ao WildKeeper</h1>
+                <h1>Bem-vindo ao <span class="verde">Wild</span><span class="azul">Keeper</span></h1>
 
                 <p>A plataforma inteligente para gestão de zoológicos, centros de conservação e instituições de preservação animal.</p>
 
                 <div class="hero-actions">
-                    <a href="../src/setup/instituicao.php">Começar agora</a>
-                    <a href="#sobre">Conhecer o WildKeeper</a>
+                    <a href="../src/setup/instituicao.php"><i class="fa-solid fa-caret-right"></i> Começar agora</a>
+                    <a href="#sobre"><i class="fa-solid fa-circle-exclamation"></i> Conhecer o WildKeeper</a>
                 </div>
             </div>
+
+            <img src="../assets/img/onca-pintada.webp" alt="">
         </section>
 
         <section id="sobre">
-            <h2>Gestão inteligente para instituições que cuidam da vida selvagem.</h2>
-            <p>O WildKeeper centraliza o gerenciamento de animais, habitats, equipes, consultas veterinárias, alimentações e eventos em uma única plataforma, oferecendo mais organização, segurança e eficiência para instituições de conservação.</p>
+            <img src="../assets/img/tucano.webp" alt="">
+            <div class="sobre-container">
+                <h2>Gestão inteligente para instituições que cuidam da vida selvagem.</h2>
+                <p>O WildKeeper centraliza o gerenciamento de animais, habitats, equipes, consultas veterinárias, alimentações e eventos em uma única plataforma, oferecendo mais organização, segurança e eficiência para instituições de conservação.</p>
+            </div>
         </section>
-        <section>
-            <h2>O que é o WildKeeper?</h2>
-            <h3>Cuidar hoje, preservar sempre.</h3>
-            <p>O WildKeeper é um sistema web desenvolvido para auxiliar zoológicos, parques ecológicos, centros de conservação e instituições de preservação animal na administração de suas atividades diárias. A plataforma reúne ferramentas para controlar informações dos animais, organizar equipes, registrar procedimentos veterinários e acompanhar eventos importantes de forma simples e intuitiva.</p>
+        <section id="wildkeeper">
+            <i class="fa-solid fa-earth-americas"></i>
+            <div class="container">
+                <h2>O que é o WildKeeper?</h2>
+                <h3>Cuidar hoje, preservar sempre.</h3>
+                <p>O WildKeeper é um sistema web desenvolvido para auxiliar zoológicos, parques ecológicos, centros de conservação e instituições de preservação animal na administração de suas atividades diárias. A plataforma reúne ferramentas para controlar informações dos animais, organizar equipes, registrar procedimentos veterinários e acompanhar eventos importantes de forma simples e intuitiva.</p>
+            </div>
         </section>
         <section id="recursos">
             <h2>Recursos</h2>
             <div class="cards-container">
-                <div class="card">
+                <article class="card">
+                    <i class="fa-solid fa-paw"></i>
                     <h3>Cadastro de Animais</h3>
                     <p>Gerencie todas as informações dos animais da instituição.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
+                    <i class="fa-solid fa-signs-post"></i>
                     <h3>Habitats</h3>
                     <p>Organize habitats, capacidade e condições ambientais.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
+                    <i class="fa-solid fa-heart-pulse"></i>
                     <h3>Saúde Animal</h3>
                     <p>Controle consultas, vacinas e tratamentos.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
+                    <i class="fa-solid fa-utensils"></i>
                     <h3>Alimentação</h3>
                     <p>Registre alimentações e acompanhe históricos.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
+                    <i class="fa-solid fa-calendar-days"></i>
                     <h3>Agenda</h3>
                     <p>Organize eventos e atividades da equipe.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
+                    <i class="fa-solid fa-users"></i>
                     <h3>Funcionários</h3>
                     <p>Gerencie cargos e usuários do sistema.</p>
-                </div>
+                </article>
             </div>
         </section>
         <section>
             <h2>Por que escolher o WildKeeper?</h2>
             <div class="cards-container">
-                <div class="card">Sistema 100% web</div>
-                <div class="card">Cadastro completo dos animais</div>
-                <div class="card">Controle veterinário</div>
-                <div class="card">Agenda integrada</div>
-                <div class="card">Interface intuitiva</div>
-                <div class="card">Banco de dados seguro</div>
+                <div class="card">
+                    <i class="fa-solid fa-cloud"></i>
+                    <p>Sistema 100% web</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-paw"></i>
+                    <p>Cadastro completo dos animais</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <p>Controle veterinário</p>
+                </div>
+                <div class="card">
+                    <i class="fa-regular fa-calendar"></i>
+                    <p>Agenda integrada</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-arrow-pointer"></i>
+                    <p>Interface intuitiva</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-table-cells-column-lock"></i>
+                    <p>Banco de dados seguro</p>
+                </div>
             </div>
         </section>
         <section>
             <h2>Pronto para modernizar a gestão da sua instituição?</h2>
-            <a href="../src/setup/instituicao.php">Cadastrar Instituição</a>
+            <a href="../src/setup/instituicao.php"><i class="fa-solid fa-building-columns"></i>Cadastrar Instituição</a>
         </section>
     </main>
     <?php include "../src/includes/footer.php" ?>

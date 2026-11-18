@@ -21,9 +21,9 @@
         <section class="footer-contact">
             <h3>Contato</h3>
 
-            <p>wildkeeper@email.com</p>
+            <p><i class="fa-solid fa-envelope"></i> wildkeeper@email.com</p>
 
-            <p><a href="https://github.com/giimendonca/TCC_WILDKEEPER" target="_blank">GitHub</a></p>
+            <p><a href="https://github.com/giimendonca/TCC_WILDKEEPER" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></p>
 
             <p>Versão 1.0.0</p>
         </section>
