@@ -22,7 +22,7 @@
   width: fit-content;
   padding: 9px;
   border-radius: 16px;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1vw, 14px);
   font-weight: bold;
   background-color: #81c7847e;
   color: var(--verde-principal);
@@ -35,12 +35,12 @@
 
 .hero-content h1 {
   max-width: 600px;
-  font-size: clamp(2.5rem,);
+  font-size: clamp(2.5rem, 5vw, 75px);
 }
 
 .hero-content p {
   max-width: 600px;
-  font-size: 20px;
+  font-size: clamp(1rem, 1vw, 20px);
 }
 
 .verde {
@@ -68,38 +68,41 @@
 
 /* SOBRE */
 #sobre {
-  display: flex;
-  padding: 36px;
-  gap: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "imagem titulo"
+    "imagem texto";
+  align-items: center;
+  padding: clamp(0.75rem, 3vw, 36px);
+  gap: clamp(0.75rem, 3vw, 36px);
 }
 
 #sobre img {
-  max-width: 700px;
+  grid-area: imagem;
   border-radius: 20px;
-  width: 48%;
-  max-width: 750px;
+  max-width: 700px;
+  width: 100%;
   object-fit: cover;
 }
 
-.sobre-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 900px;
-  gap: 16px;
+.sobre-titulo {
+  grid-area: titulo;
 }
 
-.sobre-container .line {
+.sobre-titulo h2 {
+  font-size: clamp(2rem, 4vw, 60px);
+}
+
+.sobre-titulo .line {
   width: 50px;
   height: 3px;
 }
 
-.sobre-container h2 {
-  font-size: 60px;
-}
-
-.sobre-container p {
+#sobre p {
+  grid-area: texto;
   max-width: 800px;
-  font-size: 20px;
+  font-size: clamp(1rem, 1vw, 20px);
 }
 
 /* O QUE É */
@@ -116,7 +119,7 @@
 #wildkeeper i {
   color: var(--verde-principal);
   text-align: center;
-  font-size: 180px;
+  font-size: clamp(5rem, 12vw, 180px);
 }
 
 .container {
@@ -126,7 +129,7 @@
 }
 
 .container h2 {
-  font-size: 30px;
+  font-size: clamp(1.6rem, 3vw, 32px);
 }
 
 .container h3 {
@@ -134,7 +137,7 @@
 }
 
 .container p {
-  font-size: 18px;
+  font-size: clamp(1rem, 1vw, 18px);
 }
 
 /* RECURSOS */
@@ -149,7 +152,8 @@
   padding: 16px;
 }
 
-#recursos h2, #motivos h2 {
+#recursos h2,
+#motivos h2 {
   text-align: center;
   padding: 16px;
 }
@@ -168,7 +172,7 @@
 }
 
 #recursos .card i {
-  font-size: 60px;
+  font-size: clamp(2.5rem, 5vw, 60px);
 }
 
 #recursos .card .texto {
@@ -178,7 +182,7 @@
 }
 
 #recursos .line,
-#motivos .titulo  .line {
+#motivos .titulo .line {
   width: 100px;
   height: 3px;
 }
@@ -200,8 +204,8 @@
   gap: 10px;
 }
 
-.cards-linha .card i{
-  font-size: 40px;
+.cards-linha .card i {
+  font-size: clamp(1.75rem, 3vw, 40px);
 }
 
 .cards-linha .line {
@@ -224,7 +228,9 @@
   padding: 30px;
   margin: 15px;
   border-radius: 20px;
-  background-image: linear-gradient(rgba(0, 40, 15, 0.65), rgba(0, 40, 15, 0.65)), url(../img/floresta1.webp);
+  background-image:
+    linear-gradient(rgba(0, 40, 15, 0.65), rgba(0, 40, 15, 0.65)),
+    url(../img/floresta1.webp);
   background-size: cover;
   background-position: center;
 }
@@ -237,4 +243,95 @@
   border-radius: 15px;
   background-color: var(--branco);
   padding: 15px;
+}
+
+@media (max-width: 800px) {
+  .hero img {
+    display: none;
+  }
+
+  .hero {
+    color: var(--branco);
+    margin: 16px;
+    border-radius: 10px;
+    background-image:
+      linear-gradient(to bottom, rgba(18, 28, 16, 0.4), rgba(10, 15, 9, 0.85)),
+      url(../img/onca-pintada.webp);
+    background-size: cover;
+    background-position: 39% 48%;
+  }
+
+  .hero-tag {
+    color: var(--verde-claro);
+    background-color: #2e7d32a4;
+  }
+
+  .hero-actions a:last-child {
+    border-color: var(--branco);
+  }
+
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #recursos .card {
+    flex-direction: column;
+  }
+  
+  #wildkeeper {
+    gap: 20px;
+    padding: 24px;
+  }
+
+  #wildkeeper i {
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
+}
+
+@media (max-width: 650px) {
+  #sobre {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "imagem titulo"
+      "texto texto";
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  #recursos .card {
+    flex-direction: row;
+  }
+
+   #wildkeeper {
+    flex-direction: column;
+    text-align: center;
+    margin: 16px;
+    padding: 28px 20px;
+    gap: 16px;
+  }
+
+  #wildkeeper i {
+    font-size: 5rem;
+  }
+
+  .cards-linha {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cards-linha .card {
+    flex: 0 0 220px;
+    max-width: none;
+    scroll-snap-align: start;
+  }
+
+  .cards-linha .line {
+    display: none;
+  }
 }

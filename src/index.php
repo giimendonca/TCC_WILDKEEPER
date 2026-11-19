@@ -32,12 +32,14 @@
         </section>
 
         <section id="sobre">
-            <img src="../assets/img/tucano.webp" alt="">
-            <div class="sobre-container">
+            <img src="../assets/img/tucano.webp" alt="Tucano">
+
+            <div class="sobre-titulo">
                 <span class="line"></span>
                 <h2>Gestão inteligente para instituições que cuidam da vida selvagem.</h2>
-                <p>O WildKeeper centraliza o gerenciamento de animais, habitats, equipes, consultas veterinárias, alimentações e eventos em uma única plataforma, oferecendo mais organização, segurança e eficiência para instituições de conservação.</p>
             </div>
+
+            <p>O WildKeeper centraliza o gerenciamento de animais, habitats, equipes, consultas veterinárias, alimentações e eventos em uma única plataforma, oferecendo mais organização, segurança e eficiência para instituições de conservação.</p>
         </section>
         <section id="wildkeeper">
             <i class="fa-solid fa-earth-americas"></i>
