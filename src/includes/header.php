@@ -1,8 +1,8 @@
 <header>
     <div class="logos">
         <a href="/TCC_WILDKEEPER/index.php">
-            <img src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp" alt="Logo do WildKeeper" class="icone">
-            <h1 class="sr-only">Wild<span class="color-blue">Keeper</span></h1>
+            <img src="/TCC_WILDKEEPER/assets/img/icon_wildkeeper.webp" alt="" class="icone">
+            <span class="logo-text">Wild<span class="color-blue">Keeper</span></span>
         </a>
 
     </div>

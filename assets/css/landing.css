@@ -1,12 +1,19 @@
 /* HERO */
 .hero {
-  display: grid;
+  display: flex;
   padding: 36px;
-  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+
+.hero img {
+  width: 48%;
+  max-width: 750px;
+  object-fit: cover;
 }
 
 .hero-content {
   display: flex;
+  max-width: 650px;
   flex-direction: column;
   gap: 16px;
 }
@@ -24,6 +31,16 @@
 .hero-actions {
   display: flex;
   gap: 16px;
+}
+
+.hero-content h1 {
+  max-width: 600px;
+  font-size: clamp(2.5rem,);
+}
+
+.hero-content p {
+  max-width: 600px;
+  font-size: 20px;
 }
 
 .verde {
@@ -51,29 +68,173 @@
 
 /* SOBRE */
 #sobre {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   padding: 36px;
   gap: 36px;
 }
 
 #sobre img {
+  max-width: 700px;
   border-radius: 20px;
+  width: 48%;
+  max-width: 750px;
+  object-fit: cover;
 }
 
 .sobre-container {
   display: flex;
   flex-direction: column;
+  max-width: 900px;
   gap: 16px;
+}
+
+.sobre-container .line {
+  width: 50px;
+  height: 3px;
+}
+
+.sobre-container h2 {
+  font-size: 60px;
+}
+
+.sobre-container p {
+  max-width: 800px;
+  font-size: 20px;
 }
 
 /* O QUE É */
 #wildkeeper {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #81c7847e;
+  border-radius: 18px;
 }
 
 #wildkeeper i {
-  width: 100%;
+  color: var(--verde-principal);
+  text-align: center;
+  font-size: 180px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container h2 {
+  font-size: 30px;
+}
+
+.container h3 {
+  color: var(--verde-principal);
+}
+
+.container p {
+  font-size: 18px;
+}
+
+/* RECURSOS */
+#recursos {
+  padding: 0 36px;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+#recursos h2, #motivos h2 {
+  text-align: center;
+  padding: 16px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+#recursos .card {
+  border: 3px solid var(--cinza);
+  border-radius: 20px;
+  padding: 20px;
+  gap: 16px;
+}
+
+#recursos .card i {
+  font-size: 60px;
+}
+
+#recursos .card .texto {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#recursos .line,
+#motivos .titulo  .line {
+  width: 100px;
+  height: 3px;
+}
+
+/* MOTIVOS */
+.cards-linha {
+  display: flex;
+  padding: 0 60px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cards-linha .card {
+  max-width: 145px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.cards-linha .card i{
+  font-size: 40px;
+}
+
+.cards-linha .line {
+  width: 2px;
+  height: 70px;
+}
+
+.card {
+  display: flex;
+}
+.line {
+  background-color: var(--verde-principal);
+  display: flex;
+}
+
+#cadastro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  margin: 15px;
+  border-radius: 20px;
+  background-image: linear-gradient(rgba(0, 40, 15, 0.65), rgba(0, 40, 15, 0.65)), url(../img/floresta1.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+#cadastro h2 {
+  color: var(--branco);
+}
+
+#cadastro a {
+  border-radius: 15px;
+  background-color: var(--branco);
+  padding: 15px;
 }

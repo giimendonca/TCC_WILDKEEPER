@@ -34,6 +34,7 @@
         <section id="sobre">
             <img src="../assets/img/tucano.webp" alt="">
             <div class="sobre-container">
+                <span class="line"></span>
                 <h2>Gestão inteligente para instituições que cuidam da vida selvagem.</h2>
                 <p>O WildKeeper centraliza o gerenciamento de animais, habitats, equipes, consultas veterinárias, alimentações e eventos em uma única plataforma, oferecendo mais organização, segurança e eficiência para instituições de conservação.</p>
             </div>
@@ -47,72 +48,97 @@
             </div>
         </section>
         <section id="recursos">
-            <h2>Recursos</h2>
+            <div class="titulo">
+                <span class="line"></span>
+                <h2>Recursos</h2>
+                <span class="line"></span>
+            </div>
             <div class="cards-container">
                 <article class="card">
-                    <i class="fa-solid fa-paw"></i>
-                    <h3>Cadastro de Animais</h3>
-                    <p>Gerencie todas as informações dos animais da instituição.</p>
+                    <i class="fa-solid fa-paw verde"></i>
+                    <div class="texto">
+                        <h3>Cadastro de Animais</h3>
+                        <p>Gerencie todas as informações dos animais da instituição.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <i class="fa-solid fa-signs-post"></i>
-                    <h3>Habitats</h3>
-                    <p>Organize habitats, capacidade e condições ambientais.</p>
+                    <i class="fa-solid fa-signs-post azul"></i>
+                    <div class="texto">
+                        <h3>Habitats</h3>
+                        <p>Organize habitats, capacidade e condições ambientais.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                    <h3>Saúde Animal</h3>
-                    <p>Controle consultas, vacinas e tratamentos.</p>
+                    <i class="fa-solid fa-heart-pulse verde"></i>
+                    <div class="texto">
+                        <h3>Saúde Animal</h3>
+                        <p>Controle consultas, vacinas e tratamentos.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <i class="fa-solid fa-utensils"></i>
-                    <h3>Alimentação</h3>
-                    <p>Registre alimentações e acompanhe históricos.</p>
+                    <i class="fa-solid fa-utensils azul"></i>
+                    <div class="texto">
+                        <h3>Alimentação</h3>
+                        <p>Registre alimentações e acompanhe históricos.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <h3>Agenda</h3>
-                    <p>Organize eventos e atividades da equipe.</p>
+                    <i class="fa-solid fa-calendar-days verde"></i>
+                    <div class="texto">
+                        <h3>Agenda</h3>
+                        <p>Organize eventos e atividades da equipe.</p>
+                    </div>
                 </article>
                 <article class="card">
-                    <i class="fa-solid fa-users"></i>
-                    <h3>Funcionários</h3>
-                    <p>Gerencie cargos e usuários do sistema.</p>
+                    <i class="fa-solid fa-users azul"></i>
+                    <div class="texto">
+                        <h3>Funcionários</h3>
+                        <p>Gerencie cargos e usuários do sistema.</p>
+                    </div>
                 </article>
             </div>
         </section>
-        <section>
-            <h2>Por que escolher o WildKeeper?</h2>
-            <div class="cards-container">
-                <div class="card">
+        <section id="motivos">
+            <div class="titulo">
+                <span class="line"></span>
+                <h2>Por que escolher o WildKeeper?</h2>
+                <span class="line"></span>
+            </div>
+            <div class="cards-linha">
+                <article class="card verde">
                     <i class="fa-solid fa-cloud"></i>
                     <p>Sistema 100% web</p>
-                </div>
-                <div class="card">
+                </article>
+                <span class="line"></span>
+                <article class="card verde">
                     <i class="fa-solid fa-paw"></i>
                     <p>Cadastro completo dos animais</p>
-                </div>
-                <div class="card">
+                </article>
+                <span class="line"></span>
+                <article class="card verde">
                     <i class="fa-solid fa-user-shield"></i>
                     <p>Controle veterinário</p>
-                </div>
-                <div class="card">
+                </article>
+                <span class="line"></span>
+                <article class="card verde">
                     <i class="fa-regular fa-calendar"></i>
                     <p>Agenda integrada</p>
-                </div>
-                <div class="card">
+                </article>
+                <span class="line"></span>
+                <article class="card verde">
                     <i class="fa-solid fa-arrow-pointer"></i>
                     <p>Interface intuitiva</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-table-cells-column-lock"></i>
+                </article>
+                <span class="line"></span>
+                <article class="card verde">
+                    <i class="fa-solid fa-table-cells-row-lock"></i>
                     <p>Banco de dados seguro</p>
-                </div>
+                </article>
             </div>
         </section>
-        <section>
+        <section id="cadastro">
             <h2>Pronto para modernizar a gestão da sua instituição?</h2>
-            <a href="../src/setup/instituicao.php"><i class="fa-solid fa-building-columns"></i>Cadastrar Instituição</a>
+            <a href="../src/setup/instituicao.php"><i class="fa-solid fa-building-columns"></i> Cadastrar Instituição →</a>
         </section>
     </main>
     <?php include "../src/includes/footer.php" ?>

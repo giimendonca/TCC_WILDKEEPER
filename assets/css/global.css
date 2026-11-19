@@ -10,6 +10,12 @@ header {
   border-bottom: 1px solid var(--cinza);
 }
 
+.logo-text{
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--verde-principal);
+}
+
 header .logos a,
 header button,
 .header-menu nav ul li a,
