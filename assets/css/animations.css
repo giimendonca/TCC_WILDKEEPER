@@ -1,0 +1,84 @@
+
+/* ANIMAÇÃO DE ENTRADA DO HERO */
+@keyframes aparecer-esquerda {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes aparecer-direita {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-content {
+    animation: aparecer-esquerda .8s ease both;
+}
+
+.hero img {
+    animation: aparecer-direita 1s ease both;
+}
+
+/* EFEITOS DOS BOTÕES */
+.hero-actions a,
+#cadastro a {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hero-actions a:hover,
+#cadastro a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, .15);
+}
+
+/* EFEITOS DOS CARDS */
+#recursos .card {
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+#recursos .card:hover {
+    transform: translateY(-7px);
+    border-color: var(--verde-claro);
+    box-shadow: 0 8px 20px rgba(46, 125, 50, .12);
+}
+
+#recursos .card i {
+    transition: transform .3s ease;
+}
+
+#recursos .card:hover i {
+    transform: scale(1.12);
+}
+
+/* ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+.revelar {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.revelar.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -8,10 +8,18 @@
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/landing.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
+    <svg width="0" height="0" aria-hidden="true">
+        <defs>
+            <clipPath id="forma-onca" clipPathUnits="objectBoundingBox">
+                <path d="M 0.22,0 C 0.04,0.22 -0.02,0.52 0.05,0.78 C 0.08,0.89 0.13,0.96 0.18,1 L 1,1 L 1,0 Z" />
+            </clipPath>
+        </defs>
+    </svg>
     <?php include "../src/includes/header.php" ?>
     <main>
         <section id="inicio" class="hero">
@@ -29,8 +37,10 @@
             </div>
 
             <img src="../assets/img/onca-pintada.webp" alt="">
+            <svg class="onda" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,45 C180,68 380,65 560,40 C740,15 920,25 1100,52 C1250,74 1360,55 1440,38 L1440,120 L0,120 Z" />
+            </svg>
         </section>
-
         <section id="sobre">
             <img src="../assets/img/tucano.webp" alt="Tucano">
 
@@ -143,8 +153,14 @@
             <a href="../src/setup/instituicao.php"><i class="fa-solid fa-building-columns"></i> Cadastrar Instituição →</a>
         </section>
     </main>
+
+    <button id="voltar-topo" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</button>
     <?php include "../src/includes/footer.php" ?>
     <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/voltar-topo.js"></script>
+    <script src="../assets/js/animations.js"></script>
 </body>
 
 </html>
