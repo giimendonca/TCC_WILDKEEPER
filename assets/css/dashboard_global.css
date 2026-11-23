@@ -1,14 +1,3 @@
-:root {
-    --verde-principal: #2E7D32;
-    --verde-claro: #81C784;
-    --azul: #1565C0;
-    --cinza: #ECEFF1;
-    --branco: #FFFFFF;
-    --erro-sair: #D32F2F;
-    --sucesso: #388E3C;
-    --texto: #263238;
-}
-
 .header {
     display: flex;
     align-items: center;
@@ -64,6 +53,7 @@
 
 .navegacao a,
 .menu-botao,
+.sair i,
 .sair {
     padding: 10px 14px;
     border: none;
