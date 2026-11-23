@@ -44,11 +44,11 @@ $sql = "SELECT
             created_at,
             updated_at
         FROM medicamentos
-        WHERE id = ?";
+        WHERE id = ? AND instituicao_id =?";
 
 $stmt = $conexao->prepare($sql);
 
-$stmt->bind_param("i", $medicamentoId);
+$stmt->bind_param("ii", $medicamentoId, $_SESSION['instituicao_id']);
 
 $stmt->execute();
 

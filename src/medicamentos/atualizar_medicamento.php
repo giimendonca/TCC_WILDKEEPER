@@ -53,11 +53,11 @@ $sql = "UPDATE medicamentos
             estoque = ?,
             lote = ?,
             vencimento = ?
-        WHERE id = ?";
+        WHERE id = ? AND instituicao_id";
 
 $stmt = $conexao->prepare($sql);
 
-$stmt->bind_param("sssissi", $nome, $descricao, $fabricante, $estoque, $lote, $vencimento, $medicamentoId);
+$stmt->bind_param("sssissii", $nome, $descricao, $fabricante, $estoque, $lote, $vencimento, $medicamentoId, $_SESSION['instituicao_id']);
 
 $stmt->execute();
 

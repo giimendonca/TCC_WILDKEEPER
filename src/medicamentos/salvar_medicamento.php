@@ -45,12 +45,12 @@ if (!is_numeric($estoque) || $estoque < 0) {
 // INSERT
 // ====================================
 
-$sql = "INSERT INTO medicamentos (nome, descricao, fabricante, estoque, lote, vencimento)
-        VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO medicamentos (nome, descricao, fabricante, estoque, lote, vencimento, instituicao_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conexao->prepare($sql);
 
-$stmt->bind_param("sssiss", $nome, $descricao, $fabricante, $estoque, $lote, $vencimento);
+$stmt->bind_param("sssissi", $nome, $descricao, $fabricante, $estoque, $lote, $vencimento, $_SESSION['instituicao_id']);
 
 $stmt->execute();
 

@@ -37,10 +37,12 @@ $vencimentoOrdenacao = $_GET['vencimento'] ?? "";
 // Monta a consulta base
 $sql = "SELECT id, nome, fabricante, estoque, lote, vencimento
         FROM medicamentos
-        WHERE 1 = 1";
+        WHERE 1 = 1 AND instituicao_id = ?";
 
-$parametros = [];
-$tipos = "";
+$parametros = [
+    $_SESSION['instituicao_id']
+];
+$tipos = "i";
 
 // Filtra pelo nome do medicamento
 if ($nomeFiltrado !== "") {
