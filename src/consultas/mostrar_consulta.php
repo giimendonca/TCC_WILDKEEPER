@@ -73,10 +73,11 @@ $sqlMedicamentos = "SELECT
     medicamentos_consulta.observacoes
 FROM medicamentos_consulta
 INNER JOIN medicamentos ON medicamentos_consulta.medicamento_id = medicamentos.id
-WHERE medicamentos_consulta.consulta_id = ?";
+WHERE medicamentos_consulta.consulta_id = ?
+AND medicamentos.instituicao_id = ?";
 
 $stmtMedicamentos = $conexao->prepare($sqlMedicamentos);
-$stmtMedicamentos->bind_param("i", $consultaId);
+$stmtMedicamentos->bind_param("ii", $consultaId, $_SESSION['instituicao_id']);
 $stmtMedicamentos->execute();
 
 $resultMedicamentos = $stmtMedicamentos->get_result();

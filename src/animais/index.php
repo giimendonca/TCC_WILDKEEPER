@@ -31,9 +31,14 @@ $saudeStatusFiltrado = trim($_GET['saude_status'] ?? "");
 
 // Pega os filtros que são de outras tabelas
 $especies = selectTabela($conexao, "especies");
-$habitats = selectTabela($conexao, "habitats");
 $statusAnimais = selectTabela($conexao, "status_animais");
 $saudeStatus = selectTabela($conexao, "saude_status");
+
+$stmt = $conexao->prepare("SELECT id, nome FROM habitats WHERE instituicao_id = ?");
+$stmt->bind_param("i", $_SESSION['instituicao_id']);
+$stmt->execute();
+
+$habitats = $stmt->get_result();
 
 // Faz o SELECT dos Animais
 $sql = "SELECT 
@@ -122,6 +127,7 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
     <link rel="stylesheet" href="../../assets/css/tabela.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <?php include "../includes/fonte.php" ?>
 </head>
 

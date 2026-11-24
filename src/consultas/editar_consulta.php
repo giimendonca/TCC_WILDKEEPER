@@ -63,6 +63,37 @@ $consulta = $result->fetch_assoc();
 if (!$consulta) {
     die("Consulta não encontrada.");
 }
+
+// Busca medicamentos disponíveis na instituição
+$sqlMedicamentos = "SELECT id, nome
+FROM medicamentos
+WHERE instituicao_id = ?
+ORDER BY nome";
+
+$stmtMedicamentos = $conexao->prepare($sqlMedicamentos);
+$stmtMedicamentos->bind_param("i", $instituicao_id);
+$stmtMedicamentos->execute();
+
+$medicamentosDisponiveis = $stmtMedicamentos->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Busca medicamentos já associados
+$sqlAssociados = "SELECT mc.medicamento_id, mc.dosagem, mc.observacoes
+FROM medicamentos_consulta mc
+INNER JOIN medicamentos m ON mc.medicamento_id = m.id
+WHERE mc.consulta_id = ?
+AND m.instituicao_id = ?";
+
+$stmtAssociados = $conexao->prepare($sqlAssociados);
+$stmtAssociados->bind_param("ii", $consultaId, $instituicao_id);
+$stmtAssociados->execute();
+
+$resultAssociados = $stmtAssociados->get_result();
+
+$medicamentosAssociados = [];
+
+while ($medicamento = $resultAssociados->fetch_assoc()) {
+    $medicamentosAssociados[$medicamento['medicamento_id']] = $medicamento;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -126,6 +157,52 @@ if (!$consulta) {
                     <label for="data_retorno">Data de retorno:</label>
                     <input type="date" name="data_retorno" id="data_retorno" value="<?= htmlspecialchars($consulta['data_retorno'] ?? '') ?>">
 
+                    <label for="pesquisa-medicamento">Pesquisar medicamento:</label>
+                    <input type="search" id="pesquisa-medicamento" placeholder="Digite o nome do medicamento...">
+
+                    <div id="lista-medicamentos">
+                        <?php foreach ($medicamentosDisponiveis as $medicamento): ?>
+                            <?php
+                            $id = $medicamento['id'];
+                            $associado = $medicamentosAssociados[$id] ?? null;
+                            ?>
+
+                            <article class="medicamento-item" data-nome="<?= htmlspecialchars(mb_strtolower($medicamento['nome'])) ?>">
+                                <label>
+                                    <input type="checkbox" class="medicamento-checkbox" name="medicamentos[<?= $id ?>][selecionado]" value="1" <?= $associado ? 'checked' : '' ?>>
+                                    <?= htmlspecialchars($medicamento['nome']) ?>
+                                </label>
+
+                                <div class="medicamento-detalhes" <?= $associado ? '' : 'hidden' ?>>
+                                    <label for="dosagem-<?= $id ?>">Dosagem:</label>
+                                    <input type="text" id="dosagem-<?= $id ?>" name="medicamentos[<?= $id ?>][dosagem]" value="<?= htmlspecialchars($associado['dosagem'] ?? '') ?>" placeholder="Ex.: 2 ml a cada 12 horas">
+
+                                    <label for="observacoes-<?= $id ?>">Observações:</label>
+                                    <textarea id="observacoes-<?= $id ?>" name="medicamentos[<?= $id ?>][observacoes]" placeholder="Instruções específicas..."><?= htmlspecialchars($associado['observacoes'] ?? '') ?></textarea>
+                                </div>
+                            </article>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div id="lista-medicamentos">
+                        <?php foreach ($medicamentosDisponiveis as $medicamento): ?>
+                            <article class="medicamento-item" data-nome="<?= htmlspecialchars(mb_strtolower($medicamento['nome'])) ?>">
+                                <label>
+                                    <input type="checkbox" class="medicamento-checkbox" name="medicamentos[<?= $medicamento['id'] ?>][selecionado]" value="1">
+                                    <?= htmlspecialchars($medicamento['nome']) ?>
+                                </label>
+
+                                <div class="medicamento-detalhes" hidden>
+                                    <label for="dosagem-<?= $medicamento['id'] ?>">Dosagem:</label>
+                                    <input type="text" id="dosagem-<?= $medicamento['id'] ?>" name="medicamentos[<?= $medicamento['id'] ?>][dosagem]" placeholder="Ex.: 2 ml a cada 12 horas">
+
+                                    <label for="observacoes-<?= $medicamento['id'] ?>">Observações:</label>
+                                    <textarea id="observacoes-<?= $medicamento['id'] ?>" name="medicamentos[<?= $medicamento['id'] ?>][observacoes]" placeholder="Instruções específicas..."></textarea>
+                                </div>
+                            </article>
+                        <?php endforeach; ?>
+                    </div>
+
                     <button type="submit">Atualizar Consulta</button>
                     <a href="mostrar_consulta.php?id=<?= htmlspecialchars($consulta['id']) ?>">Cancelar</a>
 
@@ -135,6 +212,7 @@ if (!$consulta) {
     </main>
 
     <?php include "../includes/dashboard-footer.php" ?>
+    <script src="../../assets/js/medicamentos-consulta.js"></script>
 </body>
 
 </html>

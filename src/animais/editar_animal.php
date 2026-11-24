@@ -24,9 +24,14 @@ if (empty($animalId)) {
 
 // Faz o select das especies, habitats status_animais e riscos existentes
 $especies = selectTabela($conexao, "especies");
-$habitats = selectTabela($conexao, "habitats");
 $statusAnimais = selectTabela($conexao, "status_animais");
 $saudeStatus = selectTabela($conexao, "saude_status");
+
+$stmt = $conexao->prepare("SELECT id, nome FROM habitats WHERE instituicao_id = ?");
+$stmt->bind_param("i", $_SESSION['instituicao_id']);
+$stmt->execute();
+
+$habitats = $stmt->get_result();
 
 // Faz o SELECT da Animal
 $sql = "SELECT 

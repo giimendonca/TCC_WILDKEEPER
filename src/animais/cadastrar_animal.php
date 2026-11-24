@@ -16,9 +16,14 @@ requireNivel(40);
 
 // Faz o select das especies, habitats e status_animal existentes
 $especies = selectTabela($conexao, "especies");
-$habitats = selectTabela($conexao, "habitats");
 $statusAnimais = selectTabela($conexao, "status_animais");
 $saudeStatus = selectTabela($conexao, "saude_status");
+
+$stmt = $conexao->prepare("SELECT id, nome FROM habitats WHERE instituicao_id = ?");
+$stmt->bind_param("i", $_SESSION['instituicao_id']);
+$stmt->execute();
+
+$habitats = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,6 +34,7 @@ $saudeStatus = selectTabela($conexao, "saude_status");
     <title>Novo Animal | WildKeeper</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <?php include "../includes/fonte.php" ?>
 </head>
 

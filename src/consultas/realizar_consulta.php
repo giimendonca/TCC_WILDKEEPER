@@ -66,6 +66,19 @@ $resultConsulta = $stmtConsulta->get_result();
 if ($resultConsulta->num_rows > 0) {
     die("Esta consulta já foi realizada.");
 }
+
+// Busca os medicamentos cadastrados pela instituição
+$sqlMedicamentos = "SELECT id, nome
+FROM medicamentos
+WHERE instituicao_id = ?
+ORDER BY nome";
+
+$stmtMedicamentos = $conexao->prepare($sqlMedicamentos);
+$stmtMedicamentos->bind_param("i", $instituicao_id);
+$stmtMedicamentos->execute();
+
+$resultMedicamentos = $stmtMedicamentos->get_result();
+$medicamentosDisponiveis = $resultMedicamentos->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -138,6 +151,28 @@ if ($resultConsulta->num_rows > 0) {
                     <label for="data_retorno">Data de retorno:</label>
                     <input type="date" name="data_retorno" id="data_retorno">
 
+                    <label for="pesquisa-medicamento">Pesquisar medicamento:</label>
+                    <input type="search" id="pesquisa-medicamento" placeholder="Digite o nome do medicamento...">
+
+                    <div id="lista-medicamentos">
+                        <?php foreach ($medicamentosDisponiveis as $medicamento): ?>
+                            <article class="medicamento-item" data-nome="<?= htmlspecialchars(mb_strtolower($medicamento['nome'])) ?>">
+                                <label>
+                                    <input type="checkbox" class="medicamento-checkbox" name="medicamentos[<?= $medicamento['id'] ?>][selecionado]" value="1">
+                                    <?= htmlspecialchars($medicamento['nome']) ?>
+                                </label>
+
+                                <div class="medicamento-detalhes" hidden>
+                                    <label for="dosagem-<?= $medicamento['id'] ?>">Dosagem:</label>
+                                    <input type="text" id="dosagem-<?= $medicamento['id'] ?>" name="medicamentos[<?= $medicamento['id'] ?>][dosagem]" placeholder="Ex.: 2 ml a cada 12 horas">
+
+                                    <label for="observacoes-<?= $medicamento['id'] ?>">Observações:</label>
+                                    <textarea id="observacoes-<?= $medicamento['id'] ?>" name="medicamentos[<?= $medicamento['id'] ?>][observacoes]" placeholder="Instruções específicas..."></textarea>
+                                </div>
+                            </article>
+                        <?php endforeach; ?>
+                    </div>
+
                     <button type="submit">Finalizar Consulta</button>
                     <a href="index.php">Cancelar</a>
 
@@ -147,6 +182,7 @@ if ($resultConsulta->num_rows > 0) {
     </main>
 
     <?php include "../includes/dashboard-footer.php" ?>
+    <script src="../../assets/js/medicamentos-consulta.js"></script>
 </body>
 
 </html>
