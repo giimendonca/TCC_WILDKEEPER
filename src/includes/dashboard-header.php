@@ -17,7 +17,7 @@
 
                     <?php if (nivelMinimo(60)): ?>
                         <a href="/TCC_WILDKEEPER/src/consultas/index.php"><i class="fa-solid fa-hospital"></i> Consultas</a>
-                        <a href="/TCC_WILDKEEPER/src/vacinas/index.php">Vacinas</a>
+                        <a href="/TCC_WILDKEEPER/src/vacinas/index.php"><i class="fa-solid fa-syringe"></i> Vacinas</a>
                         <a href="/TCC_WILDKEEPER/src/medicamentos/index.php"><i class="fa-solid fa-kit-medical"></i> Medicamentos</a>
                     <?php endif; ?>
 
