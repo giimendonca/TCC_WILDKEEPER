@@ -53,7 +53,7 @@ $sql = "UPDATE medicamentos
             estoque = ?,
             lote = ?,
             vencimento = ?
-        WHERE id = ? AND instituicao_id";
+        WHERE id = ? AND instituicao_id = ?"; 
 
 $stmt = $conexao->prepare($sql);
 
