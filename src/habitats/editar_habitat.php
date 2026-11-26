@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
 
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
@@ -66,6 +67,7 @@ if (!$habitat) {
             <h1>Habitat: <?= htmlspecialchars($habitat['nome']) ?></h1>
 
             <form action="atualizar_habitat.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
 
                 <input type="hidden" name="id" id="id" value="<?= htmlspecialchars($habitatId) ?>">
 

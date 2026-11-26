@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
 
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
@@ -50,6 +51,10 @@ $stmtFotos->bind_param("ii", $animalId, $_SESSION['instituicao_id']);
 $stmtFotos->execute();
 
 $resultFotos = $stmtFotos->get_result();
+$quantidadeFotos = $resultFotos->num_rows;
+$vagasFotos = max(0, 5 - $quantidadeFotos);
+$mensagemSucessoFotos = $_SESSION['mensagem_sucesso_fotos'] ?? '';
+unset($_SESSION['mensagem_sucesso_fotos']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -69,6 +74,12 @@ $resultFotos = $stmtFotos->get_result();
         <section>
             <h1>Fotos: <?= htmlspecialchars($animal['nome']) ?></h1>
 
+            <?php if ($mensagemSucessoFotos !== ''): ?>
+                <p role="status" style="color: var(--sucesso); font-weight: 600;">
+                    <?= htmlspecialchars($mensagemSucessoFotos, ENT_QUOTES, 'UTF-8') ?>
+                </p>
+            <?php endif; ?>
+
             <?php if ($resultFotos->num_rows > 0): ?>
 
                 <?php while ($foto = $resultFotos->fetch_assoc()): ?>
@@ -84,9 +95,12 @@ $resultFotos = $stmtFotos->get_result();
                             <?= htmlspecialchars($foto['descricao']) ?>
                         </p>
 
-                        <a href="excluir_foto.php?id=<?= htmlspecialchars($foto['id']) ?>&animal_id=<?= htmlspecialchars($animal['id']) ?>">
-                            Excluir foto
-                        </a>
+                        <form action="excluir_foto.php" method="post">
+                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($foto["id"]) ?>">
+                            <input type="hidden" name="animal_id" value="<?= htmlspecialchars($animal["id"]) ?>">
+                            <button type="submit" class="link-excluir-foto">Excluir foto</button>
+                        </form>
 
                     </div>
 
@@ -100,7 +114,10 @@ $resultFotos = $stmtFotos->get_result();
 
             <h2>Adicionar novas fotos</h2>
 
+            <p id="statusQuantidadeFotos" role="status" aria-live="polite"></p>
+
             <form action="salvar_fotos.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
 
                 <input
                     type="hidden"
@@ -114,13 +131,12 @@ $resultFotos = $stmtFotos->get_result();
                     name="fotos[]"
                     id="fotos"
                     accept="image/*"
-                    multiple>
-
-                <p>Você pode adicionar até 5 fotos no total.</p>
+                    multiple
+                    <?= $vagasFotos === 0 ? 'disabled' : '' ?>>
 
                 <div id="descricoesFotos"></div>
 
-                <button type="submit">Adicionar fotos</button>
+                <button type="submit" id="botaoAdicionarFotos" <?= $vagasFotos === 0 ? 'disabled' : '' ?>>Adicionar fotos</button>
 
             </form>
 
@@ -131,14 +147,34 @@ $resultFotos = $stmtFotos->get_result();
     <script>
         const inputFotos = document.getElementById("fotos");
         const descricoesFotos = document.getElementById("descricoesFotos");
+        const statusQuantidadeFotos = document.getElementById("statusQuantidadeFotos");
+        const botaoAdicionarFotos = document.getElementById("botaoAdicionarFotos");
+        const quantidadeFotosExistentes = <?= (int) $quantidadeFotos ?>;
+        const vagasFotos = <?= (int) $vagasFotos ?>;
+
+        function atualizarStatusQuantidade() {
+            const selecionadas = inputFotos.files.length;
+            const restantes = Math.max(0, vagasFotos - selecionadas);
+
+            if (vagasFotos === 0) {
+                statusQuantidadeFotos.textContent = `Você já possui ${quantidadeFotosExistentes} fotos. Remova alguma foto antes de adicionar outra.`;
+            } else if (selecionadas === 0) {
+                statusQuantidadeFotos.textContent = `Você já possui ${quantidadeFotosExistentes} fotos e pode adicionar mais ${vagasFotos}.`;
+            } else {
+                statusQuantidadeFotos.textContent = `Você já possui ${quantidadeFotosExistentes} fotos, selecionou ${selecionadas} e ainda pode selecionar mais ${restantes}.`;
+            }
+
+            botaoAdicionarFotos.disabled = vagasFotos === 0 || selecionadas === 0 || selecionadas > vagasFotos;
+        }
 
         inputFotos.addEventListener("change", function() {
 
             descricoesFotos.innerHTML = "";
 
-            if (inputFotos.files.length > 5) {
-                alert("Você pode selecionar no máximo 5 fotos.");
+            if (inputFotos.files.length > vagasFotos) {
+                alert(`Você já possui ${quantidadeFotosExistentes} fotos e pode adicionar mais ${vagasFotos}. Remova alguma foto ou selecione menos arquivos.`);
                 inputFotos.value = "";
+                atualizarStatusQuantidade();
                 return;
             }
 
@@ -170,7 +206,20 @@ $resultFotos = $stmtFotos->get_result();
 
                 descricoesFotos.appendChild(div);
             }
+
+            atualizarStatusQuantidade();
         });
+
+        document.querySelector('form[action="salvar_fotos.php"]').addEventListener("submit", function(event) {
+            if (inputFotos.files.length === 0 || inputFotos.files.length > vagasFotos) {
+                event.preventDefault();
+                alert(vagasFotos === 0
+                    ? "Remova alguma foto antes de adicionar outra."
+                    : `Selecione no máximo ${vagasFotos} foto(s).`);
+            }
+        });
+
+        atualizarStatusQuantidade();
     </script>
 </body>
 

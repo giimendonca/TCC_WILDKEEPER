@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../includes/csrf.php';
+exigirTokenCsrfValido();
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
 

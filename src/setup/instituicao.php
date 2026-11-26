@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../includes/csrf.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,6 +15,7 @@
     <main>
         <section id="formCadastro">
             <form action="salvar_instituicao.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
                 <h1>Cadastro da Instituição</h1>
                 <p>Preencha as informações abaixo para criar sua instituição e o primeiro usuário administrador.</p>
 

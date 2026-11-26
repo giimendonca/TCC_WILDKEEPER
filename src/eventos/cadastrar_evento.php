@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
 
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
@@ -88,6 +89,7 @@ $funcionarios = $stmtFuncionarios->get_result();
             <h1>Novo Evento</h1>
 
             <form action="salvar_evento.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
 
                 <label for="titulo">Título</label>
                 <input type="text" name="titulo" id="titulo" maxlength="255" placeholder="Digite o título do evento" required>

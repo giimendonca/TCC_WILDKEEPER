@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
+exigirTokenCsrfValido();
 
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
@@ -16,10 +18,10 @@ if (!isset($_SESSION['id'])) {
 requireNivel(40);
 
 // Pega o ID da foto
-$fotoId = trim($_GET['id'] ?? '');
+$fotoId = trim($_POST['id'] ?? '');
 
 // Pega o ID do animal
-$animalId = trim($_GET['animal_id'] ?? '');
+$animalId = trim($_POST['animal_id'] ?? '');
 
 // Verifica se os IDs vieram vazios
 if (empty($fotoId) || empty($animalId)) {

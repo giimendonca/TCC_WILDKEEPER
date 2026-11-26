@@ -1,6 +1,8 @@
 <?php
 // Inicia a sessão
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
+exigirTokenCsrfValido();
 
 // Remove todas as varáveis da sessão
 $_SESSION = [];

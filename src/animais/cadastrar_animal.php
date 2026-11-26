@@ -2,6 +2,7 @@
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
 
 include "../includes/autenticacao.php";
 
@@ -45,6 +46,7 @@ $habitats = $stmt->get_result();
             <h1>Novo Animal</h1>
 
             <form action="salvar_animal.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
 
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" maxlength="100" placeholder="Digite o nome do animal" required>
@@ -112,7 +114,7 @@ $habitats = $stmt->get_result();
 
                 <label for="fotos">Fotos do Animal</label>
                 <input type="file" name="fotos[]" id="fotos" accept="image/*" multiple>
-                <p>Você pode adicionar até 5 fotos. Cada foto deve possuir uam descrição.</p>
+                <p>Você pode adicionar até 5 fotos. Cada foto deve possuir uma descrição.</p>
 
                 <div id="descricoesFotos">
 

@@ -2,6 +2,7 @@
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
 
 include "../includes/autenticacao.php";
 
@@ -36,6 +37,7 @@ $result = selectTabela($conexao, "cargos");
             <h1>Novo Funcionário</h1>
 
             <form action="salvar_funcionario.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrfToken(), ENT_QUOTES, "UTF-8") ?>">
                 <label for="nome">Nome do Funcionário</label>
                 <input type="text" name="nome" id="nome" maxlength="100" placeholder="Digite o nome do usuário" required>
 

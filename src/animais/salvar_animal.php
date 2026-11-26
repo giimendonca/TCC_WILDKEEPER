@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+require_once __DIR__ . '/../includes/csrf.php';
+exigirTokenCsrfValido();
 
 include "../includes/conexao.php";
 include "../includes/funcoes.php";
@@ -100,6 +102,10 @@ try {
             $tamanho = $_FILES['fotos']['size'][$indice];
             $erro = $_FILES['fotos']['error'][$indice];
  
+            if ($erro === UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+
             // verifica se o upload terminou corretamente
             if($erro !== UPLOAD_ERR_OK){
                 throw new Exception("O upload falhou.");
