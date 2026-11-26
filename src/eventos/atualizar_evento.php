@@ -63,7 +63,6 @@ if (!verificarCamposObrigatorios($evento, $camposObrigatorios)) {
 $tiposPermitidos = [
     "Consulta",
     "Vacinação",
-    "Alimentação",
     "Manutenção",
     "Transferência",
     "Outro"
@@ -71,6 +70,45 @@ $tiposPermitidos = [
 
 if (!in_array($evento['tipo'], $tiposPermitidos)) {
     die("Tipo de evento inválido.");
+}
+
+// ====================================
+// Regras de associação conforme o tipo
+// ====================================
+
+$regrasAssociacao = [
+    "Consulta" => ["animal" => true, "habitat" => false],
+    "Vacinação" => ["animal" => true, "habitat" => false],
+    "Manutenção" => ["animal" => false, "habitat" => true],
+    "Transferência" => ["animal" => true, "habitat" => true],
+    "Outro" => ["animal" => false, "habitat" => false]
+];
+
+$regra = $regrasAssociacao[$evento['tipo']];
+
+if ($evento['animal_id'] === "" && $regra['animal']) {
+    die("Este tipo de evento exige a seleção de um animal.");
+}
+
+if ($evento['habitat_id'] === "" && $regra['habitat']) {
+    die("Este tipo de evento exige a seleção de um habitat.");
+}
+
+// Campos que não se aplicam ao tipo selecionado são armazenados como NULL.
+if (!$regra['animal'] && in_array($evento['tipo'], ["Consulta", "Vacinação", "Manutenção"], true)) {
+    $evento['animal_id'] = null;
+}
+
+if (!$regra['habitat'] && in_array($evento['tipo'], ["Consulta", "Vacinação"], true)) {
+    $evento['habitat_id'] = null;
+}
+
+if ($evento['animal_id'] === "") {
+    $evento['animal_id'] = null;
+}
+
+if ($evento['habitat_id'] === "") {
+    $evento['habitat_id'] = null;
 }
 
 // ====================================

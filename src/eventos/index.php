@@ -123,7 +123,6 @@ $result = $stmt->get_result();
                     <option value="">Todos</option>
                     <option value="Consulta" <?= $tipoFiltrado == "Consulta" ? "selected" : "" ?>>Consulta</option>
                     <option value="Vacinação" <?= $tipoFiltrado == "Vacinação" ? "selected" : "" ?>>Vacinação</option>
-                    <option value="Alimentação" <?= $tipoFiltrado == "Alimentação" ? "selected" : "" ?>>Alimentação</option>
                     <option value="Manutenção" <?= $tipoFiltrado == "Manutenção" ? "selected" : "" ?>>Manutenção</option>
                     <option value="Transferência" <?= $tipoFiltrado == "Transferência" ? "selected" : "" ?>>Transferência</option>
                     <option value="Outro" <?= $tipoFiltrado == "Outro" ? "selected" : "" ?>>Outro</option>
@@ -188,6 +187,7 @@ $result = $stmt->get_result();
 
                                 <td>
                                     <a href="mostrar_evento.php?id=<?= $evento['id'] ?>">Ver informações</a>
+                                    <a href="editar_evento.php?id=<?= $evento['id'] ?>">Editar</a>
                                 </td>
 
                             </tr>

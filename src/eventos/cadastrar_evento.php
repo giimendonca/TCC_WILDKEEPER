@@ -75,6 +75,7 @@ $funcionarios = $stmtFuncionarios->get_result();
     <title>Novo Evento | WildKeeper</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
+    <link rel="stylesheet" href="../../assets/css/eventos.css">
     <?php include "../includes/fonte.php" ?>
 </head>
 <body>
@@ -99,7 +100,6 @@ $funcionarios = $stmtFuncionarios->get_result();
                     <option value="">Selecione</option>
                     <option value="Consulta">Consulta</option>
                     <option value="Vacinação">Vacinação</option>
-                    <option value="Alimentação">Alimentação</option>
                     <option value="Manutenção">Manutenção</option>
                     <option value="Transferência">Transferência</option>
                     <option value="Outro">Outro</option>
@@ -111,33 +111,25 @@ $funcionarios = $stmtFuncionarios->get_result();
                 <label for="data_fim">Data e hora de fim</label>
                 <input type="datetime-local" name="data_fim" id="data_fim" required>
 
-                <label for="animal_id">Animal</label>
-                <select name="animal_id" id="animal_id">
-                    <option value="">Nenhum / Evento geral</option>
+                <div id="campo-animal" class="campo-relacionado" hidden>
+                    <label for="animal_id">Animal <span class="campo-obrigatorio" hidden>*</span></label>
+                    <select name="animal_id" id="animal_id">
+                        <option value="">Selecione um animal</option>
+                        <?php while ($animal = $animais->fetch_assoc()): ?>
+                            <option value="<?= htmlspecialchars($animal['id']) ?>"><?= htmlspecialchars($animal['nome']) ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
 
-                    <?php while ($animal = $animais->fetch_assoc()): ?>
-
-                        <option value="<?= htmlspecialchars($animal['id']) ?>">
-                            <?= htmlspecialchars($animal['nome']) ?>
-                        </option>
-
-                    <?php endwhile; ?>
-
-                </select>
-
-                <label for="habitat_id">Habitat</label>
-                <select name="habitat_id" id="habitat_id">
-                    <option value="">Nenhum / Evento geral</option>
-
-                    <?php while ($habitat = $habitats->fetch_assoc()): ?>
-
-                        <option value="<?= htmlspecialchars($habitat['id']) ?>">
-                            <?= htmlspecialchars($habitat['nome']) ?>
-                        </option>
-
-                    <?php endwhile; ?>
-
-                </select>
+                <div id="campo-habitat" class="campo-relacionado" hidden>
+                    <label for="habitat_id">Habitat <span class="campo-obrigatorio" hidden>*</span></label>
+                    <select name="habitat_id" id="habitat_id">
+                        <option value="">Selecione um habitat</option>
+                        <?php while ($habitat = $habitats->fetch_assoc()): ?>
+                            <option value="<?= htmlspecialchars($habitat['id']) ?>"><?= htmlspecialchars($habitat['nome']) ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
 
                 <label for="funcionario_id">Funcionário responsável</label>
                 <select name="funcionario_id" id="funcionario_id" required>
@@ -172,6 +164,7 @@ $funcionarios = $stmtFuncionarios->get_result();
     </main>
 
     <?php include "../includes/dashboard-footer.php" ?>
+    <script src="../../assets/js/eventos.js"></script>
 
 </body>
 </html>
