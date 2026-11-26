@@ -23,7 +23,7 @@
 
                     <?php if (nivelMinimo(40)): ?>
                         <a href="/TCC_WILDKEEPER/src/habitats/index.php"><i class="fa-solid fa-signs-post"></i> Habitats</a>
-                        <a href="/TCC_WILDKEEPER/src/especies/index.php"><i class="fa-solid fa-paw"></i> Espécies</a>
+                        <a href="/TCC_WILDKEEPER/src/especies/index.php"><i class="fa-solid fa-shield-dog"></i> Espécies</a>
                     <?php endif; ?>
 
                     <?php if (nivelMinimo(20)): ?>
