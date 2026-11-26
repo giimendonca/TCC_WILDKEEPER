@@ -130,6 +130,7 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
     <link rel="stylesheet" href="../../assets/css/tabela.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <?php include "../includes/fonte.php" ?>
 </head>
 
@@ -157,6 +158,8 @@ $result = $stmt->get_result();
                 <input type="date" name="data_retorno" id="data_retorno" value="<?= htmlspecialchars($dataRetorno) ?>">
 
                 <button type="submit">Pesquisar</button>
+
+                <a href="index.php">Limpar filtros</a>
             </form>
 
             <table border="1" id="tabela">
@@ -197,8 +200,6 @@ $result = $stmt->get_result();
 
                                     <?php elseif ($consulta['consulta_id']): ?>
                                         <a href="mostrar_consulta.php?id=<?= $consulta['consulta_id'] ?>">Ver informações</a>
-                                        <a href="editar_consulta.php?id=<?= $consulta['consulta_id'] ?>">Editar</a>
-
                                     <?php else: ?>
                                         <a href="../eventos/mostrar_evento.php?id=<?= $consulta['evento_id'] ?>">Ver evento</a>
                                     <?php endif; ?>

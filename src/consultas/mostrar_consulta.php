@@ -92,6 +92,7 @@ $resultMedicamentos = $stmtMedicamentos->get_result();
     <title>Consulta | WildKeeper</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <?php include "../includes/fonte.php" ?>
 </head>
 
@@ -212,12 +213,6 @@ $resultMedicamentos = $stmtMedicamentos->get_result();
             </article>
 
             <div>
-                <?php if (nivelMinimo(60)): ?>
-                    <a href="editar_consulta.php?id=<?= htmlspecialchars($consultaId) ?>">
-                        Editar Consulta
-                    </a>
-                <?php endif; ?>
-
                 <a href="index.php">Voltar</a>
             </div>
 

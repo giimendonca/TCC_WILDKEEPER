@@ -77,43 +77,43 @@ WHERE evento_id = ?";
     }
 
     // Valida os medicamentos selecionados
-if (!is_array($medicamentos)) {
-    die("Dados dos medicamentos inválidos.");
-}
-
-$medicamentosSelecionados = [];
-
-foreach ($medicamentos as $medicamento_id => $dados) {
-
-    if (!is_array($dados) || !isset($dados['selecionado'])) {
-        continue;
+    if (!is_array($medicamentos)) {
+        die("Dados dos medicamentos inválidos.");
     }
 
-    $medicamento_id = filter_var($medicamento_id, FILTER_VALIDATE_INT);
+    $medicamentosSelecionados = [];
 
-    if (!$medicamento_id || $medicamento_id <= 0) {
-        die("Medicamento inválido.");
-    }
+    foreach ($medicamentos as $medicamento_id => $dados) {
 
-    $sqlMedicamento = "SELECT id
+        if (!is_array($dados) || !isset($dados['selecionado'])) {
+            continue;
+        }
+
+        $medicamento_id = filter_var($medicamento_id, FILTER_VALIDATE_INT);
+
+        if (!$medicamento_id || $medicamento_id <= 0) {
+            die("Medicamento inválido.");
+        }
+
+        $sqlMedicamento = "SELECT id
     FROM medicamentos
     WHERE id = ?
     AND instituicao_id = ?";
 
-    $stmtMedicamento = $conexao->prepare($sqlMedicamento);
-    $stmtMedicamento->bind_param("ii", $medicamento_id, $instituicao_id);
-    $stmtMedicamento->execute();
+        $stmtMedicamento = $conexao->prepare($sqlMedicamento);
+        $stmtMedicamento->bind_param("ii", $medicamento_id, $instituicao_id);
+        $stmtMedicamento->execute();
 
-    if ($stmtMedicamento->get_result()->num_rows === 0) {
-        die("Um dos medicamentos selecionados é inválido.");
+        if ($stmtMedicamento->get_result()->num_rows === 0) {
+            die("Um dos medicamentos selecionados é inválido.");
+        }
+
+        $medicamentosSelecionados[] = [
+            'id' => $medicamento_id,
+            'dosagem' => trim($dados['dosagem'] ?? ''),
+            'observacoes' => trim($dados['observacoes'] ?? '')
+        ];
     }
-
-    $medicamentosSelecionados[] = [
-        'id' => $medicamento_id,
-        'dosagem' => trim($dados['dosagem'] ?? ''),
-        'observacoes' => trim($dados['observacoes'] ?? '')
-    ];
-}
 
     // ====================================
     // Salva a consulta e conclui o evento
@@ -154,18 +154,18 @@ foreach ($medicamentos as $medicamento_id => $dados) {
         $stmtAssociacao = $conexao->prepare($sqlAssociacao);
 
         foreach ($medicamentosSelecionados as $medicamento) {
-    $stmtAssociacao->bind_param(
-        "iiss",
-        $consulta_id,
-        $medicamento['id'],
-        $medicamento['dosagem'],
-        $medicamento['observacoes']
-    );
+            $stmtAssociacao->bind_param(
+                "iiss",
+                $consulta_id,
+                $medicamento['id'],
+                $medicamento['dosagem'],
+                $medicamento['observacoes']
+            );
 
-    if (!$stmtAssociacao->execute()) {
-        throw new Exception("Erro ao associar medicamento à consulta.");
-    }
-}
+            if (!$stmtAssociacao->execute()) {
+                throw new Exception("Erro ao associar medicamento à consulta.");
+            }
+        }
 
         // Altera o status do evento para concluído
         $sqlEvento = "UPDATE eventos
