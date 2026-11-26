@@ -30,6 +30,7 @@ requireNivel(60);
     <title>Novo Medicamento | WildKeeper</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/dashboard_global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <?php include "../includes/fonte.php" ?>    
 </head>
 <body>
