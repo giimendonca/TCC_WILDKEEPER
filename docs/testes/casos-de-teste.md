@@ -288,25 +288,7 @@ Sistema bloqueou o cadastro.
 
 ✅ Aprovado
 
-## CT-013 - Estado inválido
 
-### Objetivo
-
-Verificar se o sistema aceita apenas siglas de estado com duas letras.
-
-### Resultado esperado
-
-Exibir a mensagem:
-
-"Estado inválido."
-
-### Resultado obtido
-
-Sistema bloqueou o cadastro.
-
-### Status
-
-✅ Aprovado
 
 ## CT-014 - Senhas diferentes
 
@@ -480,22 +462,87 @@ Sistema bloqueou o cadastro.
 
 ✅ Aprovado
 
-## CT-022 - E-mails diferentes
-
-Como você comentou que testou isso também, eu registraria:
+## CT-022 - E-mail inválido no cadastro de funcionário
 
 ### Objetivo
-
-Verificar se o sistema valida corretamente o e-mail informado no cadastro do funcionário.
+Verificar se o sistema impede o cadastro de funcionário quando o endereço de e-mail possui formato inválido.
 
 ### Resultado esperado
-
-O sistema deve validar o formato do e-mail e impedir o cadastro caso o endereço informado seja inválido.
+O sistema deve rejeitar o endereço inválido e informar que o e-mail precisa ser corrigido.
 
 ### Resultado obtido
-
-Sistema bloqueou o cadastro quando o e-mail informado era inválido.
+O sistema bloqueou o cadastro com o e-mail inválido, conforme registro de teste existente.
 
 ### Status
-
 ✅ Aprovado
+
+
+## CT-023 - Tentativas inválidas de login
+
+### Objetivo
+Verificar se o sistema registra tentativas consecutivas de autenticação inválidas para a mesma combinação de e-mail e endereço IP.
+
+### Resultado esperado
+As tentativas devem ser contabilizadas sem revelar se a conta existe. Ao atingir o limite configurado para a combinação, o sistema deve responder com HTTP 429.
+
+### Resultado obtido
+O limite foi atingido na quinta tentativa inválida e o sistema retornou HTTP 429.
+
+### Status
+✅ Aprovado
+
+## CT-024 - Cabeçalho Retry-After durante bloqueio
+
+### Objetivo
+Verificar se o sistema informa ao cliente por quanto tempo deve aguardar após o bloqueio por excesso de tentativas.
+
+### Resultado esperado
+A resposta HTTP 429 deve incluir o cabeçalho Retry-After com o tempo restante do bloqueio em segundos.
+
+### Resultado obtido
+O cabeçalho Retry-After foi recebido com o tempo restante do bloqueio.
+
+### Status
+✅ Aprovado
+
+## CT-025 - Recuperação do login após o bloqueio
+
+### Objetivo
+Verificar se uma conta pode realizar autenticação normalmente após o encerramento do período de bloqueio.
+
+### Resultado esperado
+Após o período de 15 minutos, uma tentativa com credenciais válidas deve ser processada normalmente.
+
+### Resultado obtido
+Após aguardar o período de bloqueio, o login foi realizado com sucesso.
+
+### Status
+✅ Aprovado
+
+## CT-026 - Rejeição de requisição sem token CSRF em ação protegida
+
+### Objetivo
+Verificar se uma ação protegida rejeita uma requisição POST sem token CSRF válido.
+
+### Resultado esperado
+O sistema deve responder com HTTP 403 e não deve executar a alteração solicitada.
+
+### Resultado obtido
+Pendente de execução após a revisão final dos formulários protegidos.
+
+### Status
+⏳ Pendente
+
+## CT-027 - Rejeição de token CSRF inválido
+
+### Objetivo
+Verificar se uma ação protegida rejeita um token CSRF incorreto.
+
+### Resultado esperado
+O sistema deve responder com HTTP 403 e não deve executar a alteração solicitada.
+
+### Resultado obtido
+Pendente de execução.
+
+### Status
+⏳ Pendente
