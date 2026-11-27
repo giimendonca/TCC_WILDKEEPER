@@ -1,114 +1,107 @@
 # Guia do Projeto
 
-## Convenções
+## Objetivo
 
-### Linguagem
+Manter um padrão de organização, nomenclatura, banco de dados, interface e versionamento para facilitar a manutenção do WildKeeper.
 
-Português.
+## Tecnologias
 
----
+- HTML5
+- CSS3
+- JavaScript
+- PHP
+- MySQL
+- Apache/XAMPP para o ambiente local
+- Git e GitHub para versionamento
 
-### Banco
+## Convenções de nomenclatura
 
-- Tabelas em snake_case
-- Chaves primárias: id
-- Chaves estrangeiras: id_nomeTabela
-
-users
-
-animais
-
-habitats
-
-especies
-
----
+### Banco de dados
+- Tabelas e colunas em `snake_case`.
+- Chave primária: `id`.
+- Chaves estrangeiras: nome no padrão `entidade_id`, por exemplo `instituicao_id`, `animal_id` e `evento_id`.
+- Utilizar InnoDB e `utf8mb4` nas tabelas.
+- Valores numéricos devem ser armazenados sem símbolos de unidade.
 
 ### PHP
-
-- Variáveis em camelCase
-- Classes em PascalCase
-
----
+- Variáveis e funções em `camelCase`.
+- Arquivos nomeados de forma descritiva, normalmente em letras minúsculas e separados por underscore.
+- Utilizar consultas preparadas para dados externos.
+- Tratar exceções e evitar exibir detalhes internos do banco ao usuário.
 
 ### CSS
-
-- Classes em kebab-case
-
-.container-login
-
-.card-animal
-
-.btn-primary
-
----
+- Classes em `kebab-case`, por exemplo `.container-login`, `.card-animal` e `.btn-primary`.
+- Variáveis globais de estilo centralizadas em `assets/css/reset.css`.
+- Evitar duplicar regras globais em folhas específicas.
 
 ### JavaScript
+- Variáveis e funções em `camelCase`.
+- IDs e seletores devem ser claros e consistentes.
+- Verificar a existência dos elementos antes de associar eventos quando o script for compartilhado entre páginas.
 
-- IDs em camelCase
+## Organização
 
-abrirModal()
+- `assets/`: recursos estáticos, como CSS, JavaScript e imagens.
+- `banco/`: scripts SQL e dados iniciais.
+- `docs/`: documentação do projeto.
+- `src/`: páginas, módulos e includes PHP.
 
-listarAnimais()
+Os módulos ficam organizados em diretórios próprios dentro de `src/`. Arquivos compartilhados devem ficar em `src/includes/`.
 
----
+## Organização funcional
 
-### Estrutura
+O sistema utiliza módulos por área de negócio. O módulo de eventos centraliza atividades como consultas, vacinações, transferências e manutenções. A lista atualizada está em `docs/modulos.md`.
 
-Os módulos devem seguir, quando aplicável, as seguintes operações:
+## Segurança e qualidade
 
-- listar
-- cadastrar
-- editar
-- excluir
+- Senhas devem ser armazenadas com hash seguro.
+- Validar dados no servidor.
+- Utilizar prepared statements.
+- Escapar dados ao exibi-los em HTML.
+- Restringir operações conforme autenticação, nível de acesso e instituição.
+- Validar tokens CSRF nas operações protegidas.
+- Aplicar limitação de tentativas no login.
+- Não versionar senhas, chaves secretas, tokens ou configurações privadas.
 
----
+## Unidades de medida
 
-### Padrão de Commits
-
-feat:
-
-fix:
-
-docs:
-
-style:
-
-refactor:
-
-chore:
-
----
-
-## Unidades de Medida
-
-As unidades de medida utilizadas pelo sistema são padronizadas para
-garantir consistência no armazenamento e na apresentação dos dados.
-
-Os valores são armazenados no banco de dados sem símbolos de unidade.
-As unidades são apresentadas na interface do sistema.
+Os valores são armazenados sem símbolos de unidade e apresentados com a unidade correspondente na interface.
 
 | Campo | Unidade |
 |---|---|
-| vida_media | anos |
-| peso_medio | kg |
-| altura_media | cm |
-| animais.peso | kg |
-| animais.altura | cm |
-| habitats.temperatura | °C |
-| habitats.umidade | % |
-| habitats.capacidade | animais |
-| medicamentos.estoque | unidades |
-| alimentacoes.quantidade | kg |
+| `vida_media` | anos |
+| `peso_medio` | kg |
+| `altura_media` | cm |
+| `animais.peso` | kg |
+| `animais.altura` | cm |
+| `habitats.temperatura` | °C |
+| `habitats.umidade` | % |
+| `habitats.capacidade` | animais |
+| `medicamentos.estoque` | unidades |
+| Dosagem de medicamentos | Texto conforme prescrição |
 
 ### Regras
-
-- Peso deve ser informado em quilogramas (kg).
-- Altura deve ser informada em centímetros (cm).
-- Temperatura deve ser informada em graus Celsius (°C).
-- Umidade deve ser informada em porcentagem (%), entre 0 e 100.
+- Umidade relativa deve ser expressa em porcentagem, entre 0 e 100.
 - Capacidade representa a quantidade máxima de animais no habitat.
-- Estoque de medicamentos representa a quantidade disponível em unidades.
-- Quantidade de alimento é registrada em quilogramas (kg).
-- A dosagem de medicamentos é armazenada como texto, permitindo diferentes
-  unidades de prescrição, como mg ou mL.
+- Estoque representa a quantidade disponível em unidades.
+- A dosagem é texto para permitir diferentes unidades de prescrição, como mg ou mL.
+
+## Padrão de commits
+
+Utilizar, quando possível, prefixos que indiquem a natureza da alteração:
+
+- `feat:` nova funcionalidade.
+- `fix:` correção.
+- `docs:` documentação.
+- `style:` alterações de estilo sem mudança de lógica.
+- `refactor:` reorganização interna sem mudança de comportamento.
+- `chore:` manutenção e configuração.
+
+## Documentos relacionados
+
+- Requisitos: `docs/requisitos.md`
+- Módulos: `docs/modulos.md`
+- Metodologia: `docs/scrum.md`
+- Identidade visual: `docs/design-system.md`
+- Testes: `docs/testes/`
+- Manuais: `docs/manuais/`
