@@ -52,11 +52,9 @@ Depois de criar/configurar o banco `wildkeeper`, importe o arquivo:
 
 `banco/script.sql`
 
-Se o banco já existir e estiver apenas recebendo a funcionalidade de rate limiting, execute a migração:
+A tabela `login_rate_limits` já está incluída no arquivo `banco/script.sql`. Não existe um arquivo de migração separado para essa tabela.
 
-`banco/migracao_login_rate_limits.sql`
-
-Não execute a migração repetidamente sem verificar antes se a tabela `login_rate_limits` já existe.
+Se estiver atualizando um banco existente, faça backup e verifique primeiro se a tabela `login_rate_limits` já existe. Caso não exista, execute somente o bloco `CREATE TABLE login_rate_limits` que está no próprio `banco/script.sql`; não execute o script inteiro sobre uma base com dados sem avaliar os comandos de inserção inicial.
 
 ## Equipe
 
@@ -69,3 +67,19 @@ Turma 2B - SESI
 ## Status
 
 🚧 Em desenvolvimento
+
+## Documentação
+
+A documentação do projeto está organizada em `docs/`:
+
+- `docs/guia-do-projeto.md`: convenções e padrões.
+- `docs/modulos.md`: módulos e escopo atual.
+- `docs/requisitos.md`: requisitos funcionais e não funcionais.
+- `docs/scrum.md`: organização do desenvolvimento.
+- `docs/design-system.md`: identidade visual.
+- `docs/manual-do-usuario.md`: orientação de uso.
+- `docs/manuais/manual-do-projeto.md`: visão geral do projeto.
+- `docs/manuais/manual-tecnico.md`: instalação e manutenção.
+- `docs/diagramas/`: diagramas de arquitetura e dados.
+- `docs/testes/`: casos de teste e registro de bugs.
+- `docs/atas/`: modelo para registrar reuniões reais.
