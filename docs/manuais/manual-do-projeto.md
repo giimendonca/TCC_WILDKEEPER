@@ -1,79 +1,71 @@
-# WildKeeper
+# Manual do Projeto | WildKeeper
 
-## Sobre o projeto
+## 1. Apresentação
 
-O WildKeeper é um sistema web para gerenciamento de instituições de conservação da fauna, como zoológicos, parques ecológicos, centros de reabilitação e santuários.
+O WildKeeper é um sistema web voltado ao gerenciamento de zoológicos e instituições de conservação da fauna, como parques ecológicos, centros de reabilitação e santuários.
 
-O sistema tem como objetivo facilitar o gerenciamento dos animais, funcionários, habitats, alimentação e atendimentos veterinários através de uma plataforma simples, segura e intuitiva.
+A proposta é centralizar informações administrativas e operacionais relacionadas à instituição, aos funcionários, aos animais, aos habitats e às atividades de acompanhamento.
 
----
+## 2. Problema e justificativa
 
-## Objetivos
+O gerenciamento de uma instituição de conservação envolve informações de diferentes áreas. Quando esses dados ficam dispersos em planilhas ou registros isolados, torna-se mais difícil consultar históricos, acompanhar atividades e manter informações consistentes.
 
-• Organizar todas as informações do zoológico em um único sistema.
+O WildKeeper propõe reunir esses registros em um ambiente digital com controle de acesso e associação dos dados à instituição responsável.
 
-• Diminuir o uso de planilhas.
+## 3. Objetivos
 
-• Facilitar consultas.
+- Centralizar informações da instituição.
+- Organizar cadastros de animais, espécies, habitats e funcionários.
+- Acompanhar eventos, consultas, vacinações e manutenções.
+- Registrar informações de medicamentos e prescrições.
+- Facilitar a visualização de indicadores por meio do dashboard.
+- Restringir o acesso conforme o nível de permissão do usuário.
 
-• Gerar relatórios.
+## 4. Público-alvo
 
-• Centralizar o histórico dos animais.
+Instituições de conservação da fauna, zoológicos, parques ecológicos, centros de reabilitação e santuários que necessitem organizar informações administrativas e operacionais.
 
----
+## 5. Funcionalidades
 
-## Tecnologias
+O escopo atual está descrito em `docs/modulos.md` e inclui autenticação, instituição, funcionários, espécies, habitats, animais, dashboard, eventos, consultas veterinárias, medicamentos, vacinas, manutenções e histórico de habitats.
 
-Frontend
+O módulo de alimentação foi descontinuado durante o desenvolvimento e não integra o escopo atual.
 
-• HTML5
-• CSS3
-• JavaScript
+## 6. Tecnologias
 
-Backend
+- **Interface:** HTML5, CSS3 e JavaScript.
+- **Servidor:** PHP.
+- **Banco de dados:** MySQL.
+- **Servidor web de desenvolvimento:** Apache, por meio do XAMPP.
+- **Versionamento:** Git e GitHub.
 
-• PHP
+## 7. Organização técnica
 
-Banco de Dados
+O código é organizado por módulos dentro de `src/`, com recursos estáticos em `assets/`, scripts SQL em `banco/` e documentação em `docs/`. Arquivos compartilhados, como conexão, autenticação e componentes de navegação, ficam em `src/includes/`.
 
-• MySQL
+A implementação é predominantemente procedural e organizada por funcionalidades. Não deve ser descrita como uma implementação MVC estrita.
 
-Versionamento
+## 8. Banco de dados
 
-• Git
-• GitHub
+O banco principal chama-se `wildkeeper`. O modelo relacional e suas entidades estão documentados em `docs/diagramas/modelo-de-dados.md`. O script de criação e estrutura inicial é `banco/script.sql`.
 
-Servidor
+## 9. Segurança
 
-• Apache (XAMPP)
+O projeto utiliza autenticação por sessão, hash de senhas, controle de acesso por nível, consultas preparadas em operações parametrizadas, validação de dados, proteção CSRF em formulários e ações selecionados e limitação de tentativas de login com persistência no banco.
 
----
+A chave usada pelo rate limiting deve ser configurada no ambiente e nunca armazenada no repositório. As instruções estão no README.
 
-## Arquitetura
+## 10. Equipe e orientação
 
-Arquitetura MVC.
+- Giovana Mendonça Raimundo
+- Giovanna Ramos de Oliveira
+- Turma 2B - SESI
+- Professor orientador: Marcelo da Silva Soares
 
----
+## 11. Documentos complementares
 
-## Organização do projeto
-
-assets/
-banco/
-docs/
-src/
-
----
-
-## Equipe
-
-Giovana Mendonça Raimundo
-
-Giovanna Ramos de Oliveira
-
-Turma 2B - SESI
-
----
-
-## Professor
-
-Marcelo da Silva Soares
+- `docs/manual-do-usuario.md`: instruções de utilização.
+- `docs/manuais/manual-tecnico.md`: instalação e manutenção técnica.
+- `docs/requisitos.md`: requisitos funcionais e não funcionais.
+- `docs/testes/casos-de-teste.md`: cenários de validação.
+- `docs/testes/evidencias/bugs.md`: registro de bugs e correções.
