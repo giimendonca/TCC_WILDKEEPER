@@ -23,14 +23,7 @@ O sistema valida campos obrigatórios e identificadores que não podem se repeti
 
 ## 3. Dashboard
 
-Após o login, o dashboard apresenta um resumo da instituição, com indicadores como:
-- quantidade de animais, espécies e habitats;
-- quantidade de funcionários;
-- consultas e eventos;
-- situação dos eventos;
-- próximos eventos;
-- informações relacionadas à saúde dos animais;
-- alertas de estoque de medicamentos.
+Após o login, o dashboard apresenta um resumo da instituição, com indicadores como quantidade de animais, espécies, habitats, funcionários, consultas e eventos. Também apresenta informações sobre a situação dos eventos, próximos eventos, saúde dos animais e estoque de medicamentos.
 
 Os dados exibidos dependem dos registros existentes e das permissões da conta.
 
@@ -38,16 +31,7 @@ Os dados exibidos dependem dos registros existentes e das permissões da conta.
 
 O menu interno reúne as áreas disponíveis para o nível de acesso do usuário. Algumas opções podem não aparecer para todos os cargos.
 
-Os principais módulos são:
-- Funcionários e instituição;
-- Espécies;
-- Habitats;
-- Animais;
-- Eventos;
-- Consultas;
-- Vacinas;
-- Medicamentos;
-- Manutenções.
+Os principais módulos são Funcionários, Instituição, Espécies, Habitats, Animais, Eventos, Consultas, Vacinas, Medicamentos e Manutenções.
 
 ## 5. Cadastros
 
@@ -74,14 +58,7 @@ As espécies reúnem dados de classificação e características. Os habitats re
 
 O módulo de eventos organiza atividades por título, descrição, período, responsável, tipo e situação.
 
-Os tipos incluem:
-- Consulta;
-- Vacinação;
-- Manutenção;
-- Transferência;
-- Outro.
-
-A associação de dados depende do tipo de evento. Por exemplo, consultas e vacinações se relacionam a animais, enquanto manutenções se relacionam a habitats.
+Os tipos incluem Consulta, Vacinação, Manutenção, Transferência e Outro. A associação de dados depende do tipo: consultas e vacinações se relacionam a animais; manutenções se relacionam a habitats; transferências relacionam animais e habitats.
 
 ## 7. Consultas e medicamentos
 
